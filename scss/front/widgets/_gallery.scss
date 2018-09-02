@@ -1,0 +1,13 @@
+
+.pb-gallery-widget
+{
+	.pb-gallery
+	{
+		margin: ( -$pb-gallery-gutter-width / 2 );
+	}
+
+	.pb-gallery-item
+	{
+		padding: ( $pb-gallery-gutter-width / 2) ;
+	}
+}

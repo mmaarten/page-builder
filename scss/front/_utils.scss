@@ -1,0 +1,142 @@
+/**
+ * Opacity
+ * -------------------------------------------------------------------
+ */
+
+$n: $pb-opacity-from;
+
+@while $n <= $pb-opacity-until
+{
+    .pb-opacity-#{$n}
+    {
+        opacity: $n/100 !important;
+    }
+
+    $n: $n + $pb-opacity-step;
+}
+
+/**
+ * Viewport Height
+ * -------------------------------------------------------------------
+ */
+
+$n: $pb-vh-from;
+
+@while $n <= $pb-vh-until
+{
+    .pb-vh-#{$n}
+    {
+        min-height: #{$n}vh;
+    }
+
+    $n: $n + $pb-vh-step;
+}
+
+/**
+ * Background Position
+ * -------------------------------------------------------------------
+ */
+
+.pb-bg-left-top 	 { background-position: left top !important; }
+.pb-bg-left-center   { background-position: left center !important; }
+.pb-bg-left-bottom   { background-position: left bottom !important; }
+.pb-bg-right-top 	 { background-position: right top !important; }
+.pb-bg-right-center  { background-position: right center !important; }
+.pb-bg-right-bottom  { background-position: right bottom !important; }
+.pb-bg-center-top    { background-position: center top !important; }
+.pb-bg-center-center { background-position: center center !important; }
+.pb-bg-center-bottom { background-position: center bottom !important; }
+
+/**
+ * Background Repeat
+ * -------------------------------------------------------------------
+ */
+
+.pb-bg-repeat 	 	 { background-repeat: repeat !important; }
+.pb-bg-repeat-x 	 { background-repeat: repeat-x !important; }
+.pb-bg-repeat-y 	 { background-repeat: repeat-y !important; }
+.pb-bg-no-repeat 	 { background-repeat: no-repeat !important; }
+
+/**
+ * Background Size
+ * -------------------------------------------------------------------
+ */
+
+.pb-bg-cover   { background-size: cover !important; }
+.pb-bg-contain { background-size: contain !important; }
+
+/**
+ * Parallax
+ * -------------------------------------------------------------------
+ */
+
+.pb-parallax 
+{ 
+	background-attachment: fixed !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+}
+
+/**
+ * Background Overlay
+ * -------------------------------------------------------------------
+ * <div class="pb-bg-overlay-container">
+ *   <p>content</p>
+ *   <div class="pb-bg-overlay bg-white opacity-90">
+ * </div>
+ */
+
+.pb-bg-overlay-container
+{
+	position: relative;
+    z-index: 100;
+}
+
+.pb-bg-overlay
+{
+	position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -100;
+}
+
+.pb-video-bg
+{
+    position: relative;
+    overflow: hidden;
+    z-index: 100;
+
+    video
+    {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: -100;
+    }
+}
+
+/**
+ * Overlay
+ * -------------------------------------------------------------------
+ */
+
+.pb-overlay-container
+{
+    position: relative;
+}
+
+.pb-overlay
+{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+

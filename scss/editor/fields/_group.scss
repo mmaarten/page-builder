@@ -1,0 +1,23 @@
+
+/*
+.pb-field-type-group
+{
+	> .pb-input
+	{
+		> .pb-sub-fields
+		{
+			> .pb-field
+			{
+				> .pb-input
+				{
+					margin: 1em 0;
+
+					&:last-child
+					{
+						margin-bottom: 0;
+					}
+				}
+			}
+		}
+	}
+}*/

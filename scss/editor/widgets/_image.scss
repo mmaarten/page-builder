@@ -1,0 +1,17 @@
+
+/**
+ * Image Widget
+ * -------------------------------------------------------------------
+ */
+
+.pb-image-widget
+{
+    .pb-widget-preview-content
+    {
+        img
+        {
+            max-width: 100%;
+            height: auto;
+        }
+    }
+}

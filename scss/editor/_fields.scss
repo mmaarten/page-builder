@@ -1,0 +1,89 @@
+
+.pb-fields,
+.pb-sub-fields
+{
+	@include clearfix();
+}
+
+.pb-fields
+{
+	th
+	{
+		p.description
+		{
+			font-weight: normal;
+		}
+	}
+}
+
+.pb-modal .pb-fields
+{
+	margin-left: -$modal-padding-x;
+	margin-right: -$modal-padding-x;
+}
+
+.postbox .pb-fields
+{
+	margin-left: -12px;
+	margin-left: -12px;
+}
+
+.pb-sub-fields
+{
+	margin-left: -15px;
+	margin-right: -15px;
+
+	> .pb-field
+	{
+		padding: 12px 15px;
+	}
+}
+
+.pb-fields > .pb-field,
+{
+	padding: 12px 15px;
+	border-bottom: 1px solid #f0f0f0;
+}
+
+.pb-field
+{
+	box-sizing: border-box;
+
+	&[style*="width:"]
+	{
+		float: left;
+
+		border-left: 1px solid #f0f0f0;
+	}
+
+	&:not( [style*="width:"] )
+	{
+		clear: both;
+	}
+}
+
+.pb-input
+{
+	input[type="text"],
+	input[type="url"],
+	input[type="search"],
+	input[type="email"],
+	select,
+	textarea
+	{
+		width: 100%;
+		margin: 0;
+	}
+
+	p:last-child
+	{
+		margin-bottom: 0;
+	}
+}
+
+.pb-input-label
+{
+	display: inline-block;
+	margin: 0 0 .5em;
+	font-weight: 600;
+}

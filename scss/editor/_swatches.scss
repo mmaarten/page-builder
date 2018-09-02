@@ -1,0 +1,70 @@
+
+$swatch-size : 1em !default;
+$swatch-border-color : #dedede !default;
+$swatch-active-color : #f30 !default;
+$swatch-hover-color : #f30 !default;
+$swatch-none-color : #f30 !default;
+$swatch-lg-size : $swatch-size * 2 !default;
+
+.pb-swatch
+{
+	display: inline-block;
+	width: $swatch-size;
+	height: $swatch-size;
+	line-height: 1;
+	vertical-align: text-bottom;
+	border: 1px solid $swatch-border-color;
+	background: #fff;
+}
+
+.pb-swatch-lg
+{
+	width: $swatch-lg-size;
+	height: $swatch-lg-size;
+}
+
+.pb-swatch-none
+{
+	position: relative;
+
+	&:after
+	{
+		content: '';
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		width: 1px;
+		height: 85%;
+		transform: translate( -50%, -50% ) skewX( -45deg );
+		background-color: $swatch-none-color;
+	}
+}
+
+.pb-swatches
+{
+	display: flex;
+	flex-wrap: wrap;
+
+	margin: 0 -5px -5px 0;
+
+	.pb-swatch
+	{
+		margin: 0 5px 5px 0;
+	}
+}
+
+.pb-swatch-button
+{
+	cursor: pointer;
+	outline: none;
+
+	&.active
+	{
+		border-color: $swatch-active-color;
+	}
+	
+	&:hover
+	{
+		border-color: $swatch-hover-color;
+	}
+}

@@ -1,0 +1,105 @@
+
+$wp-media-modal-z-index : 160000;
+
+$colors : 
+(
+	'primary' : #2E72A6
+);
+
+
+// Grid System
+// --------------------------------------------------
+
+$grid-columns 	   		: 12 !default;
+$grid-gutter-width 		: 12px !default;
+
+// WordPress admin breakpoints
+// --------------------------------------------------
+
+$screen-sm-min			: 601px;
+$screen-md-min			: 783px;
+$screen-lg-min			: 961px;
+$screen-xl-min			: 1200px;
+
+$screen-xs-max			: ($screen-sm-min - 1) !default;
+$screen-sm-max			: ($screen-md-min - 1) !default;
+$screen-md-max			: ($screen-lg-min - 1) !default;
+$screen-lg-max			: ($screen-xl-min - 1) !default;
+
+// Container Sizes
+// --------------------------------------------------
+
+$container-sm			: (720px + $grid-gutter-width) !default;
+$container-md			: (940px + $grid-gutter-width) !default;
+$container-lg			: (1140px + $grid-gutter-width) !default;
+
+// Modals
+// --------------------------------------------------
+
+$modal-padding-y		: 20px;
+$modal-padding-x		: 20px;
+$modal-box-shadow		: 0 5px 15px rgba( #000,.7 );
+$modal-header-height	: 50px;
+$modal-header-font-size	: 22px;
+$modal-header-bg-color	: #fcfcfc;
+$modal-header-border	: 1px solid #ddd;
+$modal-backdrop-color	: rgba( #000, .7 );
+$modal-z-index			: 9999;
+$modal-close-size		: $modal-header-height;
+
+// Widgets
+// --------------------------------------------------
+
+$widget-margin-y:				12px;
+$widget-border-color:			#e5e5e5;
+
+$widget-title-font-size: 		13px;
+
+$widget-top-padding-x: 			12px;
+$widget-top-padding-y: 			12px;
+$widget-top-color: 				#23282d;
+$widget-top-font-weight: 		600;
+$widget-top-bg-color:			#fafafa;
+$widget-top-height: 			$widget-title-font-size + $widget-top-padding-y * 2;
+
+$widget-top-hover-border-color: #999;
+$widget-top-hover-box-shadow: 	0 1px 2px rgba( #000, .1 );
+
+$widget-control-size:			20px;
+$widget-control-color:			#72777c;
+$widget-control-hover-color: 	#23282d;
+$widget-control-padding-y: 		( $widget-top-height - $widget-control-size ) / 2;
+$widget-control-padding-x: 		3px;
+
+$widget-inside-padding-y:  		12px;
+$widget-inside-padding-x: 		12px;
+$widget-inside-bg-color:		#fff;
+
+$widget-loader-size:			25px;
+
+$widget-placeholder-border-color:	#b4b9be;
+
+$widget-sorting-opacity:			0.8;
+
+$widget-button-padding-y: 			15px;
+$widget-button-padding-x: 			15px;
+$widget-button-line-height:			16px;
+$widget-button-title-font-weight:	600;
+$widget-button-border-color: 		#e5e5e5;
+$widget-button-bg-color:			#fff;
+$widget-button-box-shadow:			0 1px 1px rgba( #000, .04 );
+$widget-button-hover-color: 		#23282d;
+$widget-button-hover-border-color: 	#999;
+$widget-button-hover-box-shadow:	0 1px 2px rgba( #000,.1 );
+
+// Small
+
+$widget-margin-sm-y: 5px;
+$widget-inside-padding-sm-x: 5px;
+
+// Thumbnails
+// --------------------------------------------------
+
+$thumbnail-size: 100px !default;
+$thumbnail-sm-size: 75px !default;
+

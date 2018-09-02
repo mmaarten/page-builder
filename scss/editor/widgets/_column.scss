@@ -1,0 +1,15 @@
+
+.pb-column-widget
+{
+    > .pb-widget-inside
+    {
+        padding: 0;
+
+        >.pb-widget-container
+        {
+            margin-top: -$widget-top-height;
+
+            padding: ( $widget-top-height + $widget-inside-padding-y ) $widget-inside-padding-x 1px;
+        }
+    }
+}

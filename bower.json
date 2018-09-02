@@ -1,0 +1,27 @@
+{
+  "name": "page-builder",
+  "description": "WordPress page builder",
+  "main": "",
+  "authors": [
+    "Maarten Menten"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "vendor/",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "featherlight": "^1.7.13",
+    "select2": "^4.0.5",
+    "fancybox": "^3.3.5",
+    "owl.carousel": "^2.3.4",
+    "matchHeight": "^0.7.2",
+    "fontawesome": "^5.1.1"
+  }
+}

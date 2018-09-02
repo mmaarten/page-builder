@@ -1,0 +1,53 @@
+
+@mixin make-dashicon( $character, $size : 20px )
+{
+    &:before
+    {
+        content: $character;
+        display: inline-block;
+        width: $size;
+        height: $size;
+        font-size: $size;
+        line-height: 1;
+        font-family: dashicons;
+        text-decoration: inherit;
+        font-weight: 400;
+        font-style: normal;
+        vertical-align: top;
+        text-align: center;
+        transition: color .1s ease-in 0;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+}
+
+@mixin clearfix() 
+{
+    &:before,
+    &:after 
+    {
+        content: " "; // 1
+        display: table; // 2
+    }
+
+    &:after 
+    {
+        clear: both;
+    }
+}
+
+@mixin make-widget-container-stretch()
+{
+	&.pb-widget
+	{
+		> .pb-widget-inside
+		{
+			padding: 0;
+
+			> .pb-widget-container
+			{
+				padding: 1px 15px 15px;
+			}
+		}
+	}
+}

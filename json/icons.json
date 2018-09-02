@@ -1,0 +1,4446 @@
+{
+   "500px":{
+      "id":"500px",
+      "class":"pb-icon-b pb-icon-500px"
+   },
+   "accessible-icon":{
+      "id":"accessible-icon",
+      "class":"pb-icon-b pb-icon-accessible-icon"
+   },
+   "accusoft":{
+      "id":"accusoft",
+      "class":"pb-icon-b pb-icon-accusoft"
+   },
+   "address-book":{
+      "id":"address-book",
+      "class":"pb-icon pb-icon-address-book"
+   },
+   "address-card":{
+      "id":"address-card",
+      "class":"pb-icon pb-icon-address-card"
+   },
+   "adjust":{
+      "id":"adjust",
+      "class":"pb-icon pb-icon-adjust"
+   },
+   "adn":{
+      "id":"adn",
+      "class":"pb-icon-b pb-icon-adn"
+   },
+   "adversal":{
+      "id":"adversal",
+      "class":"pb-icon-b pb-icon-adversal"
+   },
+   "affiliatetheme":{
+      "id":"affiliatetheme",
+      "class":"pb-icon-b pb-icon-affiliatetheme"
+   },
+   "algolia":{
+      "id":"algolia",
+      "class":"pb-icon-b pb-icon-algolia"
+   },
+   "align-center":{
+      "id":"align-center",
+      "class":"pb-icon pb-icon-align-center"
+   },
+   "align-justify":{
+      "id":"align-justify",
+      "class":"pb-icon pb-icon-align-justify"
+   },
+   "align-left":{
+      "id":"align-left",
+      "class":"pb-icon pb-icon-align-left"
+   },
+   "align-right":{
+      "id":"align-right",
+      "class":"pb-icon pb-icon-align-right"
+   },
+   "allergies":{
+      "id":"allergies",
+      "class":"pb-icon pb-icon-allergies"
+   },
+   "amazon":{
+      "id":"amazon",
+      "class":"pb-icon-b pb-icon-amazon"
+   },
+   "amazon-pay":{
+      "id":"amazon-pay",
+      "class":"pb-icon-b pb-icon-amazon-pay"
+   },
+   "ambulance":{
+      "id":"ambulance",
+      "class":"pb-icon pb-icon-ambulance"
+   },
+   "american-sign-language-interpreting":{
+      "id":"american-sign-language-interpreting",
+      "class":"pb-icon pb-icon-american-sign-language-interpreting"
+   },
+   "amilia":{
+      "id":"amilia",
+      "class":"pb-icon-b pb-icon-amilia"
+   },
+   "anchor":{
+      "id":"anchor",
+      "class":"pb-icon pb-icon-anchor"
+   },
+   "android":{
+      "id":"android",
+      "class":"pb-icon-b pb-icon-android"
+   },
+   "angellist":{
+      "id":"angellist",
+      "class":"pb-icon-b pb-icon-angellist"
+   },
+   "angle-double-down":{
+      "id":"angle-double-down",
+      "class":"pb-icon pb-icon-angle-double-down"
+   },
+   "angle-double-left":{
+      "id":"angle-double-left",
+      "class":"pb-icon pb-icon-angle-double-left"
+   },
+   "angle-double-right":{
+      "id":"angle-double-right",
+      "class":"pb-icon pb-icon-angle-double-right"
+   },
+   "angle-double-up":{
+      "id":"angle-double-up",
+      "class":"pb-icon pb-icon-angle-double-up"
+   },
+   "angle-down":{
+      "id":"angle-down",
+      "class":"pb-icon pb-icon-angle-down"
+   },
+   "angle-left":{
+      "id":"angle-left",
+      "class":"pb-icon pb-icon-angle-left"
+   },
+   "angle-right":{
+      "id":"angle-right",
+      "class":"pb-icon pb-icon-angle-right"
+   },
+   "angle-up":{
+      "id":"angle-up",
+      "class":"pb-icon pb-icon-angle-up"
+   },
+   "angry":{
+      "id":"angry",
+      "class":"pb-icon pb-icon-angry"
+   },
+   "angrycreative":{
+      "id":"angrycreative",
+      "class":"pb-icon-b pb-icon-angrycreative"
+   },
+   "angular":{
+      "id":"angular",
+      "class":"pb-icon-b pb-icon-angular"
+   },
+   "app-store":{
+      "id":"app-store",
+      "class":"pb-icon-b pb-icon-app-store"
+   },
+   "app-store-ios":{
+      "id":"app-store-ios",
+      "class":"pb-icon-b pb-icon-app-store-ios"
+   },
+   "apper":{
+      "id":"apper",
+      "class":"pb-icon-b pb-icon-apper"
+   },
+   "apple":{
+      "id":"apple",
+      "class":"pb-icon-b pb-icon-apple"
+   },
+   "apple-pay":{
+      "id":"apple-pay",
+      "class":"pb-icon-b pb-icon-apple-pay"
+   },
+   "archive":{
+      "id":"archive",
+      "class":"pb-icon pb-icon-archive"
+   },
+   "archway":{
+      "id":"archway",
+      "class":"pb-icon pb-icon-archway"
+   },
+   "arrow-alt-circle-down":{
+      "id":"arrow-alt-circle-down",
+      "class":"pb-icon pb-icon-arrow-alt-circle-down"
+   },
+   "arrow-alt-circle-left":{
+      "id":"arrow-alt-circle-left",
+      "class":"pb-icon pb-icon-arrow-alt-circle-left"
+   },
+   "arrow-alt-circle-right":{
+      "id":"arrow-alt-circle-right",
+      "class":"pb-icon pb-icon-arrow-alt-circle-right"
+   },
+   "arrow-alt-circle-up":{
+      "id":"arrow-alt-circle-up",
+      "class":"pb-icon pb-icon-arrow-alt-circle-up"
+   },
+   "arrow-circle-down":{
+      "id":"arrow-circle-down",
+      "class":"pb-icon pb-icon-arrow-circle-down"
+   },
+   "arrow-circle-left":{
+      "id":"arrow-circle-left",
+      "class":"pb-icon pb-icon-arrow-circle-left"
+   },
+   "arrow-circle-right":{
+      "id":"arrow-circle-right",
+      "class":"pb-icon pb-icon-arrow-circle-right"
+   },
+   "arrow-circle-up":{
+      "id":"arrow-circle-up",
+      "class":"pb-icon pb-icon-arrow-circle-up"
+   },
+   "arrow-down":{
+      "id":"arrow-down",
+      "class":"pb-icon pb-icon-arrow-down"
+   },
+   "arrow-left":{
+      "id":"arrow-left",
+      "class":"pb-icon pb-icon-arrow-left"
+   },
+   "arrow-right":{
+      "id":"arrow-right",
+      "class":"pb-icon pb-icon-arrow-right"
+   },
+   "arrow-up":{
+      "id":"arrow-up",
+      "class":"pb-icon pb-icon-arrow-up"
+   },
+   "arrows-alt":{
+      "id":"arrows-alt",
+      "class":"pb-icon pb-icon-arrows-alt"
+   },
+   "arrows-alt-h":{
+      "id":"arrows-alt-h",
+      "class":"pb-icon pb-icon-arrows-alt-h"
+   },
+   "arrows-alt-v":{
+      "id":"arrows-alt-v",
+      "class":"pb-icon pb-icon-arrows-alt-v"
+   },
+   "assistive-listening-systems":{
+      "id":"assistive-listening-systems",
+      "class":"pb-icon pb-icon-assistive-listening-systems"
+   },
+   "asterisk":{
+      "id":"asterisk",
+      "class":"pb-icon pb-icon-asterisk"
+   },
+   "asymmetrik":{
+      "id":"asymmetrik",
+      "class":"pb-icon-b pb-icon-asymmetrik"
+   },
+   "at":{
+      "id":"at",
+      "class":"pb-icon pb-icon-at"
+   },
+   "atlas":{
+      "id":"atlas",
+      "class":"pb-icon pb-icon-atlas"
+   },
+   "audible":{
+      "id":"audible",
+      "class":"pb-icon-b pb-icon-audible"
+   },
+   "audio-description":{
+      "id":"audio-description",
+      "class":"pb-icon pb-icon-audio-description"
+   },
+   "autoprefixer":{
+      "id":"autoprefixer",
+      "class":"pb-icon-b pb-icon-autoprefixer"
+   },
+   "avianex":{
+      "id":"avianex",
+      "class":"pb-icon-b pb-icon-avianex"
+   },
+   "aviato":{
+      "id":"aviato",
+      "class":"pb-icon-b pb-icon-aviato"
+   },
+   "award":{
+      "id":"award",
+      "class":"pb-icon pb-icon-award"
+   },
+   "aws":{
+      "id":"aws",
+      "class":"pb-icon-b pb-icon-aws"
+   },
+   "backspace":{
+      "id":"backspace",
+      "class":"pb-icon pb-icon-backspace"
+   },
+   "backward":{
+      "id":"backward",
+      "class":"pb-icon pb-icon-backward"
+   },
+   "balance-scale":{
+      "id":"balance-scale",
+      "class":"pb-icon pb-icon-balance-scale"
+   },
+   "ban":{
+      "id":"ban",
+      "class":"pb-icon pb-icon-ban"
+   },
+   "band-aid":{
+      "id":"band-aid",
+      "class":"pb-icon pb-icon-band-aid"
+   },
+   "bandcamp":{
+      "id":"bandcamp",
+      "class":"pb-icon-b pb-icon-bandcamp"
+   },
+   "barcode":{
+      "id":"barcode",
+      "class":"pb-icon pb-icon-barcode"
+   },
+   "bars":{
+      "id":"bars",
+      "class":"pb-icon pb-icon-bars"
+   },
+   "baseball-ball":{
+      "id":"baseball-ball",
+      "class":"pb-icon pb-icon-baseball-ball"
+   },
+   "basketball-ball":{
+      "id":"basketball-ball",
+      "class":"pb-icon pb-icon-basketball-ball"
+   },
+   "bath":{
+      "id":"bath",
+      "class":"pb-icon pb-icon-bath"
+   },
+   "battery-empty":{
+      "id":"battery-empty",
+      "class":"pb-icon pb-icon-battery-empty"
+   },
+   "battery-full":{
+      "id":"battery-full",
+      "class":"pb-icon pb-icon-battery-full"
+   },
+   "battery-half":{
+      "id":"battery-half",
+      "class":"pb-icon pb-icon-battery-half"
+   },
+   "battery-quarter":{
+      "id":"battery-quarter",
+      "class":"pb-icon pb-icon-battery-quarter"
+   },
+   "battery-three-quarters":{
+      "id":"battery-three-quarters",
+      "class":"pb-icon pb-icon-battery-three-quarters"
+   },
+   "bed":{
+      "id":"bed",
+      "class":"pb-icon pb-icon-bed"
+   },
+   "beer":{
+      "id":"beer",
+      "class":"pb-icon pb-icon-beer"
+   },
+   "behance":{
+      "id":"behance",
+      "class":"pb-icon-b pb-icon-behance"
+   },
+   "behance-square":{
+      "id":"behance-square",
+      "class":"pb-icon-b pb-icon-behance-square"
+   },
+   "bell":{
+      "id":"bell",
+      "class":"pb-icon pb-icon-bell"
+   },
+   "bell-slash":{
+      "id":"bell-slash",
+      "class":"pb-icon pb-icon-bell-slash"
+   },
+   "bezier-curve":{
+      "id":"bezier-curve",
+      "class":"pb-icon pb-icon-bezier-curve"
+   },
+   "bicycle":{
+      "id":"bicycle",
+      "class":"pb-icon pb-icon-bicycle"
+   },
+   "bimobject":{
+      "id":"bimobject",
+      "class":"pb-icon-b pb-icon-bimobject"
+   },
+   "binoculars":{
+      "id":"binoculars",
+      "class":"pb-icon pb-icon-binoculars"
+   },
+   "birthday-cake":{
+      "id":"birthday-cake",
+      "class":"pb-icon pb-icon-birthday-cake"
+   },
+   "bitbucket":{
+      "id":"bitbucket",
+      "class":"pb-icon-b pb-icon-bitbucket"
+   },
+   "bitcoin":{
+      "id":"bitcoin",
+      "class":"pb-icon-b pb-icon-bitcoin"
+   },
+   "bity":{
+      "id":"bity",
+      "class":"pb-icon-b pb-icon-bity"
+   },
+   "black-tie":{
+      "id":"black-tie",
+      "class":"pb-icon-b pb-icon-black-tie"
+   },
+   "blackberry":{
+      "id":"blackberry",
+      "class":"pb-icon-b pb-icon-blackberry"
+   },
+   "blender":{
+      "id":"blender",
+      "class":"pb-icon pb-icon-blender"
+   },
+   "blind":{
+      "id":"blind",
+      "class":"pb-icon pb-icon-blind"
+   },
+   "blogger":{
+      "id":"blogger",
+      "class":"pb-icon-b pb-icon-blogger"
+   },
+   "blogger-b":{
+      "id":"blogger-b",
+      "class":"pb-icon-b pb-icon-blogger-b"
+   },
+   "bluetooth":{
+      "id":"bluetooth",
+      "class":"pb-icon-b pb-icon-bluetooth"
+   },
+   "bluetooth-b":{
+      "id":"bluetooth-b",
+      "class":"pb-icon-b pb-icon-bluetooth-b"
+   },
+   "bold":{
+      "id":"bold",
+      "class":"pb-icon pb-icon-bold"
+   },
+   "bolt":{
+      "id":"bolt",
+      "class":"pb-icon pb-icon-bolt"
+   },
+   "bomb":{
+      "id":"bomb",
+      "class":"pb-icon pb-icon-bomb"
+   },
+   "bong":{
+      "id":"bong",
+      "class":"pb-icon pb-icon-bong"
+   },
+   "book":{
+      "id":"book",
+      "class":"pb-icon pb-icon-book"
+   },
+   "book-open":{
+      "id":"book-open",
+      "class":"pb-icon pb-icon-book-open"
+   },
+   "bookmark":{
+      "id":"bookmark",
+      "class":"pb-icon pb-icon-bookmark"
+   },
+   "bowling-ball":{
+      "id":"bowling-ball",
+      "class":"pb-icon pb-icon-bowling-ball"
+   },
+   "box":{
+      "id":"box",
+      "class":"pb-icon pb-icon-box"
+   },
+   "box-open":{
+      "id":"box-open",
+      "class":"pb-icon pb-icon-box-open"
+   },
+   "boxes":{
+      "id":"boxes",
+      "class":"pb-icon pb-icon-boxes"
+   },
+   "braille":{
+      "id":"braille",
+      "class":"pb-icon pb-icon-braille"
+   },
+   "briefcase":{
+      "id":"briefcase",
+      "class":"pb-icon pb-icon-briefcase"
+   },
+   "briefcase-medical":{
+      "id":"briefcase-medical",
+      "class":"pb-icon pb-icon-briefcase-medical"
+   },
+   "broadcast-tower":{
+      "id":"broadcast-tower",
+      "class":"pb-icon pb-icon-broadcast-tower"
+   },
+   "broom":{
+      "id":"broom",
+      "class":"pb-icon pb-icon-broom"
+   },
+   "brush":{
+      "id":"brush",
+      "class":"pb-icon pb-icon-brush"
+   },
+   "btc":{
+      "id":"btc",
+      "class":"pb-icon-b pb-icon-btc"
+   },
+   "bug":{
+      "id":"bug",
+      "class":"pb-icon pb-icon-bug"
+   },
+   "building":{
+      "id":"building",
+      "class":"pb-icon pb-icon-building"
+   },
+   "bullhorn":{
+      "id":"bullhorn",
+      "class":"pb-icon pb-icon-bullhorn"
+   },
+   "bullseye":{
+      "id":"bullseye",
+      "class":"pb-icon pb-icon-bullseye"
+   },
+   "burn":{
+      "id":"burn",
+      "class":"pb-icon pb-icon-burn"
+   },
+   "buromobelexperte":{
+      "id":"buromobelexperte",
+      "class":"pb-icon-b pb-icon-buromobelexperte"
+   },
+   "bus":{
+      "id":"bus",
+      "class":"pb-icon pb-icon-bus"
+   },
+   "bus-alt":{
+      "id":"bus-alt",
+      "class":"pb-icon pb-icon-bus-alt"
+   },
+   "buysellads":{
+      "id":"buysellads",
+      "class":"pb-icon-b pb-icon-buysellads"
+   },
+   "calculator":{
+      "id":"calculator",
+      "class":"pb-icon pb-icon-calculator"
+   },
+   "calendar":{
+      "id":"calendar",
+      "class":"pb-icon pb-icon-calendar"
+   },
+   "calendar-alt":{
+      "id":"calendar-alt",
+      "class":"pb-icon pb-icon-calendar-alt"
+   },
+   "calendar-check":{
+      "id":"calendar-check",
+      "class":"pb-icon pb-icon-calendar-check"
+   },
+   "calendar-minus":{
+      "id":"calendar-minus",
+      "class":"pb-icon pb-icon-calendar-minus"
+   },
+   "calendar-plus":{
+      "id":"calendar-plus",
+      "class":"pb-icon pb-icon-calendar-plus"
+   },
+   "calendar-times":{
+      "id":"calendar-times",
+      "class":"pb-icon pb-icon-calendar-times"
+   },
+   "camera":{
+      "id":"camera",
+      "class":"pb-icon pb-icon-camera"
+   },
+   "camera-retro":{
+      "id":"camera-retro",
+      "class":"pb-icon pb-icon-camera-retro"
+   },
+   "cannabis":{
+      "id":"cannabis",
+      "class":"pb-icon pb-icon-cannabis"
+   },
+   "capsules":{
+      "id":"capsules",
+      "class":"pb-icon pb-icon-capsules"
+   },
+   "car":{
+      "id":"car",
+      "class":"pb-icon pb-icon-car"
+   },
+   "caret-down":{
+      "id":"caret-down",
+      "class":"pb-icon pb-icon-caret-down"
+   },
+   "caret-left":{
+      "id":"caret-left",
+      "class":"pb-icon pb-icon-caret-left"
+   },
+   "caret-right":{
+      "id":"caret-right",
+      "class":"pb-icon pb-icon-caret-right"
+   },
+   "caret-square-down":{
+      "id":"caret-square-down",
+      "class":"pb-icon pb-icon-caret-square-down"
+   },
+   "caret-square-left":{
+      "id":"caret-square-left",
+      "class":"pb-icon pb-icon-caret-square-left"
+   },
+   "caret-square-right":{
+      "id":"caret-square-right",
+      "class":"pb-icon pb-icon-caret-square-right"
+   },
+   "caret-square-up":{
+      "id":"caret-square-up",
+      "class":"pb-icon pb-icon-caret-square-up"
+   },
+   "caret-up":{
+      "id":"caret-up",
+      "class":"pb-icon pb-icon-caret-up"
+   },
+   "cart-arrow-down":{
+      "id":"cart-arrow-down",
+      "class":"pb-icon pb-icon-cart-arrow-down"
+   },
+   "cart-plus":{
+      "id":"cart-plus",
+      "class":"pb-icon pb-icon-cart-plus"
+   },
+   "cc-amazon-pay":{
+      "id":"cc-amazon-pay",
+      "class":"pb-icon-b pb-icon-cc-amazon-pay"
+   },
+   "cc-amex":{
+      "id":"cc-amex",
+      "class":"pb-icon-b pb-icon-cc-amex"
+   },
+   "cc-apple-pay":{
+      "id":"cc-apple-pay",
+      "class":"pb-icon-b pb-icon-cc-apple-pay"
+   },
+   "cc-diners-club":{
+      "id":"cc-diners-club",
+      "class":"pb-icon-b pb-icon-cc-diners-club"
+   },
+   "cc-discover":{
+      "id":"cc-discover",
+      "class":"pb-icon-b pb-icon-cc-discover"
+   },
+   "cc-jcb":{
+      "id":"cc-jcb",
+      "class":"pb-icon-b pb-icon-cc-jcb"
+   },
+   "cc-mastercard":{
+      "id":"cc-mastercard",
+      "class":"pb-icon-b pb-icon-cc-mastercard"
+   },
+   "cc-paypal":{
+      "id":"cc-paypal",
+      "class":"pb-icon-b pb-icon-cc-paypal"
+   },
+   "cc-stripe":{
+      "id":"cc-stripe",
+      "class":"pb-icon-b pb-icon-cc-stripe"
+   },
+   "cc-visa":{
+      "id":"cc-visa",
+      "class":"pb-icon-b pb-icon-cc-visa"
+   },
+   "centercode":{
+      "id":"centercode",
+      "class":"pb-icon-b pb-icon-centercode"
+   },
+   "certificate":{
+      "id":"certificate",
+      "class":"pb-icon pb-icon-certificate"
+   },
+   "chalkboard":{
+      "id":"chalkboard",
+      "class":"pb-icon pb-icon-chalkboard"
+   },
+   "chalkboard-teacher":{
+      "id":"chalkboard-teacher",
+      "class":"pb-icon pb-icon-chalkboard-teacher"
+   },
+   "chart-area":{
+      "id":"chart-area",
+      "class":"pb-icon pb-icon-chart-area"
+   },
+   "chart-bar":{
+      "id":"chart-bar",
+      "class":"pb-icon pb-icon-chart-bar"
+   },
+   "chart-line":{
+      "id":"chart-line",
+      "class":"pb-icon pb-icon-chart-line"
+   },
+   "chart-pie":{
+      "id":"chart-pie",
+      "class":"pb-icon pb-icon-chart-pie"
+   },
+   "check":{
+      "id":"check",
+      "class":"pb-icon pb-icon-check"
+   },
+   "check-circle":{
+      "id":"check-circle",
+      "class":"pb-icon pb-icon-check-circle"
+   },
+   "check-double":{
+      "id":"check-double",
+      "class":"pb-icon pb-icon-check-double"
+   },
+   "check-square":{
+      "id":"check-square",
+      "class":"pb-icon pb-icon-check-square"
+   },
+   "chess":{
+      "id":"chess",
+      "class":"pb-icon pb-icon-chess"
+   },
+   "chess-bishop":{
+      "id":"chess-bishop",
+      "class":"pb-icon pb-icon-chess-bishop"
+   },
+   "chess-board":{
+      "id":"chess-board",
+      "class":"pb-icon pb-icon-chess-board"
+   },
+   "chess-king":{
+      "id":"chess-king",
+      "class":"pb-icon pb-icon-chess-king"
+   },
+   "chess-knight":{
+      "id":"chess-knight",
+      "class":"pb-icon pb-icon-chess-knight"
+   },
+   "chess-pawn":{
+      "id":"chess-pawn",
+      "class":"pb-icon pb-icon-chess-pawn"
+   },
+   "chess-queen":{
+      "id":"chess-queen",
+      "class":"pb-icon pb-icon-chess-queen"
+   },
+   "chess-rook":{
+      "id":"chess-rook",
+      "class":"pb-icon pb-icon-chess-rook"
+   },
+   "chevron-circle-down":{
+      "id":"chevron-circle-down",
+      "class":"pb-icon pb-icon-chevron-circle-down"
+   },
+   "chevron-circle-left":{
+      "id":"chevron-circle-left",
+      "class":"pb-icon pb-icon-chevron-circle-left"
+   },
+   "chevron-circle-right":{
+      "id":"chevron-circle-right",
+      "class":"pb-icon pb-icon-chevron-circle-right"
+   },
+   "chevron-circle-up":{
+      "id":"chevron-circle-up",
+      "class":"pb-icon pb-icon-chevron-circle-up"
+   },
+   "chevron-down":{
+      "id":"chevron-down",
+      "class":"pb-icon pb-icon-chevron-down"
+   },
+   "chevron-left":{
+      "id":"chevron-left",
+      "class":"pb-icon pb-icon-chevron-left"
+   },
+   "chevron-right":{
+      "id":"chevron-right",
+      "class":"pb-icon pb-icon-chevron-right"
+   },
+   "chevron-up":{
+      "id":"chevron-up",
+      "class":"pb-icon pb-icon-chevron-up"
+   },
+   "child":{
+      "id":"child",
+      "class":"pb-icon pb-icon-child"
+   },
+   "chrome":{
+      "id":"chrome",
+      "class":"pb-icon-b pb-icon-chrome"
+   },
+   "church":{
+      "id":"church",
+      "class":"pb-icon pb-icon-church"
+   },
+   "circle":{
+      "id":"circle",
+      "class":"pb-icon pb-icon-circle"
+   },
+   "circle-notch":{
+      "id":"circle-notch",
+      "class":"pb-icon pb-icon-circle-notch"
+   },
+   "clipboard":{
+      "id":"clipboard",
+      "class":"pb-icon pb-icon-clipboard"
+   },
+   "clipboard-check":{
+      "id":"clipboard-check",
+      "class":"pb-icon pb-icon-clipboard-check"
+   },
+   "clipboard-list":{
+      "id":"clipboard-list",
+      "class":"pb-icon pb-icon-clipboard-list"
+   },
+   "clock":{
+      "id":"clock",
+      "class":"pb-icon pb-icon-clock"
+   },
+   "clone":{
+      "id":"clone",
+      "class":"pb-icon pb-icon-clone"
+   },
+   "closed-captioning":{
+      "id":"closed-captioning",
+      "class":"pb-icon pb-icon-closed-captioning"
+   },
+   "cloud":{
+      "id":"cloud",
+      "class":"pb-icon pb-icon-cloud"
+   },
+   "cloud-download-alt":{
+      "id":"cloud-download-alt",
+      "class":"pb-icon pb-icon-cloud-download-alt"
+   },
+   "cloud-upload-alt":{
+      "id":"cloud-upload-alt",
+      "class":"pb-icon pb-icon-cloud-upload-alt"
+   },
+   "cloudscale":{
+      "id":"cloudscale",
+      "class":"pb-icon-b pb-icon-cloudscale"
+   },
+   "cloudsmith":{
+      "id":"cloudsmith",
+      "class":"pb-icon-b pb-icon-cloudsmith"
+   },
+   "cloudversify":{
+      "id":"cloudversify",
+      "class":"pb-icon-b pb-icon-cloudversify"
+   },
+   "cocktail":{
+      "id":"cocktail",
+      "class":"pb-icon pb-icon-cocktail"
+   },
+   "code":{
+      "id":"code",
+      "class":"pb-icon pb-icon-code"
+   },
+   "code-branch":{
+      "id":"code-branch",
+      "class":"pb-icon pb-icon-code-branch"
+   },
+   "codepen":{
+      "id":"codepen",
+      "class":"pb-icon-b pb-icon-codepen"
+   },
+   "codiepie":{
+      "id":"codiepie",
+      "class":"pb-icon-b pb-icon-codiepie"
+   },
+   "coffee":{
+      "id":"coffee",
+      "class":"pb-icon pb-icon-coffee"
+   },
+   "cog":{
+      "id":"cog",
+      "class":"pb-icon pb-icon-cog"
+   },
+   "cogs":{
+      "id":"cogs",
+      "class":"pb-icon pb-icon-cogs"
+   },
+   "coins":{
+      "id":"coins",
+      "class":"pb-icon pb-icon-coins"
+   },
+   "columns":{
+      "id":"columns",
+      "class":"pb-icon pb-icon-columns"
+   },
+   "comment":{
+      "id":"comment",
+      "class":"pb-icon pb-icon-comment"
+   },
+   "comment-alt":{
+      "id":"comment-alt",
+      "class":"pb-icon pb-icon-comment-alt"
+   },
+   "comment-dots":{
+      "id":"comment-dots",
+      "class":"pb-icon pb-icon-comment-dots"
+   },
+   "comment-slash":{
+      "id":"comment-slash",
+      "class":"pb-icon pb-icon-comment-slash"
+   },
+   "comments":{
+      "id":"comments",
+      "class":"pb-icon pb-icon-comments"
+   },
+   "compact-disc":{
+      "id":"compact-disc",
+      "class":"pb-icon pb-icon-compact-disc"
+   },
+   "compass":{
+      "id":"compass",
+      "class":"pb-icon pb-icon-compass"
+   },
+   "compress":{
+      "id":"compress",
+      "class":"pb-icon pb-icon-compress"
+   },
+   "concierge-bell":{
+      "id":"concierge-bell",
+      "class":"pb-icon pb-icon-concierge-bell"
+   },
+   "connectdevelop":{
+      "id":"connectdevelop",
+      "class":"pb-icon-b pb-icon-connectdevelop"
+   },
+   "contao":{
+      "id":"contao",
+      "class":"pb-icon-b pb-icon-contao"
+   },
+   "cookie":{
+      "id":"cookie",
+      "class":"pb-icon pb-icon-cookie"
+   },
+   "cookie-bite":{
+      "id":"cookie-bite",
+      "class":"pb-icon pb-icon-cookie-bite"
+   },
+   "copy":{
+      "id":"copy",
+      "class":"pb-icon pb-icon-copy"
+   },
+   "copyright":{
+      "id":"copyright",
+      "class":"pb-icon pb-icon-copyright"
+   },
+   "couch":{
+      "id":"couch",
+      "class":"pb-icon pb-icon-couch"
+   },
+   "cpanel":{
+      "id":"cpanel",
+      "class":"pb-icon-b pb-icon-cpanel"
+   },
+   "creative-commons":{
+      "id":"creative-commons",
+      "class":"pb-icon-b pb-icon-creative-commons"
+   },
+   "creative-commons-by":{
+      "id":"creative-commons-by",
+      "class":"pb-icon-b pb-icon-creative-commons-by"
+   },
+   "creative-commons-nc":{
+      "id":"creative-commons-nc",
+      "class":"pb-icon-b pb-icon-creative-commons-nc"
+   },
+   "creative-commons-nc-eu":{
+      "id":"creative-commons-nc-eu",
+      "class":"pb-icon-b pb-icon-creative-commons-nc-eu"
+   },
+   "creative-commons-nc-jp":{
+      "id":"creative-commons-nc-jp",
+      "class":"pb-icon-b pb-icon-creative-commons-nc-jp"
+   },
+   "creative-commons-nd":{
+      "id":"creative-commons-nd",
+      "class":"pb-icon-b pb-icon-creative-commons-nd"
+   },
+   "creative-commons-pd":{
+      "id":"creative-commons-pd",
+      "class":"pb-icon-b pb-icon-creative-commons-pd"
+   },
+   "creative-commons-pd-alt":{
+      "id":"creative-commons-pd-alt",
+      "class":"pb-icon-b pb-icon-creative-commons-pd-alt"
+   },
+   "creative-commons-remix":{
+      "id":"creative-commons-remix",
+      "class":"pb-icon-b pb-icon-creative-commons-remix"
+   },
+   "creative-commons-sa":{
+      "id":"creative-commons-sa",
+      "class":"pb-icon-b pb-icon-creative-commons-sa"
+   },
+   "creative-commons-sampling":{
+      "id":"creative-commons-sampling",
+      "class":"pb-icon-b pb-icon-creative-commons-sampling"
+   },
+   "creative-commons-sampling-plus":{
+      "id":"creative-commons-sampling-plus",
+      "class":"pb-icon-b pb-icon-creative-commons-sampling-plus"
+   },
+   "creative-commons-share":{
+      "id":"creative-commons-share",
+      "class":"pb-icon-b pb-icon-creative-commons-share"
+   },
+   "credit-card":{
+      "id":"credit-card",
+      "class":"pb-icon pb-icon-credit-card"
+   },
+   "crop":{
+      "id":"crop",
+      "class":"pb-icon pb-icon-crop"
+   },
+   "crop-alt":{
+      "id":"crop-alt",
+      "class":"pb-icon pb-icon-crop-alt"
+   },
+   "crosshairs":{
+      "id":"crosshairs",
+      "class":"pb-icon pb-icon-crosshairs"
+   },
+   "crow":{
+      "id":"crow",
+      "class":"pb-icon pb-icon-crow"
+   },
+   "crown":{
+      "id":"crown",
+      "class":"pb-icon pb-icon-crown"
+   },
+   "css3":{
+      "id":"css3",
+      "class":"pb-icon-b pb-icon-css3"
+   },
+   "css3-alt":{
+      "id":"css3-alt",
+      "class":"pb-icon-b pb-icon-css3-alt"
+   },
+   "cube":{
+      "id":"cube",
+      "class":"pb-icon pb-icon-cube"
+   },
+   "cubes":{
+      "id":"cubes",
+      "class":"pb-icon pb-icon-cubes"
+   },
+   "cut":{
+      "id":"cut",
+      "class":"pb-icon pb-icon-cut"
+   },
+   "cuttlefish":{
+      "id":"cuttlefish",
+      "class":"pb-icon-b pb-icon-cuttlefish"
+   },
+   "d-and-d":{
+      "id":"d-and-d",
+      "class":"pb-icon-b pb-icon-d-and-d"
+   },
+   "dashcube":{
+      "id":"dashcube",
+      "class":"pb-icon-b pb-icon-dashcube"
+   },
+   "database":{
+      "id":"database",
+      "class":"pb-icon pb-icon-database"
+   },
+   "deaf":{
+      "id":"deaf",
+      "class":"pb-icon pb-icon-deaf"
+   },
+   "delicious":{
+      "id":"delicious",
+      "class":"pb-icon-b pb-icon-delicious"
+   },
+   "deploydog":{
+      "id":"deploydog",
+      "class":"pb-icon-b pb-icon-deploydog"
+   },
+   "deskpro":{
+      "id":"deskpro",
+      "class":"pb-icon-b pb-icon-deskpro"
+   },
+   "desktop":{
+      "id":"desktop",
+      "class":"pb-icon pb-icon-desktop"
+   },
+   "deviantart":{
+      "id":"deviantart",
+      "class":"pb-icon-b pb-icon-deviantart"
+   },
+   "diagnoses":{
+      "id":"diagnoses",
+      "class":"pb-icon pb-icon-diagnoses"
+   },
+   "dice":{
+      "id":"dice",
+      "class":"pb-icon pb-icon-dice"
+   },
+   "dice-five":{
+      "id":"dice-five",
+      "class":"pb-icon pb-icon-dice-five"
+   },
+   "dice-four":{
+      "id":"dice-four",
+      "class":"pb-icon pb-icon-dice-four"
+   },
+   "dice-one":{
+      "id":"dice-one",
+      "class":"pb-icon pb-icon-dice-one"
+   },
+   "dice-six":{
+      "id":"dice-six",
+      "class":"pb-icon pb-icon-dice-six"
+   },
+   "dice-three":{
+      "id":"dice-three",
+      "class":"pb-icon pb-icon-dice-three"
+   },
+   "dice-two":{
+      "id":"dice-two",
+      "class":"pb-icon pb-icon-dice-two"
+   },
+   "digg":{
+      "id":"digg",
+      "class":"pb-icon-b pb-icon-digg"
+   },
+   "digital-ocean":{
+      "id":"digital-ocean",
+      "class":"pb-icon-b pb-icon-digital-ocean"
+   },
+   "digital-tachograph":{
+      "id":"digital-tachograph",
+      "class":"pb-icon pb-icon-digital-tachograph"
+   },
+   "discord":{
+      "id":"discord",
+      "class":"pb-icon-b pb-icon-discord"
+   },
+   "discourse":{
+      "id":"discourse",
+      "class":"pb-icon-b pb-icon-discourse"
+   },
+   "divide":{
+      "id":"divide",
+      "class":"pb-icon pb-icon-divide"
+   },
+   "dizzy":{
+      "id":"dizzy",
+      "class":"pb-icon pb-icon-dizzy"
+   },
+   "dna":{
+      "id":"dna",
+      "class":"pb-icon pb-icon-dna"
+   },
+   "dochub":{
+      "id":"dochub",
+      "class":"pb-icon-b pb-icon-dochub"
+   },
+   "docker":{
+      "id":"docker",
+      "class":"pb-icon-b pb-icon-docker"
+   },
+   "dollar-sign":{
+      "id":"dollar-sign",
+      "class":"pb-icon pb-icon-dollar-sign"
+   },
+   "dolly":{
+      "id":"dolly",
+      "class":"pb-icon pb-icon-dolly"
+   },
+   "dolly-flatbed":{
+      "id":"dolly-flatbed",
+      "class":"pb-icon pb-icon-dolly-flatbed"
+   },
+   "donate":{
+      "id":"donate",
+      "class":"pb-icon pb-icon-donate"
+   },
+   "door-closed":{
+      "id":"door-closed",
+      "class":"pb-icon pb-icon-door-closed"
+   },
+   "door-open":{
+      "id":"door-open",
+      "class":"pb-icon pb-icon-door-open"
+   },
+   "dot-circle":{
+      "id":"dot-circle",
+      "class":"pb-icon pb-icon-dot-circle"
+   },
+   "dove":{
+      "id":"dove",
+      "class":"pb-icon pb-icon-dove"
+   },
+   "download":{
+      "id":"download",
+      "class":"pb-icon pb-icon-download"
+   },
+   "draft2digital":{
+      "id":"draft2digital",
+      "class":"pb-icon-b pb-icon-draft2digital"
+   },
+   "drafting-compass":{
+      "id":"drafting-compass",
+      "class":"pb-icon pb-icon-drafting-compass"
+   },
+   "dribbble":{
+      "id":"dribbble",
+      "class":"pb-icon-b pb-icon-dribbble"
+   },
+   "dribbble-square":{
+      "id":"dribbble-square",
+      "class":"pb-icon-b pb-icon-dribbble-square"
+   },
+   "dropbox":{
+      "id":"dropbox",
+      "class":"pb-icon-b pb-icon-dropbox"
+   },
+   "drum":{
+      "id":"drum",
+      "class":"pb-icon pb-icon-drum"
+   },
+   "drum-steelpan":{
+      "id":"drum-steelpan",
+      "class":"pb-icon pb-icon-drum-steelpan"
+   },
+   "drupal":{
+      "id":"drupal",
+      "class":"pb-icon-b pb-icon-drupal"
+   },
+   "dumbbell":{
+      "id":"dumbbell",
+      "class":"pb-icon pb-icon-dumbbell"
+   },
+   "dyalog":{
+      "id":"dyalog",
+      "class":"pb-icon-b pb-icon-dyalog"
+   },
+   "earlybirds":{
+      "id":"earlybirds",
+      "class":"pb-icon-b pb-icon-earlybirds"
+   },
+   "ebay":{
+      "id":"ebay",
+      "class":"pb-icon-b pb-icon-ebay"
+   },
+   "edge":{
+      "id":"edge",
+      "class":"pb-icon-b pb-icon-edge"
+   },
+   "edit":{
+      "id":"edit",
+      "class":"pb-icon pb-icon-edit"
+   },
+   "eject":{
+      "id":"eject",
+      "class":"pb-icon pb-icon-eject"
+   },
+   "elementor":{
+      "id":"elementor",
+      "class":"pb-icon-b pb-icon-elementor"
+   },
+   "ellipsis-h":{
+      "id":"ellipsis-h",
+      "class":"pb-icon pb-icon-ellipsis-h"
+   },
+   "ellipsis-v":{
+      "id":"ellipsis-v",
+      "class":"pb-icon pb-icon-ellipsis-v"
+   },
+   "ember":{
+      "id":"ember",
+      "class":"pb-icon-b pb-icon-ember"
+   },
+   "empire":{
+      "id":"empire",
+      "class":"pb-icon-b pb-icon-empire"
+   },
+   "envelope":{
+      "id":"envelope",
+      "class":"pb-icon pb-icon-envelope"
+   },
+   "envelope-open":{
+      "id":"envelope-open",
+      "class":"pb-icon pb-icon-envelope-open"
+   },
+   "envelope-square":{
+      "id":"envelope-square",
+      "class":"pb-icon pb-icon-envelope-square"
+   },
+   "envira":{
+      "id":"envira",
+      "class":"pb-icon-b pb-icon-envira"
+   },
+   "equals":{
+      "id":"equals",
+      "class":"pb-icon pb-icon-equals"
+   },
+   "eraser":{
+      "id":"eraser",
+      "class":"pb-icon pb-icon-eraser"
+   },
+   "erlang":{
+      "id":"erlang",
+      "class":"pb-icon-b pb-icon-erlang"
+   },
+   "ethereum":{
+      "id":"ethereum",
+      "class":"pb-icon-b pb-icon-ethereum"
+   },
+   "etsy":{
+      "id":"etsy",
+      "class":"pb-icon-b pb-icon-etsy"
+   },
+   "euro-sign":{
+      "id":"euro-sign",
+      "class":"pb-icon pb-icon-euro-sign"
+   },
+   "exchange-alt":{
+      "id":"exchange-alt",
+      "class":"pb-icon pb-icon-exchange-alt"
+   },
+   "exclamation":{
+      "id":"exclamation",
+      "class":"pb-icon pb-icon-exclamation"
+   },
+   "exclamation-circle":{
+      "id":"exclamation-circle",
+      "class":"pb-icon pb-icon-exclamation-circle"
+   },
+   "exclamation-triangle":{
+      "id":"exclamation-triangle",
+      "class":"pb-icon pb-icon-exclamation-triangle"
+   },
+   "expand":{
+      "id":"expand",
+      "class":"pb-icon pb-icon-expand"
+   },
+   "expand-arrows-alt":{
+      "id":"expand-arrows-alt",
+      "class":"pb-icon pb-icon-expand-arrows-alt"
+   },
+   "expeditedssl":{
+      "id":"expeditedssl",
+      "class":"pb-icon-b pb-icon-expeditedssl"
+   },
+   "external-link-alt":{
+      "id":"external-link-alt",
+      "class":"pb-icon pb-icon-external-link-alt"
+   },
+   "external-link-square-alt":{
+      "id":"external-link-square-alt",
+      "class":"pb-icon pb-icon-external-link-square-alt"
+   },
+   "eye":{
+      "id":"eye",
+      "class":"pb-icon pb-icon-eye"
+   },
+   "eye-dropper":{
+      "id":"eye-dropper",
+      "class":"pb-icon pb-icon-eye-dropper"
+   },
+   "eye-slash":{
+      "id":"eye-slash",
+      "class":"pb-icon pb-icon-eye-slash"
+   },
+   "facebook":{
+      "id":"facebook",
+      "class":"pb-icon-b pb-icon-facebook"
+   },
+   "facebook-f":{
+      "id":"facebook-f",
+      "class":"pb-icon-b pb-icon-facebook-f"
+   },
+   "facebook-messenger":{
+      "id":"facebook-messenger",
+      "class":"pb-icon-b pb-icon-facebook-messenger"
+   },
+   "facebook-square":{
+      "id":"facebook-square",
+      "class":"pb-icon-b pb-icon-facebook-square"
+   },
+   "fast-backward":{
+      "id":"fast-backward",
+      "class":"pb-icon pb-icon-fast-backward"
+   },
+   "fast-forward":{
+      "id":"fast-forward",
+      "class":"pb-icon pb-icon-fast-forward"
+   },
+   "fax":{
+      "id":"fax",
+      "class":"pb-icon pb-icon-fax"
+   },
+   "feather":{
+      "id":"feather",
+      "class":"pb-icon pb-icon-feather"
+   },
+   "feather-alt":{
+      "id":"feather-alt",
+      "class":"pb-icon pb-icon-feather-alt"
+   },
+   "female":{
+      "id":"female",
+      "class":"pb-icon pb-icon-female"
+   },
+   "fighter-jet":{
+      "id":"fighter-jet",
+      "class":"pb-icon pb-icon-fighter-jet"
+   },
+   "file":{
+      "id":"file",
+      "class":"pb-icon pb-icon-file"
+   },
+   "file-alt":{
+      "id":"file-alt",
+      "class":"pb-icon pb-icon-file-alt"
+   },
+   "file-archive":{
+      "id":"file-archive",
+      "class":"pb-icon pb-icon-file-archive"
+   },
+   "file-audio":{
+      "id":"file-audio",
+      "class":"pb-icon pb-icon-file-audio"
+   },
+   "file-code":{
+      "id":"file-code",
+      "class":"pb-icon pb-icon-file-code"
+   },
+   "file-contract":{
+      "id":"file-contract",
+      "class":"pb-icon pb-icon-file-contract"
+   },
+   "file-download":{
+      "id":"file-download",
+      "class":"pb-icon pb-icon-file-download"
+   },
+   "file-excel":{
+      "id":"file-excel",
+      "class":"pb-icon pb-icon-file-excel"
+   },
+   "file-export":{
+      "id":"file-export",
+      "class":"pb-icon pb-icon-file-export"
+   },
+   "file-image":{
+      "id":"file-image",
+      "class":"pb-icon pb-icon-file-image"
+   },
+   "file-import":{
+      "id":"file-import",
+      "class":"pb-icon pb-icon-file-import"
+   },
+   "file-invoice":{
+      "id":"file-invoice",
+      "class":"pb-icon pb-icon-file-invoice"
+   },
+   "file-invoice-dollar":{
+      "id":"file-invoice-dollar",
+      "class":"pb-icon pb-icon-file-invoice-dollar"
+   },
+   "file-medical":{
+      "id":"file-medical",
+      "class":"pb-icon pb-icon-file-medical"
+   },
+   "file-medical-alt":{
+      "id":"file-medical-alt",
+      "class":"pb-icon pb-icon-file-medical-alt"
+   },
+   "file-pdf":{
+      "id":"file-pdf",
+      "class":"pb-icon pb-icon-file-pdf"
+   },
+   "file-powerpoint":{
+      "id":"file-powerpoint",
+      "class":"pb-icon pb-icon-file-powerpoint"
+   },
+   "file-prescription":{
+      "id":"file-prescription",
+      "class":"pb-icon pb-icon-file-prescription"
+   },
+   "file-signature":{
+      "id":"file-signature",
+      "class":"pb-icon pb-icon-file-signature"
+   },
+   "file-upload":{
+      "id":"file-upload",
+      "class":"pb-icon pb-icon-file-upload"
+   },
+   "file-video":{
+      "id":"file-video",
+      "class":"pb-icon pb-icon-file-video"
+   },
+   "file-word":{
+      "id":"file-word",
+      "class":"pb-icon pb-icon-file-word"
+   },
+   "fill":{
+      "id":"fill",
+      "class":"pb-icon pb-icon-fill"
+   },
+   "fill-drip":{
+      "id":"fill-drip",
+      "class":"pb-icon pb-icon-fill-drip"
+   },
+   "film":{
+      "id":"film",
+      "class":"pb-icon pb-icon-film"
+   },
+   "filter":{
+      "id":"filter",
+      "class":"pb-icon pb-icon-filter"
+   },
+   "fingerprint":{
+      "id":"fingerprint",
+      "class":"pb-icon pb-icon-fingerprint"
+   },
+   "fire":{
+      "id":"fire",
+      "class":"pb-icon pb-icon-fire"
+   },
+   "fire-extinguisher":{
+      "id":"fire-extinguisher",
+      "class":"pb-icon pb-icon-fire-extinguisher"
+   },
+   "firefox":{
+      "id":"firefox",
+      "class":"pb-icon-b pb-icon-firefox"
+   },
+   "first-aid":{
+      "id":"first-aid",
+      "class":"pb-icon pb-icon-first-aid"
+   },
+   "first-order":{
+      "id":"first-order",
+      "class":"pb-icon-b pb-icon-first-order"
+   },
+   "first-order-alt":{
+      "id":"first-order-alt",
+      "class":"pb-icon-b pb-icon-first-order-alt"
+   },
+   "firstdraft":{
+      "id":"firstdraft",
+      "class":"pb-icon-b pb-icon-firstdraft"
+   },
+   "fish":{
+      "id":"fish",
+      "class":"pb-icon pb-icon-fish"
+   },
+   "flag":{
+      "id":"flag",
+      "class":"pb-icon pb-icon-flag"
+   },
+   "flag-checkered":{
+      "id":"flag-checkered",
+      "class":"pb-icon pb-icon-flag-checkered"
+   },
+   "flask":{
+      "id":"flask",
+      "class":"pb-icon pb-icon-flask"
+   },
+   "flickr":{
+      "id":"flickr",
+      "class":"pb-icon-b pb-icon-flickr"
+   },
+   "flipboard":{
+      "id":"flipboard",
+      "class":"pb-icon-b pb-icon-flipboard"
+   },
+   "flushed":{
+      "id":"flushed",
+      "class":"pb-icon pb-icon-flushed"
+   },
+   "fly":{
+      "id":"fly",
+      "class":"pb-icon-b pb-icon-fly"
+   },
+   "folder":{
+      "id":"folder",
+      "class":"pb-icon pb-icon-folder"
+   },
+   "folder-open":{
+      "id":"folder-open",
+      "class":"pb-icon pb-icon-folder-open"
+   },
+   "font":{
+      "id":"font",
+      "class":"pb-icon pb-icon-font"
+   },
+   "font-awesome":{
+      "id":"font-awesome",
+      "class":"pb-icon-b pb-icon-font-awesome"
+   },
+   "font-awesome-alt":{
+      "id":"font-awesome-alt",
+      "class":"pb-icon-b pb-icon-font-awesome-alt"
+   },
+   "font-awesome-flag":{
+      "id":"font-awesome-flag",
+      "class":"pb-icon-b pb-icon-font-awesome-flag"
+   },
+   "font-awesome-logo-full":{
+      "id":"font-awesome-logo-full",
+      "class":"pb-icon-b pb-icon-font-awesome-logo-full"
+   },
+   "fonticons":{
+      "id":"fonticons",
+      "class":"pb-icon-b pb-icon-fonticons"
+   },
+   "fonticons-fi":{
+      "id":"fonticons-fi",
+      "class":"pb-icon-b pb-icon-fonticons-fi"
+   },
+   "football-ball":{
+      "id":"football-ball",
+      "class":"pb-icon pb-icon-football-ball"
+   },
+   "fort-awesome":{
+      "id":"fort-awesome",
+      "class":"pb-icon-b pb-icon-fort-awesome"
+   },
+   "fort-awesome-alt":{
+      "id":"fort-awesome-alt",
+      "class":"pb-icon-b pb-icon-fort-awesome-alt"
+   },
+   "forumbee":{
+      "id":"forumbee",
+      "class":"pb-icon-b pb-icon-forumbee"
+   },
+   "forward":{
+      "id":"forward",
+      "class":"pb-icon pb-icon-forward"
+   },
+   "foursquare":{
+      "id":"foursquare",
+      "class":"pb-icon-b pb-icon-foursquare"
+   },
+   "free-code-camp":{
+      "id":"free-code-camp",
+      "class":"pb-icon-b pb-icon-free-code-camp"
+   },
+   "freebsd":{
+      "id":"freebsd",
+      "class":"pb-icon-b pb-icon-freebsd"
+   },
+   "frog":{
+      "id":"frog",
+      "class":"pb-icon pb-icon-frog"
+   },
+   "frown":{
+      "id":"frown",
+      "class":"pb-icon pb-icon-frown"
+   },
+   "frown-open":{
+      "id":"frown-open",
+      "class":"pb-icon pb-icon-frown-open"
+   },
+   "fulcrum":{
+      "id":"fulcrum",
+      "class":"pb-icon-b pb-icon-fulcrum"
+   },
+   "futbol":{
+      "id":"futbol",
+      "class":"pb-icon pb-icon-futbol"
+   },
+   "galactic-republic":{
+      "id":"galactic-republic",
+      "class":"pb-icon-b pb-icon-galactic-republic"
+   },
+   "galactic-senate":{
+      "id":"galactic-senate",
+      "class":"pb-icon-b pb-icon-galactic-senate"
+   },
+   "gamepad":{
+      "id":"gamepad",
+      "class":"pb-icon pb-icon-gamepad"
+   },
+   "gas-pump":{
+      "id":"gas-pump",
+      "class":"pb-icon pb-icon-gas-pump"
+   },
+   "gavel":{
+      "id":"gavel",
+      "class":"pb-icon pb-icon-gavel"
+   },
+   "gem":{
+      "id":"gem",
+      "class":"pb-icon pb-icon-gem"
+   },
+   "genderless":{
+      "id":"genderless",
+      "class":"pb-icon pb-icon-genderless"
+   },
+   "get-pocket":{
+      "id":"get-pocket",
+      "class":"pb-icon-b pb-icon-get-pocket"
+   },
+   "gg":{
+      "id":"gg",
+      "class":"pb-icon-b pb-icon-gg"
+   },
+   "gg-circle":{
+      "id":"gg-circle",
+      "class":"pb-icon-b pb-icon-gg-circle"
+   },
+   "gift":{
+      "id":"gift",
+      "class":"pb-icon pb-icon-gift"
+   },
+   "git":{
+      "id":"git",
+      "class":"pb-icon-b pb-icon-git"
+   },
+   "git-square":{
+      "id":"git-square",
+      "class":"pb-icon-b pb-icon-git-square"
+   },
+   "github":{
+      "id":"github",
+      "class":"pb-icon-b pb-icon-github"
+   },
+   "github-alt":{
+      "id":"github-alt",
+      "class":"pb-icon-b pb-icon-github-alt"
+   },
+   "github-square":{
+      "id":"github-square",
+      "class":"pb-icon-b pb-icon-github-square"
+   },
+   "gitkraken":{
+      "id":"gitkraken",
+      "class":"pb-icon-b pb-icon-gitkraken"
+   },
+   "gitlab":{
+      "id":"gitlab",
+      "class":"pb-icon-b pb-icon-gitlab"
+   },
+   "gitter":{
+      "id":"gitter",
+      "class":"pb-icon-b pb-icon-gitter"
+   },
+   "glass-martini":{
+      "id":"glass-martini",
+      "class":"pb-icon pb-icon-glass-martini"
+   },
+   "glass-martini-alt":{
+      "id":"glass-martini-alt",
+      "class":"pb-icon pb-icon-glass-martini-alt"
+   },
+   "glasses":{
+      "id":"glasses",
+      "class":"pb-icon pb-icon-glasses"
+   },
+   "glide":{
+      "id":"glide",
+      "class":"pb-icon-b pb-icon-glide"
+   },
+   "glide-g":{
+      "id":"glide-g",
+      "class":"pb-icon-b pb-icon-glide-g"
+   },
+   "globe":{
+      "id":"globe",
+      "class":"pb-icon pb-icon-globe"
+   },
+   "globe-africa":{
+      "id":"globe-africa",
+      "class":"pb-icon pb-icon-globe-africa"
+   },
+   "globe-americas":{
+      "id":"globe-americas",
+      "class":"pb-icon pb-icon-globe-americas"
+   },
+   "globe-asia":{
+      "id":"globe-asia",
+      "class":"pb-icon pb-icon-globe-asia"
+   },
+   "gofore":{
+      "id":"gofore",
+      "class":"pb-icon-b pb-icon-gofore"
+   },
+   "golf-ball":{
+      "id":"golf-ball",
+      "class":"pb-icon pb-icon-golf-ball"
+   },
+   "goodreads":{
+      "id":"goodreads",
+      "class":"pb-icon-b pb-icon-goodreads"
+   },
+   "goodreads-g":{
+      "id":"goodreads-g",
+      "class":"pb-icon-b pb-icon-goodreads-g"
+   },
+   "google":{
+      "id":"google",
+      "class":"pb-icon-b pb-icon-google"
+   },
+   "google-drive":{
+      "id":"google-drive",
+      "class":"pb-icon-b pb-icon-google-drive"
+   },
+   "google-play":{
+      "id":"google-play",
+      "class":"pb-icon-b pb-icon-google-play"
+   },
+   "google-plus":{
+      "id":"google-plus",
+      "class":"pb-icon-b pb-icon-google-plus"
+   },
+   "google-plus-g":{
+      "id":"google-plus-g",
+      "class":"pb-icon-b pb-icon-google-plus-g"
+   },
+   "google-plus-square":{
+      "id":"google-plus-square",
+      "class":"pb-icon-b pb-icon-google-plus-square"
+   },
+   "google-wallet":{
+      "id":"google-wallet",
+      "class":"pb-icon-b pb-icon-google-wallet"
+   },
+   "graduation-cap":{
+      "id":"graduation-cap",
+      "class":"pb-icon pb-icon-graduation-cap"
+   },
+   "gratipay":{
+      "id":"gratipay",
+      "class":"pb-icon-b pb-icon-gratipay"
+   },
+   "grav":{
+      "id":"grav",
+      "class":"pb-icon-b pb-icon-grav"
+   },
+   "greater-than":{
+      "id":"greater-than",
+      "class":"pb-icon pb-icon-greater-than"
+   },
+   "greater-than-equal":{
+      "id":"greater-than-equal",
+      "class":"pb-icon pb-icon-greater-than-equal"
+   },
+   "grimace":{
+      "id":"grimace",
+      "class":"pb-icon pb-icon-grimace"
+   },
+   "grin":{
+      "id":"grin",
+      "class":"pb-icon pb-icon-grin"
+   },
+   "grin-alt":{
+      "id":"grin-alt",
+      "class":"pb-icon pb-icon-grin-alt"
+   },
+   "grin-beam":{
+      "id":"grin-beam",
+      "class":"pb-icon pb-icon-grin-beam"
+   },
+   "grin-beam-sweat":{
+      "id":"grin-beam-sweat",
+      "class":"pb-icon pb-icon-grin-beam-sweat"
+   },
+   "grin-hearts":{
+      "id":"grin-hearts",
+      "class":"pb-icon pb-icon-grin-hearts"
+   },
+   "grin-squint":{
+      "id":"grin-squint",
+      "class":"pb-icon pb-icon-grin-squint"
+   },
+   "grin-squint-tears":{
+      "id":"grin-squint-tears",
+      "class":"pb-icon pb-icon-grin-squint-tears"
+   },
+   "grin-stars":{
+      "id":"grin-stars",
+      "class":"pb-icon pb-icon-grin-stars"
+   },
+   "grin-tears":{
+      "id":"grin-tears",
+      "class":"pb-icon pb-icon-grin-tears"
+   },
+   "grin-tongue":{
+      "id":"grin-tongue",
+      "class":"pb-icon pb-icon-grin-tongue"
+   },
+   "grin-tongue-squint":{
+      "id":"grin-tongue-squint",
+      "class":"pb-icon pb-icon-grin-tongue-squint"
+   },
+   "grin-tongue-wink":{
+      "id":"grin-tongue-wink",
+      "class":"pb-icon pb-icon-grin-tongue-wink"
+   },
+   "grin-wink":{
+      "id":"grin-wink",
+      "class":"pb-icon pb-icon-grin-wink"
+   },
+   "grip-horizontal":{
+      "id":"grip-horizontal",
+      "class":"pb-icon pb-icon-grip-horizontal"
+   },
+   "grip-vertical":{
+      "id":"grip-vertical",
+      "class":"pb-icon pb-icon-grip-vertical"
+   },
+   "gripfire":{
+      "id":"gripfire",
+      "class":"pb-icon-b pb-icon-gripfire"
+   },
+   "grunt":{
+      "id":"grunt",
+      "class":"pb-icon-b pb-icon-grunt"
+   },
+   "gulp":{
+      "id":"gulp",
+      "class":"pb-icon-b pb-icon-gulp"
+   },
+   "h-square":{
+      "id":"h-square",
+      "class":"pb-icon pb-icon-h-square"
+   },
+   "hacker-news":{
+      "id":"hacker-news",
+      "class":"pb-icon-b pb-icon-hacker-news"
+   },
+   "hacker-news-square":{
+      "id":"hacker-news-square",
+      "class":"pb-icon-b pb-icon-hacker-news-square"
+   },
+   "hand-holding":{
+      "id":"hand-holding",
+      "class":"pb-icon pb-icon-hand-holding"
+   },
+   "hand-holding-heart":{
+      "id":"hand-holding-heart",
+      "class":"pb-icon pb-icon-hand-holding-heart"
+   },
+   "hand-holding-usd":{
+      "id":"hand-holding-usd",
+      "class":"pb-icon pb-icon-hand-holding-usd"
+   },
+   "hand-lizard":{
+      "id":"hand-lizard",
+      "class":"pb-icon pb-icon-hand-lizard"
+   },
+   "hand-paper":{
+      "id":"hand-paper",
+      "class":"pb-icon pb-icon-hand-paper"
+   },
+   "hand-peace":{
+      "id":"hand-peace",
+      "class":"pb-icon pb-icon-hand-peace"
+   },
+   "hand-point-down":{
+      "id":"hand-point-down",
+      "class":"pb-icon pb-icon-hand-point-down"
+   },
+   "hand-point-left":{
+      "id":"hand-point-left",
+      "class":"pb-icon pb-icon-hand-point-left"
+   },
+   "hand-point-right":{
+      "id":"hand-point-right",
+      "class":"pb-icon pb-icon-hand-point-right"
+   },
+   "hand-point-up":{
+      "id":"hand-point-up",
+      "class":"pb-icon pb-icon-hand-point-up"
+   },
+   "hand-pointer":{
+      "id":"hand-pointer",
+      "class":"pb-icon pb-icon-hand-pointer"
+   },
+   "hand-rock":{
+      "id":"hand-rock",
+      "class":"pb-icon pb-icon-hand-rock"
+   },
+   "hand-scissors":{
+      "id":"hand-scissors",
+      "class":"pb-icon pb-icon-hand-scissors"
+   },
+   "hand-spock":{
+      "id":"hand-spock",
+      "class":"pb-icon pb-icon-hand-spock"
+   },
+   "hands":{
+      "id":"hands",
+      "class":"pb-icon pb-icon-hands"
+   },
+   "hands-helping":{
+      "id":"hands-helping",
+      "class":"pb-icon pb-icon-hands-helping"
+   },
+   "handshake":{
+      "id":"handshake",
+      "class":"pb-icon pb-icon-handshake"
+   },
+   "hashtag":{
+      "id":"hashtag",
+      "class":"pb-icon pb-icon-hashtag"
+   },
+   "hdd":{
+      "id":"hdd",
+      "class":"pb-icon pb-icon-hdd"
+   },
+   "heading":{
+      "id":"heading",
+      "class":"pb-icon pb-icon-heading"
+   },
+   "headphones":{
+      "id":"headphones",
+      "class":"pb-icon pb-icon-headphones"
+   },
+   "headphones-alt":{
+      "id":"headphones-alt",
+      "class":"pb-icon pb-icon-headphones-alt"
+   },
+   "headset":{
+      "id":"headset",
+      "class":"pb-icon pb-icon-headset"
+   },
+   "heart":{
+      "id":"heart",
+      "class":"pb-icon pb-icon-heart"
+   },
+   "heartbeat":{
+      "id":"heartbeat",
+      "class":"pb-icon pb-icon-heartbeat"
+   },
+   "helicopter":{
+      "id":"helicopter",
+      "class":"pb-icon pb-icon-helicopter"
+   },
+   "highlighter":{
+      "id":"highlighter",
+      "class":"pb-icon pb-icon-highlighter"
+   },
+   "hips":{
+      "id":"hips",
+      "class":"pb-icon-b pb-icon-hips"
+   },
+   "hire-a-helper":{
+      "id":"hire-a-helper",
+      "class":"pb-icon-b pb-icon-hire-a-helper"
+   },
+   "history":{
+      "id":"history",
+      "class":"pb-icon pb-icon-history"
+   },
+   "hockey-puck":{
+      "id":"hockey-puck",
+      "class":"pb-icon pb-icon-hockey-puck"
+   },
+   "home":{
+      "id":"home",
+      "class":"pb-icon pb-icon-home"
+   },
+   "hooli":{
+      "id":"hooli",
+      "class":"pb-icon-b pb-icon-hooli"
+   },
+   "hornbill":{
+      "id":"hornbill",
+      "class":"pb-icon-b pb-icon-hornbill"
+   },
+   "hospital":{
+      "id":"hospital",
+      "class":"pb-icon pb-icon-hospital"
+   },
+   "hospital-alt":{
+      "id":"hospital-alt",
+      "class":"pb-icon pb-icon-hospital-alt"
+   },
+   "hospital-symbol":{
+      "id":"hospital-symbol",
+      "class":"pb-icon pb-icon-hospital-symbol"
+   },
+   "hot-tub":{
+      "id":"hot-tub",
+      "class":"pb-icon pb-icon-hot-tub"
+   },
+   "hotel":{
+      "id":"hotel",
+      "class":"pb-icon pb-icon-hotel"
+   },
+   "hotjar":{
+      "id":"hotjar",
+      "class":"pb-icon-b pb-icon-hotjar"
+   },
+   "hourglass":{
+      "id":"hourglass",
+      "class":"pb-icon pb-icon-hourglass"
+   },
+   "hourglass-end":{
+      "id":"hourglass-end",
+      "class":"pb-icon pb-icon-hourglass-end"
+   },
+   "hourglass-half":{
+      "id":"hourglass-half",
+      "class":"pb-icon pb-icon-hourglass-half"
+   },
+   "hourglass-start":{
+      "id":"hourglass-start",
+      "class":"pb-icon pb-icon-hourglass-start"
+   },
+   "houzz":{
+      "id":"houzz",
+      "class":"pb-icon-b pb-icon-houzz"
+   },
+   "html5":{
+      "id":"html5",
+      "class":"pb-icon-b pb-icon-html5"
+   },
+   "hubspot":{
+      "id":"hubspot",
+      "class":"pb-icon-b pb-icon-hubspot"
+   },
+   "i-cursor":{
+      "id":"i-cursor",
+      "class":"pb-icon pb-icon-i-cursor"
+   },
+   "id-badge":{
+      "id":"id-badge",
+      "class":"pb-icon pb-icon-id-badge"
+   },
+   "id-card":{
+      "id":"id-card",
+      "class":"pb-icon pb-icon-id-card"
+   },
+   "id-card-alt":{
+      "id":"id-card-alt",
+      "class":"pb-icon pb-icon-id-card-alt"
+   },
+   "image":{
+      "id":"image",
+      "class":"pb-icon pb-icon-image"
+   },
+   "images":{
+      "id":"images",
+      "class":"pb-icon pb-icon-images"
+   },
+   "imdb":{
+      "id":"imdb",
+      "class":"pb-icon-b pb-icon-imdb"
+   },
+   "inbox":{
+      "id":"inbox",
+      "class":"pb-icon pb-icon-inbox"
+   },
+   "indent":{
+      "id":"indent",
+      "class":"pb-icon pb-icon-indent"
+   },
+   "industry":{
+      "id":"industry",
+      "class":"pb-icon pb-icon-industry"
+   },
+   "infinity":{
+      "id":"infinity",
+      "class":"pb-icon pb-icon-infinity"
+   },
+   "info":{
+      "id":"info",
+      "class":"pb-icon pb-icon-info"
+   },
+   "info-circle":{
+      "id":"info-circle",
+      "class":"pb-icon pb-icon-info-circle"
+   },
+   "instagram":{
+      "id":"instagram",
+      "class":"pb-icon-b pb-icon-instagram"
+   },
+   "internet-explorer":{
+      "id":"internet-explorer",
+      "class":"pb-icon-b pb-icon-internet-explorer"
+   },
+   "ioxhost":{
+      "id":"ioxhost",
+      "class":"pb-icon-b pb-icon-ioxhost"
+   },
+   "italic":{
+      "id":"italic",
+      "class":"pb-icon pb-icon-italic"
+   },
+   "itunes":{
+      "id":"itunes",
+      "class":"pb-icon-b pb-icon-itunes"
+   },
+   "itunes-note":{
+      "id":"itunes-note",
+      "class":"pb-icon-b pb-icon-itunes-note"
+   },
+   "java":{
+      "id":"java",
+      "class":"pb-icon-b pb-icon-java"
+   },
+   "jedi-order":{
+      "id":"jedi-order",
+      "class":"pb-icon-b pb-icon-jedi-order"
+   },
+   "jenkins":{
+      "id":"jenkins",
+      "class":"pb-icon-b pb-icon-jenkins"
+   },
+   "joget":{
+      "id":"joget",
+      "class":"pb-icon-b pb-icon-joget"
+   },
+   "joint":{
+      "id":"joint",
+      "class":"pb-icon pb-icon-joint"
+   },
+   "joomla":{
+      "id":"joomla",
+      "class":"pb-icon-b pb-icon-joomla"
+   },
+   "js":{
+      "id":"js",
+      "class":"pb-icon-b pb-icon-js"
+   },
+   "js-square":{
+      "id":"js-square",
+      "class":"pb-icon-b pb-icon-js-square"
+   },
+   "jsfiddle":{
+      "id":"jsfiddle",
+      "class":"pb-icon-b pb-icon-jsfiddle"
+   },
+   "key":{
+      "id":"key",
+      "class":"pb-icon pb-icon-key"
+   },
+   "keybase":{
+      "id":"keybase",
+      "class":"pb-icon-b pb-icon-keybase"
+   },
+   "keyboard":{
+      "id":"keyboard",
+      "class":"pb-icon pb-icon-keyboard"
+   },
+   "keycdn":{
+      "id":"keycdn",
+      "class":"pb-icon-b pb-icon-keycdn"
+   },
+   "kickstarter":{
+      "id":"kickstarter",
+      "class":"pb-icon-b pb-icon-kickstarter"
+   },
+   "kickstarter-k":{
+      "id":"kickstarter-k",
+      "class":"pb-icon-b pb-icon-kickstarter-k"
+   },
+   "kiss":{
+      "id":"kiss",
+      "class":"pb-icon pb-icon-kiss"
+   },
+   "kiss-beam":{
+      "id":"kiss-beam",
+      "class":"pb-icon pb-icon-kiss-beam"
+   },
+   "kiss-wink-heart":{
+      "id":"kiss-wink-heart",
+      "class":"pb-icon pb-icon-kiss-wink-heart"
+   },
+   "kiwi-bird":{
+      "id":"kiwi-bird",
+      "class":"pb-icon pb-icon-kiwi-bird"
+   },
+   "korvue":{
+      "id":"korvue",
+      "class":"pb-icon-b pb-icon-korvue"
+   },
+   "language":{
+      "id":"language",
+      "class":"pb-icon pb-icon-language"
+   },
+   "laptop":{
+      "id":"laptop",
+      "class":"pb-icon pb-icon-laptop"
+   },
+   "laravel":{
+      "id":"laravel",
+      "class":"pb-icon-b pb-icon-laravel"
+   },
+   "lastfm":{
+      "id":"lastfm",
+      "class":"pb-icon-b pb-icon-lastfm"
+   },
+   "lastfm-square":{
+      "id":"lastfm-square",
+      "class":"pb-icon-b pb-icon-lastfm-square"
+   },
+   "laugh":{
+      "id":"laugh",
+      "class":"pb-icon pb-icon-laugh"
+   },
+   "laugh-beam":{
+      "id":"laugh-beam",
+      "class":"pb-icon pb-icon-laugh-beam"
+   },
+   "laugh-squint":{
+      "id":"laugh-squint",
+      "class":"pb-icon pb-icon-laugh-squint"
+   },
+   "laugh-wink":{
+      "id":"laugh-wink",
+      "class":"pb-icon pb-icon-laugh-wink"
+   },
+   "leaf":{
+      "id":"leaf",
+      "class":"pb-icon pb-icon-leaf"
+   },
+   "leanpub":{
+      "id":"leanpub",
+      "class":"pb-icon-b pb-icon-leanpub"
+   },
+   "lemon":{
+      "id":"lemon",
+      "class":"pb-icon pb-icon-lemon"
+   },
+   "less":{
+      "id":"less",
+      "class":"pb-icon-b pb-icon-less"
+   },
+   "less-than":{
+      "id":"less-than",
+      "class":"pb-icon pb-icon-less-than"
+   },
+   "less-than-equal":{
+      "id":"less-than-equal",
+      "class":"pb-icon pb-icon-less-than-equal"
+   },
+   "level-down-alt":{
+      "id":"level-down-alt",
+      "class":"pb-icon pb-icon-level-down-alt"
+   },
+   "level-up-alt":{
+      "id":"level-up-alt",
+      "class":"pb-icon pb-icon-level-up-alt"
+   },
+   "life-ring":{
+      "id":"life-ring",
+      "class":"pb-icon pb-icon-life-ring"
+   },
+   "lightbulb":{
+      "id":"lightbulb",
+      "class":"pb-icon pb-icon-lightbulb"
+   },
+   "line":{
+      "id":"line",
+      "class":"pb-icon-b pb-icon-line"
+   },
+   "link":{
+      "id":"link",
+      "class":"pb-icon pb-icon-link"
+   },
+   "linkedin":{
+      "id":"linkedin",
+      "class":"pb-icon-b pb-icon-linkedin"
+   },
+   "linkedin-in":{
+      "id":"linkedin-in",
+      "class":"pb-icon-b pb-icon-linkedin-in"
+   },
+   "linode":{
+      "id":"linode",
+      "class":"pb-icon-b pb-icon-linode"
+   },
+   "linux":{
+      "id":"linux",
+      "class":"pb-icon-b pb-icon-linux"
+   },
+   "lira-sign":{
+      "id":"lira-sign",
+      "class":"pb-icon pb-icon-lira-sign"
+   },
+   "list":{
+      "id":"list",
+      "class":"pb-icon pb-icon-list"
+   },
+   "list-alt":{
+      "id":"list-alt",
+      "class":"pb-icon pb-icon-list-alt"
+   },
+   "list-ol":{
+      "id":"list-ol",
+      "class":"pb-icon pb-icon-list-ol"
+   },
+   "list-ul":{
+      "id":"list-ul",
+      "class":"pb-icon pb-icon-list-ul"
+   },
+   "location-arrow":{
+      "id":"location-arrow",
+      "class":"pb-icon pb-icon-location-arrow"
+   },
+   "lock":{
+      "id":"lock",
+      "class":"pb-icon pb-icon-lock"
+   },
+   "lock-open":{
+      "id":"lock-open",
+      "class":"pb-icon pb-icon-lock-open"
+   },
+   "long-arrow-alt-down":{
+      "id":"long-arrow-alt-down",
+      "class":"pb-icon pb-icon-long-arrow-alt-down"
+   },
+   "long-arrow-alt-left":{
+      "id":"long-arrow-alt-left",
+      "class":"pb-icon pb-icon-long-arrow-alt-left"
+   },
+   "long-arrow-alt-right":{
+      "id":"long-arrow-alt-right",
+      "class":"pb-icon pb-icon-long-arrow-alt-right"
+   },
+   "long-arrow-alt-up":{
+      "id":"long-arrow-alt-up",
+      "class":"pb-icon pb-icon-long-arrow-alt-up"
+   },
+   "low-vision":{
+      "id":"low-vision",
+      "class":"pb-icon pb-icon-low-vision"
+   },
+   "luggage-cart":{
+      "id":"luggage-cart",
+      "class":"pb-icon pb-icon-luggage-cart"
+   },
+   "lyft":{
+      "id":"lyft",
+      "class":"pb-icon-b pb-icon-lyft"
+   },
+   "magento":{
+      "id":"magento",
+      "class":"pb-icon-b pb-icon-magento"
+   },
+   "magic":{
+      "id":"magic",
+      "class":"pb-icon pb-icon-magic"
+   },
+   "magnet":{
+      "id":"magnet",
+      "class":"pb-icon pb-icon-magnet"
+   },
+   "mailchimp":{
+      "id":"mailchimp",
+      "class":"pb-icon-b pb-icon-mailchimp"
+   },
+   "male":{
+      "id":"male",
+      "class":"pb-icon pb-icon-male"
+   },
+   "mandalorian":{
+      "id":"mandalorian",
+      "class":"pb-icon-b pb-icon-mandalorian"
+   },
+   "map":{
+      "id":"map",
+      "class":"pb-icon pb-icon-map"
+   },
+   "map-marked":{
+      "id":"map-marked",
+      "class":"pb-icon pb-icon-map-marked"
+   },
+   "map-marked-alt":{
+      "id":"map-marked-alt",
+      "class":"pb-icon pb-icon-map-marked-alt"
+   },
+   "map-marker":{
+      "id":"map-marker",
+      "class":"pb-icon pb-icon-map-marker"
+   },
+   "map-marker-alt":{
+      "id":"map-marker-alt",
+      "class":"pb-icon pb-icon-map-marker-alt"
+   },
+   "map-pin":{
+      "id":"map-pin",
+      "class":"pb-icon pb-icon-map-pin"
+   },
+   "map-signs":{
+      "id":"map-signs",
+      "class":"pb-icon pb-icon-map-signs"
+   },
+   "marker":{
+      "id":"marker",
+      "class":"pb-icon pb-icon-marker"
+   },
+   "mars":{
+      "id":"mars",
+      "class":"pb-icon pb-icon-mars"
+   },
+   "mars-double":{
+      "id":"mars-double",
+      "class":"pb-icon pb-icon-mars-double"
+   },
+   "mars-stroke":{
+      "id":"mars-stroke",
+      "class":"pb-icon pb-icon-mars-stroke"
+   },
+   "mars-stroke-h":{
+      "id":"mars-stroke-h",
+      "class":"pb-icon pb-icon-mars-stroke-h"
+   },
+   "mars-stroke-v":{
+      "id":"mars-stroke-v",
+      "class":"pb-icon pb-icon-mars-stroke-v"
+   },
+   "mastodon":{
+      "id":"mastodon",
+      "class":"pb-icon-b pb-icon-mastodon"
+   },
+   "maxcdn":{
+      "id":"maxcdn",
+      "class":"pb-icon-b pb-icon-maxcdn"
+   },
+   "medal":{
+      "id":"medal",
+      "class":"pb-icon pb-icon-medal"
+   },
+   "medapps":{
+      "id":"medapps",
+      "class":"pb-icon-b pb-icon-medapps"
+   },
+   "medium":{
+      "id":"medium",
+      "class":"pb-icon-b pb-icon-medium"
+   },
+   "medium-m":{
+      "id":"medium-m",
+      "class":"pb-icon-b pb-icon-medium-m"
+   },
+   "medkit":{
+      "id":"medkit",
+      "class":"pb-icon pb-icon-medkit"
+   },
+   "medrt":{
+      "id":"medrt",
+      "class":"pb-icon-b pb-icon-medrt"
+   },
+   "meetup":{
+      "id":"meetup",
+      "class":"pb-icon-b pb-icon-meetup"
+   },
+   "megaport":{
+      "id":"megaport",
+      "class":"pb-icon-b pb-icon-megaport"
+   },
+   "meh":{
+      "id":"meh",
+      "class":"pb-icon pb-icon-meh"
+   },
+   "meh-blank":{
+      "id":"meh-blank",
+      "class":"pb-icon pb-icon-meh-blank"
+   },
+   "meh-rolling-eyes":{
+      "id":"meh-rolling-eyes",
+      "class":"pb-icon pb-icon-meh-rolling-eyes"
+   },
+   "memory":{
+      "id":"memory",
+      "class":"pb-icon pb-icon-memory"
+   },
+   "mercury":{
+      "id":"mercury",
+      "class":"pb-icon pb-icon-mercury"
+   },
+   "microchip":{
+      "id":"microchip",
+      "class":"pb-icon pb-icon-microchip"
+   },
+   "microphone":{
+      "id":"microphone",
+      "class":"pb-icon pb-icon-microphone"
+   },
+   "microphone-alt":{
+      "id":"microphone-alt",
+      "class":"pb-icon pb-icon-microphone-alt"
+   },
+   "microphone-alt-slash":{
+      "id":"microphone-alt-slash",
+      "class":"pb-icon pb-icon-microphone-alt-slash"
+   },
+   "microphone-slash":{
+      "id":"microphone-slash",
+      "class":"pb-icon pb-icon-microphone-slash"
+   },
+   "microsoft":{
+      "id":"microsoft",
+      "class":"pb-icon-b pb-icon-microsoft"
+   },
+   "minus":{
+      "id":"minus",
+      "class":"pb-icon pb-icon-minus"
+   },
+   "minus-circle":{
+      "id":"minus-circle",
+      "class":"pb-icon pb-icon-minus-circle"
+   },
+   "minus-square":{
+      "id":"minus-square",
+      "class":"pb-icon pb-icon-minus-square"
+   },
+   "mix":{
+      "id":"mix",
+      "class":"pb-icon-b pb-icon-mix"
+   },
+   "mixcloud":{
+      "id":"mixcloud",
+      "class":"pb-icon-b pb-icon-mixcloud"
+   },
+   "mizuni":{
+      "id":"mizuni",
+      "class":"pb-icon-b pb-icon-mizuni"
+   },
+   "mobile":{
+      "id":"mobile",
+      "class":"pb-icon pb-icon-mobile"
+   },
+   "mobile-alt":{
+      "id":"mobile-alt",
+      "class":"pb-icon pb-icon-mobile-alt"
+   },
+   "modx":{
+      "id":"modx",
+      "class":"pb-icon-b pb-icon-modx"
+   },
+   "monero":{
+      "id":"monero",
+      "class":"pb-icon-b pb-icon-monero"
+   },
+   "money-bill":{
+      "id":"money-bill",
+      "class":"pb-icon pb-icon-money-bill"
+   },
+   "money-bill-alt":{
+      "id":"money-bill-alt",
+      "class":"pb-icon pb-icon-money-bill-alt"
+   },
+   "money-bill-wave":{
+      "id":"money-bill-wave",
+      "class":"pb-icon pb-icon-money-bill-wave"
+   },
+   "money-bill-wave-alt":{
+      "id":"money-bill-wave-alt",
+      "class":"pb-icon pb-icon-money-bill-wave-alt"
+   },
+   "money-check":{
+      "id":"money-check",
+      "class":"pb-icon pb-icon-money-check"
+   },
+   "money-check-alt":{
+      "id":"money-check-alt",
+      "class":"pb-icon pb-icon-money-check-alt"
+   },
+   "monument":{
+      "id":"monument",
+      "class":"pb-icon pb-icon-monument"
+   },
+   "moon":{
+      "id":"moon",
+      "class":"pb-icon pb-icon-moon"
+   },
+   "mortar-pestle":{
+      "id":"mortar-pestle",
+      "class":"pb-icon pb-icon-mortar-pestle"
+   },
+   "motorcycle":{
+      "id":"motorcycle",
+      "class":"pb-icon pb-icon-motorcycle"
+   },
+   "mouse-pointer":{
+      "id":"mouse-pointer",
+      "class":"pb-icon pb-icon-mouse-pointer"
+   },
+   "music":{
+      "id":"music",
+      "class":"pb-icon pb-icon-music"
+   },
+   "napster":{
+      "id":"napster",
+      "class":"pb-icon-b pb-icon-napster"
+   },
+   "neuter":{
+      "id":"neuter",
+      "class":"pb-icon pb-icon-neuter"
+   },
+   "newspaper":{
+      "id":"newspaper",
+      "class":"pb-icon pb-icon-newspaper"
+   },
+   "nimblr":{
+      "id":"nimblr",
+      "class":"pb-icon-b pb-icon-nimblr"
+   },
+   "nintendo-switch":{
+      "id":"nintendo-switch",
+      "class":"pb-icon-b pb-icon-nintendo-switch"
+   },
+   "node":{
+      "id":"node",
+      "class":"pb-icon-b pb-icon-node"
+   },
+   "node-js":{
+      "id":"node-js",
+      "class":"pb-icon-b pb-icon-node-js"
+   },
+   "not-equal":{
+      "id":"not-equal",
+      "class":"pb-icon pb-icon-not-equal"
+   },
+   "notes-medical":{
+      "id":"notes-medical",
+      "class":"pb-icon pb-icon-notes-medical"
+   },
+   "npm":{
+      "id":"npm",
+      "class":"pb-icon-b pb-icon-npm"
+   },
+   "ns8":{
+      "id":"ns8",
+      "class":"pb-icon-b pb-icon-ns8"
+   },
+   "nutritionix":{
+      "id":"nutritionix",
+      "class":"pb-icon-b pb-icon-nutritionix"
+   },
+   "object-group":{
+      "id":"object-group",
+      "class":"pb-icon pb-icon-object-group"
+   },
+   "object-ungroup":{
+      "id":"object-ungroup",
+      "class":"pb-icon pb-icon-object-ungroup"
+   },
+   "odnoklassniki":{
+      "id":"odnoklassniki",
+      "class":"pb-icon-b pb-icon-odnoklassniki"
+   },
+   "odnoklassniki-square":{
+      "id":"odnoklassniki-square",
+      "class":"pb-icon-b pb-icon-odnoklassniki-square"
+   },
+   "old-republic":{
+      "id":"old-republic",
+      "class":"pb-icon-b pb-icon-old-republic"
+   },
+   "opencart":{
+      "id":"opencart",
+      "class":"pb-icon-b pb-icon-opencart"
+   },
+   "openid":{
+      "id":"openid",
+      "class":"pb-icon-b pb-icon-openid"
+   },
+   "opera":{
+      "id":"opera",
+      "class":"pb-icon-b pb-icon-opera"
+   },
+   "optin-monster":{
+      "id":"optin-monster",
+      "class":"pb-icon-b pb-icon-optin-monster"
+   },
+   "osi":{
+      "id":"osi",
+      "class":"pb-icon-b pb-icon-osi"
+   },
+   "outdent":{
+      "id":"outdent",
+      "class":"pb-icon pb-icon-outdent"
+   },
+   "page4":{
+      "id":"page4",
+      "class":"pb-icon-b pb-icon-page4"
+   },
+   "pagelines":{
+      "id":"pagelines",
+      "class":"pb-icon-b pb-icon-pagelines"
+   },
+   "paint-brush":{
+      "id":"paint-brush",
+      "class":"pb-icon pb-icon-paint-brush"
+   },
+   "paint-roller":{
+      "id":"paint-roller",
+      "class":"pb-icon pb-icon-paint-roller"
+   },
+   "palette":{
+      "id":"palette",
+      "class":"pb-icon pb-icon-palette"
+   },
+   "palfed":{
+      "id":"palfed",
+      "class":"pb-icon-b pb-icon-palfed"
+   },
+   "pallet":{
+      "id":"pallet",
+      "class":"pb-icon pb-icon-pallet"
+   },
+   "paper-plane":{
+      "id":"paper-plane",
+      "class":"pb-icon pb-icon-paper-plane"
+   },
+   "paperclip":{
+      "id":"paperclip",
+      "class":"pb-icon pb-icon-paperclip"
+   },
+   "parachute-box":{
+      "id":"parachute-box",
+      "class":"pb-icon pb-icon-parachute-box"
+   },
+   "paragraph":{
+      "id":"paragraph",
+      "class":"pb-icon pb-icon-paragraph"
+   },
+   "parking":{
+      "id":"parking",
+      "class":"pb-icon pb-icon-parking"
+   },
+   "passport":{
+      "id":"passport",
+      "class":"pb-icon pb-icon-passport"
+   },
+   "paste":{
+      "id":"paste",
+      "class":"pb-icon pb-icon-paste"
+   },
+   "patreon":{
+      "id":"patreon",
+      "class":"pb-icon-b pb-icon-patreon"
+   },
+   "pause":{
+      "id":"pause",
+      "class":"pb-icon pb-icon-pause"
+   },
+   "pause-circle":{
+      "id":"pause-circle",
+      "class":"pb-icon pb-icon-pause-circle"
+   },
+   "paw":{
+      "id":"paw",
+      "class":"pb-icon pb-icon-paw"
+   },
+   "paypal":{
+      "id":"paypal",
+      "class":"pb-icon-b pb-icon-paypal"
+   },
+   "pen":{
+      "id":"pen",
+      "class":"pb-icon pb-icon-pen"
+   },
+   "pen-alt":{
+      "id":"pen-alt",
+      "class":"pb-icon pb-icon-pen-alt"
+   },
+   "pen-fancy":{
+      "id":"pen-fancy",
+      "class":"pb-icon pb-icon-pen-fancy"
+   },
+   "pen-nib":{
+      "id":"pen-nib",
+      "class":"pb-icon pb-icon-pen-nib"
+   },
+   "pen-square":{
+      "id":"pen-square",
+      "class":"pb-icon pb-icon-pen-square"
+   },
+   "pencil-alt":{
+      "id":"pencil-alt",
+      "class":"pb-icon pb-icon-pencil-alt"
+   },
+   "pencil-ruler":{
+      "id":"pencil-ruler",
+      "class":"pb-icon pb-icon-pencil-ruler"
+   },
+   "people-carry":{
+      "id":"people-carry",
+      "class":"pb-icon pb-icon-people-carry"
+   },
+   "percent":{
+      "id":"percent",
+      "class":"pb-icon pb-icon-percent"
+   },
+   "percentage":{
+      "id":"percentage",
+      "class":"pb-icon pb-icon-percentage"
+   },
+   "periscope":{
+      "id":"periscope",
+      "class":"pb-icon-b pb-icon-periscope"
+   },
+   "phabricator":{
+      "id":"phabricator",
+      "class":"pb-icon-b pb-icon-phabricator"
+   },
+   "phoenix-framework":{
+      "id":"phoenix-framework",
+      "class":"pb-icon-b pb-icon-phoenix-framework"
+   },
+   "phoenix-squadron":{
+      "id":"phoenix-squadron",
+      "class":"pb-icon-b pb-icon-phoenix-squadron"
+   },
+   "phone":{
+      "id":"phone",
+      "class":"pb-icon pb-icon-phone"
+   },
+   "phone-slash":{
+      "id":"phone-slash",
+      "class":"pb-icon pb-icon-phone-slash"
+   },
+   "phone-square":{
+      "id":"phone-square",
+      "class":"pb-icon pb-icon-phone-square"
+   },
+   "phone-volume":{
+      "id":"phone-volume",
+      "class":"pb-icon pb-icon-phone-volume"
+   },
+   "php":{
+      "id":"php",
+      "class":"pb-icon-b pb-icon-php"
+   },
+   "pied-piper":{
+      "id":"pied-piper",
+      "class":"pb-icon-b pb-icon-pied-piper"
+   },
+   "pied-piper-alt":{
+      "id":"pied-piper-alt",
+      "class":"pb-icon-b pb-icon-pied-piper-alt"
+   },
+   "pied-piper-hat":{
+      "id":"pied-piper-hat",
+      "class":"pb-icon-b pb-icon-pied-piper-hat"
+   },
+   "pied-piper-pp":{
+      "id":"pied-piper-pp",
+      "class":"pb-icon-b pb-icon-pied-piper-pp"
+   },
+   "piggy-bank":{
+      "id":"piggy-bank",
+      "class":"pb-icon pb-icon-piggy-bank"
+   },
+   "pills":{
+      "id":"pills",
+      "class":"pb-icon pb-icon-pills"
+   },
+   "pinterest":{
+      "id":"pinterest",
+      "class":"pb-icon-b pb-icon-pinterest"
+   },
+   "pinterest-p":{
+      "id":"pinterest-p",
+      "class":"pb-icon-b pb-icon-pinterest-p"
+   },
+   "pinterest-square":{
+      "id":"pinterest-square",
+      "class":"pb-icon-b pb-icon-pinterest-square"
+   },
+   "plane":{
+      "id":"plane",
+      "class":"pb-icon pb-icon-plane"
+   },
+   "plane-arrival":{
+      "id":"plane-arrival",
+      "class":"pb-icon pb-icon-plane-arrival"
+   },
+   "plane-departure":{
+      "id":"plane-departure",
+      "class":"pb-icon pb-icon-plane-departure"
+   },
+   "play":{
+      "id":"play",
+      "class":"pb-icon pb-icon-play"
+   },
+   "play-circle":{
+      "id":"play-circle",
+      "class":"pb-icon pb-icon-play-circle"
+   },
+   "playstation":{
+      "id":"playstation",
+      "class":"pb-icon-b pb-icon-playstation"
+   },
+   "plug":{
+      "id":"plug",
+      "class":"pb-icon pb-icon-plug"
+   },
+   "plus":{
+      "id":"plus",
+      "class":"pb-icon pb-icon-plus"
+   },
+   "plus-circle":{
+      "id":"plus-circle",
+      "class":"pb-icon pb-icon-plus-circle"
+   },
+   "plus-square":{
+      "id":"plus-square",
+      "class":"pb-icon pb-icon-plus-square"
+   },
+   "podcast":{
+      "id":"podcast",
+      "class":"pb-icon pb-icon-podcast"
+   },
+   "poo":{
+      "id":"poo",
+      "class":"pb-icon pb-icon-poo"
+   },
+   "portrait":{
+      "id":"portrait",
+      "class":"pb-icon pb-icon-portrait"
+   },
+   "pound-sign":{
+      "id":"pound-sign",
+      "class":"pb-icon pb-icon-pound-sign"
+   },
+   "power-off":{
+      "id":"power-off",
+      "class":"pb-icon pb-icon-power-off"
+   },
+   "prescription":{
+      "id":"prescription",
+      "class":"pb-icon pb-icon-prescription"
+   },
+   "prescription-bottle":{
+      "id":"prescription-bottle",
+      "class":"pb-icon pb-icon-prescription-bottle"
+   },
+   "prescription-bottle-alt":{
+      "id":"prescription-bottle-alt",
+      "class":"pb-icon pb-icon-prescription-bottle-alt"
+   },
+   "print":{
+      "id":"print",
+      "class":"pb-icon pb-icon-print"
+   },
+   "procedures":{
+      "id":"procedures",
+      "class":"pb-icon pb-icon-procedures"
+   },
+   "product-hunt":{
+      "id":"product-hunt",
+      "class":"pb-icon-b pb-icon-product-hunt"
+   },
+   "project-diagram":{
+      "id":"project-diagram",
+      "class":"pb-icon pb-icon-project-diagram"
+   },
+   "pushed":{
+      "id":"pushed",
+      "class":"pb-icon-b pb-icon-pushed"
+   },
+   "puzzle-piece":{
+      "id":"puzzle-piece",
+      "class":"pb-icon pb-icon-puzzle-piece"
+   },
+   "python":{
+      "id":"python",
+      "class":"pb-icon-b pb-icon-python"
+   },
+   "qq":{
+      "id":"qq",
+      "class":"pb-icon-b pb-icon-qq"
+   },
+   "qrcode":{
+      "id":"qrcode",
+      "class":"pb-icon pb-icon-qrcode"
+   },
+   "question":{
+      "id":"question",
+      "class":"pb-icon pb-icon-question"
+   },
+   "question-circle":{
+      "id":"question-circle",
+      "class":"pb-icon pb-icon-question-circle"
+   },
+   "quidditch":{
+      "id":"quidditch",
+      "class":"pb-icon pb-icon-quidditch"
+   },
+   "quinscape":{
+      "id":"quinscape",
+      "class":"pb-icon-b pb-icon-quinscape"
+   },
+   "quora":{
+      "id":"quora",
+      "class":"pb-icon-b pb-icon-quora"
+   },
+   "quote-left":{
+      "id":"quote-left",
+      "class":"pb-icon pb-icon-quote-left"
+   },
+   "quote-right":{
+      "id":"quote-right",
+      "class":"pb-icon pb-icon-quote-right"
+   },
+   "r-project":{
+      "id":"r-project",
+      "class":"pb-icon-b pb-icon-r-project"
+   },
+   "random":{
+      "id":"random",
+      "class":"pb-icon pb-icon-random"
+   },
+   "ravelry":{
+      "id":"ravelry",
+      "class":"pb-icon-b pb-icon-ravelry"
+   },
+   "react":{
+      "id":"react",
+      "class":"pb-icon-b pb-icon-react"
+   },
+   "readme":{
+      "id":"readme",
+      "class":"pb-icon-b pb-icon-readme"
+   },
+   "rebel":{
+      "id":"rebel",
+      "class":"pb-icon-b pb-icon-rebel"
+   },
+   "receipt":{
+      "id":"receipt",
+      "class":"pb-icon pb-icon-receipt"
+   },
+   "recycle":{
+      "id":"recycle",
+      "class":"pb-icon pb-icon-recycle"
+   },
+   "red-river":{
+      "id":"red-river",
+      "class":"pb-icon-b pb-icon-red-river"
+   },
+   "reddit":{
+      "id":"reddit",
+      "class":"pb-icon-b pb-icon-reddit"
+   },
+   "reddit-alien":{
+      "id":"reddit-alien",
+      "class":"pb-icon-b pb-icon-reddit-alien"
+   },
+   "reddit-square":{
+      "id":"reddit-square",
+      "class":"pb-icon-b pb-icon-reddit-square"
+   },
+   "redo":{
+      "id":"redo",
+      "class":"pb-icon pb-icon-redo"
+   },
+   "redo-alt":{
+      "id":"redo-alt",
+      "class":"pb-icon pb-icon-redo-alt"
+   },
+   "registered":{
+      "id":"registered",
+      "class":"pb-icon pb-icon-registered"
+   },
+   "rendact":{
+      "id":"rendact",
+      "class":"pb-icon-b pb-icon-rendact"
+   },
+   "renren":{
+      "id":"renren",
+      "class":"pb-icon-b pb-icon-renren"
+   },
+   "reply":{
+      "id":"reply",
+      "class":"pb-icon pb-icon-reply"
+   },
+   "reply-all":{
+      "id":"reply-all",
+      "class":"pb-icon pb-icon-reply-all"
+   },
+   "replyd":{
+      "id":"replyd",
+      "class":"pb-icon-b pb-icon-replyd"
+   },
+   "researchgate":{
+      "id":"researchgate",
+      "class":"pb-icon-b pb-icon-researchgate"
+   },
+   "resolving":{
+      "id":"resolving",
+      "class":"pb-icon-b pb-icon-resolving"
+   },
+   "retweet":{
+      "id":"retweet",
+      "class":"pb-icon pb-icon-retweet"
+   },
+   "ribbon":{
+      "id":"ribbon",
+      "class":"pb-icon pb-icon-ribbon"
+   },
+   "road":{
+      "id":"road",
+      "class":"pb-icon pb-icon-road"
+   },
+   "robot":{
+      "id":"robot",
+      "class":"pb-icon pb-icon-robot"
+   },
+   "rocket":{
+      "id":"rocket",
+      "class":"pb-icon pb-icon-rocket"
+   },
+   "rocketchat":{
+      "id":"rocketchat",
+      "class":"pb-icon-b pb-icon-rocketchat"
+   },
+   "rockrms":{
+      "id":"rockrms",
+      "class":"pb-icon-b pb-icon-rockrms"
+   },
+   "rss":{
+      "id":"rss",
+      "class":"pb-icon pb-icon-rss"
+   },
+   "rss-square":{
+      "id":"rss-square",
+      "class":"pb-icon pb-icon-rss-square"
+   },
+   "ruble-sign":{
+      "id":"ruble-sign",
+      "class":"pb-icon pb-icon-ruble-sign"
+   },
+   "ruler":{
+      "id":"ruler",
+      "class":"pb-icon pb-icon-ruler"
+   },
+   "ruler-combined":{
+      "id":"ruler-combined",
+      "class":"pb-icon pb-icon-ruler-combined"
+   },
+   "ruler-horizontal":{
+      "id":"ruler-horizontal",
+      "class":"pb-icon pb-icon-ruler-horizontal"
+   },
+   "ruler-vertical":{
+      "id":"ruler-vertical",
+      "class":"pb-icon pb-icon-ruler-vertical"
+   },
+   "rupee-sign":{
+      "id":"rupee-sign",
+      "class":"pb-icon pb-icon-rupee-sign"
+   },
+   "sad-cry":{
+      "id":"sad-cry",
+      "class":"pb-icon pb-icon-sad-cry"
+   },
+   "sad-tear":{
+      "id":"sad-tear",
+      "class":"pb-icon pb-icon-sad-tear"
+   },
+   "safari":{
+      "id":"safari",
+      "class":"pb-icon-b pb-icon-safari"
+   },
+   "sass":{
+      "id":"sass",
+      "class":"pb-icon-b pb-icon-sass"
+   },
+   "save":{
+      "id":"save",
+      "class":"pb-icon pb-icon-save"
+   },
+   "schlix":{
+      "id":"schlix",
+      "class":"pb-icon-b pb-icon-schlix"
+   },
+   "school":{
+      "id":"school",
+      "class":"pb-icon pb-icon-school"
+   },
+   "screwdriver":{
+      "id":"screwdriver",
+      "class":"pb-icon pb-icon-screwdriver"
+   },
+   "scribd":{
+      "id":"scribd",
+      "class":"pb-icon-b pb-icon-scribd"
+   },
+   "search":{
+      "id":"search",
+      "class":"pb-icon pb-icon-search"
+   },
+   "search-minus":{
+      "id":"search-minus",
+      "class":"pb-icon pb-icon-search-minus"
+   },
+   "search-plus":{
+      "id":"search-plus",
+      "class":"pb-icon pb-icon-search-plus"
+   },
+   "searchengin":{
+      "id":"searchengin",
+      "class":"pb-icon-b pb-icon-searchengin"
+   },
+   "seedling":{
+      "id":"seedling",
+      "class":"pb-icon pb-icon-seedling"
+   },
+   "sellcast":{
+      "id":"sellcast",
+      "class":"pb-icon-b pb-icon-sellcast"
+   },
+   "sellsy":{
+      "id":"sellsy",
+      "class":"pb-icon-b pb-icon-sellsy"
+   },
+   "server":{
+      "id":"server",
+      "class":"pb-icon pb-icon-server"
+   },
+   "servicestack":{
+      "id":"servicestack",
+      "class":"pb-icon-b pb-icon-servicestack"
+   },
+   "share":{
+      "id":"share",
+      "class":"pb-icon pb-icon-share"
+   },
+   "share-alt":{
+      "id":"share-alt",
+      "class":"pb-icon pb-icon-share-alt"
+   },
+   "share-alt-square":{
+      "id":"share-alt-square",
+      "class":"pb-icon pb-icon-share-alt-square"
+   },
+   "share-square":{
+      "id":"share-square",
+      "class":"pb-icon pb-icon-share-square"
+   },
+   "shekel-sign":{
+      "id":"shekel-sign",
+      "class":"pb-icon pb-icon-shekel-sign"
+   },
+   "shield-alt":{
+      "id":"shield-alt",
+      "class":"pb-icon pb-icon-shield-alt"
+   },
+   "ship":{
+      "id":"ship",
+      "class":"pb-icon pb-icon-ship"
+   },
+   "shipping-fast":{
+      "id":"shipping-fast",
+      "class":"pb-icon pb-icon-shipping-fast"
+   },
+   "shirtsinbulk":{
+      "id":"shirtsinbulk",
+      "class":"pb-icon-b pb-icon-shirtsinbulk"
+   },
+   "shoe-prints":{
+      "id":"shoe-prints",
+      "class":"pb-icon pb-icon-shoe-prints"
+   },
+   "shopping-bag":{
+      "id":"shopping-bag",
+      "class":"pb-icon pb-icon-shopping-bag"
+   },
+   "shopping-basket":{
+      "id":"shopping-basket",
+      "class":"pb-icon pb-icon-shopping-basket"
+   },
+   "shopping-cart":{
+      "id":"shopping-cart",
+      "class":"pb-icon pb-icon-shopping-cart"
+   },
+   "shopware":{
+      "id":"shopware",
+      "class":"pb-icon-b pb-icon-shopware"
+   },
+   "shower":{
+      "id":"shower",
+      "class":"pb-icon pb-icon-shower"
+   },
+   "shuttle-van":{
+      "id":"shuttle-van",
+      "class":"pb-icon pb-icon-shuttle-van"
+   },
+   "sign":{
+      "id":"sign",
+      "class":"pb-icon pb-icon-sign"
+   },
+   "sign-in-alt":{
+      "id":"sign-in-alt",
+      "class":"pb-icon pb-icon-sign-in-alt"
+   },
+   "sign-language":{
+      "id":"sign-language",
+      "class":"pb-icon pb-icon-sign-language"
+   },
+   "sign-out-alt":{
+      "id":"sign-out-alt",
+      "class":"pb-icon pb-icon-sign-out-alt"
+   },
+   "signal":{
+      "id":"signal",
+      "class":"pb-icon pb-icon-signal"
+   },
+   "signature":{
+      "id":"signature",
+      "class":"pb-icon pb-icon-signature"
+   },
+   "simplybuilt":{
+      "id":"simplybuilt",
+      "class":"pb-icon-b pb-icon-simplybuilt"
+   },
+   "sistrix":{
+      "id":"sistrix",
+      "class":"pb-icon-b pb-icon-sistrix"
+   },
+   "sitemap":{
+      "id":"sitemap",
+      "class":"pb-icon pb-icon-sitemap"
+   },
+   "sith":{
+      "id":"sith",
+      "class":"pb-icon-b pb-icon-sith"
+   },
+   "skull":{
+      "id":"skull",
+      "class":"pb-icon pb-icon-skull"
+   },
+   "skyatlas":{
+      "id":"skyatlas",
+      "class":"pb-icon-b pb-icon-skyatlas"
+   },
+   "skype":{
+      "id":"skype",
+      "class":"pb-icon-b pb-icon-skype"
+   },
+   "slack":{
+      "id":"slack",
+      "class":"pb-icon-b pb-icon-slack"
+   },
+   "slack-hash":{
+      "id":"slack-hash",
+      "class":"pb-icon-b pb-icon-slack-hash"
+   },
+   "sliders-h":{
+      "id":"sliders-h",
+      "class":"pb-icon pb-icon-sliders-h"
+   },
+   "slideshare":{
+      "id":"slideshare",
+      "class":"pb-icon-b pb-icon-slideshare"
+   },
+   "smile":{
+      "id":"smile",
+      "class":"pb-icon pb-icon-smile"
+   },
+   "smile-beam":{
+      "id":"smile-beam",
+      "class":"pb-icon pb-icon-smile-beam"
+   },
+   "smile-wink":{
+      "id":"smile-wink",
+      "class":"pb-icon pb-icon-smile-wink"
+   },
+   "smoking":{
+      "id":"smoking",
+      "class":"pb-icon pb-icon-smoking"
+   },
+   "smoking-ban":{
+      "id":"smoking-ban",
+      "class":"pb-icon pb-icon-smoking-ban"
+   },
+   "snapchat":{
+      "id":"snapchat",
+      "class":"pb-icon-b pb-icon-snapchat"
+   },
+   "snapchat-ghost":{
+      "id":"snapchat-ghost",
+      "class":"pb-icon-b pb-icon-snapchat-ghost"
+   },
+   "snapchat-square":{
+      "id":"snapchat-square",
+      "class":"pb-icon-b pb-icon-snapchat-square"
+   },
+   "snowflake":{
+      "id":"snowflake",
+      "class":"pb-icon pb-icon-snowflake"
+   },
+   "solar-panel":{
+      "id":"solar-panel",
+      "class":"pb-icon pb-icon-solar-panel"
+   },
+   "sort":{
+      "id":"sort",
+      "class":"pb-icon pb-icon-sort"
+   },
+   "sort-alpha-down":{
+      "id":"sort-alpha-down",
+      "class":"pb-icon pb-icon-sort-alpha-down"
+   },
+   "sort-alpha-up":{
+      "id":"sort-alpha-up",
+      "class":"pb-icon pb-icon-sort-alpha-up"
+   },
+   "sort-amount-down":{
+      "id":"sort-amount-down",
+      "class":"pb-icon pb-icon-sort-amount-down"
+   },
+   "sort-amount-up":{
+      "id":"sort-amount-up",
+      "class":"pb-icon pb-icon-sort-amount-up"
+   },
+   "sort-down":{
+      "id":"sort-down",
+      "class":"pb-icon pb-icon-sort-down"
+   },
+   "sort-numeric-down":{
+      "id":"sort-numeric-down",
+      "class":"pb-icon pb-icon-sort-numeric-down"
+   },
+   "sort-numeric-up":{
+      "id":"sort-numeric-up",
+      "class":"pb-icon pb-icon-sort-numeric-up"
+   },
+   "sort-up":{
+      "id":"sort-up",
+      "class":"pb-icon pb-icon-sort-up"
+   },
+   "soundcloud":{
+      "id":"soundcloud",
+      "class":"pb-icon-b pb-icon-soundcloud"
+   },
+   "spa":{
+      "id":"spa",
+      "class":"pb-icon pb-icon-spa"
+   },
+   "space-shuttle":{
+      "id":"space-shuttle",
+      "class":"pb-icon pb-icon-space-shuttle"
+   },
+   "speakap":{
+      "id":"speakap",
+      "class":"pb-icon-b pb-icon-speakap"
+   },
+   "spinner":{
+      "id":"spinner",
+      "class":"pb-icon pb-icon-spinner"
+   },
+   "splotch":{
+      "id":"splotch",
+      "class":"pb-icon pb-icon-splotch"
+   },
+   "spotify":{
+      "id":"spotify",
+      "class":"pb-icon-b pb-icon-spotify"
+   },
+   "spray-can":{
+      "id":"spray-can",
+      "class":"pb-icon pb-icon-spray-can"
+   },
+   "square":{
+      "id":"square",
+      "class":"pb-icon pb-icon-square"
+   },
+   "square-full":{
+      "id":"square-full",
+      "class":"pb-icon pb-icon-square-full"
+   },
+   "squarespace":{
+      "id":"squarespace",
+      "class":"pb-icon-b pb-icon-squarespace"
+   },
+   "stack-exchange":{
+      "id":"stack-exchange",
+      "class":"pb-icon-b pb-icon-stack-exchange"
+   },
+   "stack-overflow":{
+      "id":"stack-overflow",
+      "class":"pb-icon-b pb-icon-stack-overflow"
+   },
+   "stamp":{
+      "id":"stamp",
+      "class":"pb-icon pb-icon-stamp"
+   },
+   "star":{
+      "id":"star",
+      "class":"pb-icon pb-icon-star"
+   },
+   "star-half":{
+      "id":"star-half",
+      "class":"pb-icon pb-icon-star-half"
+   },
+   "star-half-alt":{
+      "id":"star-half-alt",
+      "class":"pb-icon pb-icon-star-half-alt"
+   },
+   "staylinked":{
+      "id":"staylinked",
+      "class":"pb-icon-b pb-icon-staylinked"
+   },
+   "steam":{
+      "id":"steam",
+      "class":"pb-icon-b pb-icon-steam"
+   },
+   "steam-square":{
+      "id":"steam-square",
+      "class":"pb-icon-b pb-icon-steam-square"
+   },
+   "steam-symbol":{
+      "id":"steam-symbol",
+      "class":"pb-icon-b pb-icon-steam-symbol"
+   },
+   "step-backward":{
+      "id":"step-backward",
+      "class":"pb-icon pb-icon-step-backward"
+   },
+   "step-forward":{
+      "id":"step-forward",
+      "class":"pb-icon pb-icon-step-forward"
+   },
+   "stethoscope":{
+      "id":"stethoscope",
+      "class":"pb-icon pb-icon-stethoscope"
+   },
+   "sticker-mule":{
+      "id":"sticker-mule",
+      "class":"pb-icon-b pb-icon-sticker-mule"
+   },
+   "sticky-note":{
+      "id":"sticky-note",
+      "class":"pb-icon pb-icon-sticky-note"
+   },
+   "stop":{
+      "id":"stop",
+      "class":"pb-icon pb-icon-stop"
+   },
+   "stop-circle":{
+      "id":"stop-circle",
+      "class":"pb-icon pb-icon-stop-circle"
+   },
+   "stopwatch":{
+      "id":"stopwatch",
+      "class":"pb-icon pb-icon-stopwatch"
+   },
+   "store":{
+      "id":"store",
+      "class":"pb-icon pb-icon-store"
+   },
+   "store-alt":{
+      "id":"store-alt",
+      "class":"pb-icon pb-icon-store-alt"
+   },
+   "strava":{
+      "id":"strava",
+      "class":"pb-icon-b pb-icon-strava"
+   },
+   "stream":{
+      "id":"stream",
+      "class":"pb-icon pb-icon-stream"
+   },
+   "street-view":{
+      "id":"street-view",
+      "class":"pb-icon pb-icon-street-view"
+   },
+   "strikethrough":{
+      "id":"strikethrough",
+      "class":"pb-icon pb-icon-strikethrough"
+   },
+   "stripe":{
+      "id":"stripe",
+      "class":"pb-icon-b pb-icon-stripe"
+   },
+   "stripe-s":{
+      "id":"stripe-s",
+      "class":"pb-icon-b pb-icon-stripe-s"
+   },
+   "stroopwafel":{
+      "id":"stroopwafel",
+      "class":"pb-icon pb-icon-stroopwafel"
+   },
+   "studiovinari":{
+      "id":"studiovinari",
+      "class":"pb-icon-b pb-icon-studiovinari"
+   },
+   "stumbleupon":{
+      "id":"stumbleupon",
+      "class":"pb-icon-b pb-icon-stumbleupon"
+   },
+   "stumbleupon-circle":{
+      "id":"stumbleupon-circle",
+      "class":"pb-icon-b pb-icon-stumbleupon-circle"
+   },
+   "subscript":{
+      "id":"subscript",
+      "class":"pb-icon pb-icon-subscript"
+   },
+   "subway":{
+      "id":"subway",
+      "class":"pb-icon pb-icon-subway"
+   },
+   "suitcase":{
+      "id":"suitcase",
+      "class":"pb-icon pb-icon-suitcase"
+   },
+   "suitcase-rolling":{
+      "id":"suitcase-rolling",
+      "class":"pb-icon pb-icon-suitcase-rolling"
+   },
+   "sun":{
+      "id":"sun",
+      "class":"pb-icon pb-icon-sun"
+   },
+   "superpowers":{
+      "id":"superpowers",
+      "class":"pb-icon-b pb-icon-superpowers"
+   },
+   "superscript":{
+      "id":"superscript",
+      "class":"pb-icon pb-icon-superscript"
+   },
+   "supple":{
+      "id":"supple",
+      "class":"pb-icon-b pb-icon-supple"
+   },
+   "surprise":{
+      "id":"surprise",
+      "class":"pb-icon pb-icon-surprise"
+   },
+   "swatchbook":{
+      "id":"swatchbook",
+      "class":"pb-icon pb-icon-swatchbook"
+   },
+   "swimmer":{
+      "id":"swimmer",
+      "class":"pb-icon pb-icon-swimmer"
+   },
+   "swimming-pool":{
+      "id":"swimming-pool",
+      "class":"pb-icon pb-icon-swimming-pool"
+   },
+   "sync":{
+      "id":"sync",
+      "class":"pb-icon pb-icon-sync"
+   },
+   "sync-alt":{
+      "id":"sync-alt",
+      "class":"pb-icon pb-icon-sync-alt"
+   },
+   "syringe":{
+      "id":"syringe",
+      "class":"pb-icon pb-icon-syringe"
+   },
+   "table":{
+      "id":"table",
+      "class":"pb-icon pb-icon-table"
+   },
+   "table-tennis":{
+      "id":"table-tennis",
+      "class":"pb-icon pb-icon-table-tennis"
+   },
+   "tablet":{
+      "id":"tablet",
+      "class":"pb-icon pb-icon-tablet"
+   },
+   "tablet-alt":{
+      "id":"tablet-alt",
+      "class":"pb-icon pb-icon-tablet-alt"
+   },
+   "tablets":{
+      "id":"tablets",
+      "class":"pb-icon pb-icon-tablets"
+   },
+   "tachometer-alt":{
+      "id":"tachometer-alt",
+      "class":"pb-icon pb-icon-tachometer-alt"
+   },
+   "tag":{
+      "id":"tag",
+      "class":"pb-icon pb-icon-tag"
+   },
+   "tags":{
+      "id":"tags",
+      "class":"pb-icon pb-icon-tags"
+   },
+   "tape":{
+      "id":"tape",
+      "class":"pb-icon pb-icon-tape"
+   },
+   "tasks":{
+      "id":"tasks",
+      "class":"pb-icon pb-icon-tasks"
+   },
+   "taxi":{
+      "id":"taxi",
+      "class":"pb-icon pb-icon-taxi"
+   },
+   "teamspeak":{
+      "id":"teamspeak",
+      "class":"pb-icon-b pb-icon-teamspeak"
+   },
+   "telegram":{
+      "id":"telegram",
+      "class":"pb-icon-b pb-icon-telegram"
+   },
+   "telegram-plane":{
+      "id":"telegram-plane",
+      "class":"pb-icon-b pb-icon-telegram-plane"
+   },
+   "tencent-weibo":{
+      "id":"tencent-weibo",
+      "class":"pb-icon-b pb-icon-tencent-weibo"
+   },
+   "terminal":{
+      "id":"terminal",
+      "class":"pb-icon pb-icon-terminal"
+   },
+   "text-height":{
+      "id":"text-height",
+      "class":"pb-icon pb-icon-text-height"
+   },
+   "text-width":{
+      "id":"text-width",
+      "class":"pb-icon pb-icon-text-width"
+   },
+   "th":{
+      "id":"th",
+      "class":"pb-icon pb-icon-th"
+   },
+   "th-large":{
+      "id":"th-large",
+      "class":"pb-icon pb-icon-th-large"
+   },
+   "th-list":{
+      "id":"th-list",
+      "class":"pb-icon pb-icon-th-list"
+   },
+   "themeco":{
+      "id":"themeco",
+      "class":"pb-icon-b pb-icon-themeco"
+   },
+   "themeisle":{
+      "id":"themeisle",
+      "class":"pb-icon-b pb-icon-themeisle"
+   },
+   "thermometer":{
+      "id":"thermometer",
+      "class":"pb-icon pb-icon-thermometer"
+   },
+   "thermometer-empty":{
+      "id":"thermometer-empty",
+      "class":"pb-icon pb-icon-thermometer-empty"
+   },
+   "thermometer-full":{
+      "id":"thermometer-full",
+      "class":"pb-icon pb-icon-thermometer-full"
+   },
+   "thermometer-half":{
+      "id":"thermometer-half",
+      "class":"pb-icon pb-icon-thermometer-half"
+   },
+   "thermometer-quarter":{
+      "id":"thermometer-quarter",
+      "class":"pb-icon pb-icon-thermometer-quarter"
+   },
+   "thermometer-three-quarters":{
+      "id":"thermometer-three-quarters",
+      "class":"pb-icon pb-icon-thermometer-three-quarters"
+   },
+   "thumbs-down":{
+      "id":"thumbs-down",
+      "class":"pb-icon pb-icon-thumbs-down"
+   },
+   "thumbs-up":{
+      "id":"thumbs-up",
+      "class":"pb-icon pb-icon-thumbs-up"
+   },
+   "thumbtack":{
+      "id":"thumbtack",
+      "class":"pb-icon pb-icon-thumbtack"
+   },
+   "ticket-alt":{
+      "id":"ticket-alt",
+      "class":"pb-icon pb-icon-ticket-alt"
+   },
+   "times":{
+      "id":"times",
+      "class":"pb-icon pb-icon-times"
+   },
+   "times-circle":{
+      "id":"times-circle",
+      "class":"pb-icon pb-icon-times-circle"
+   },
+   "tint":{
+      "id":"tint",
+      "class":"pb-icon pb-icon-tint"
+   },
+   "tint-slash":{
+      "id":"tint-slash",
+      "class":"pb-icon pb-icon-tint-slash"
+   },
+   "tired":{
+      "id":"tired",
+      "class":"pb-icon pb-icon-tired"
+   },
+   "toggle-off":{
+      "id":"toggle-off",
+      "class":"pb-icon pb-icon-toggle-off"
+   },
+   "toggle-on":{
+      "id":"toggle-on",
+      "class":"pb-icon pb-icon-toggle-on"
+   },
+   "toolbox":{
+      "id":"toolbox",
+      "class":"pb-icon pb-icon-toolbox"
+   },
+   "tooth":{
+      "id":"tooth",
+      "class":"pb-icon pb-icon-tooth"
+   },
+   "trade-federation":{
+      "id":"trade-federation",
+      "class":"pb-icon-b pb-icon-trade-federation"
+   },
+   "trademark":{
+      "id":"trademark",
+      "class":"pb-icon pb-icon-trademark"
+   },
+   "train":{
+      "id":"train",
+      "class":"pb-icon pb-icon-train"
+   },
+   "transgender":{
+      "id":"transgender",
+      "class":"pb-icon pb-icon-transgender"
+   },
+   "transgender-alt":{
+      "id":"transgender-alt",
+      "class":"pb-icon pb-icon-transgender-alt"
+   },
+   "trash":{
+      "id":"trash",
+      "class":"pb-icon pb-icon-trash"
+   },
+   "trash-alt":{
+      "id":"trash-alt",
+      "class":"pb-icon pb-icon-trash-alt"
+   },
+   "tree":{
+      "id":"tree",
+      "class":"pb-icon pb-icon-tree"
+   },
+   "trello":{
+      "id":"trello",
+      "class":"pb-icon-b pb-icon-trello"
+   },
+   "tripadvisor":{
+      "id":"tripadvisor",
+      "class":"pb-icon-b pb-icon-tripadvisor"
+   },
+   "trophy":{
+      "id":"trophy",
+      "class":"pb-icon pb-icon-trophy"
+   },
+   "truck":{
+      "id":"truck",
+      "class":"pb-icon pb-icon-truck"
+   },
+   "truck-loading":{
+      "id":"truck-loading",
+      "class":"pb-icon pb-icon-truck-loading"
+   },
+   "truck-moving":{
+      "id":"truck-moving",
+      "class":"pb-icon pb-icon-truck-moving"
+   },
+   "tshirt":{
+      "id":"tshirt",
+      "class":"pb-icon pb-icon-tshirt"
+   },
+   "tty":{
+      "id":"tty",
+      "class":"pb-icon pb-icon-tty"
+   },
+   "tumblr":{
+      "id":"tumblr",
+      "class":"pb-icon-b pb-icon-tumblr"
+   },
+   "tumblr-square":{
+      "id":"tumblr-square",
+      "class":"pb-icon-b pb-icon-tumblr-square"
+   },
+   "tv":{
+      "id":"tv",
+      "class":"pb-icon pb-icon-tv"
+   },
+   "twitch":{
+      "id":"twitch",
+      "class":"pb-icon-b pb-icon-twitch"
+   },
+   "twitter":{
+      "id":"twitter",
+      "class":"pb-icon-b pb-icon-twitter"
+   },
+   "twitter-square":{
+      "id":"twitter-square",
+      "class":"pb-icon-b pb-icon-twitter-square"
+   },
+   "typo3":{
+      "id":"typo3",
+      "class":"pb-icon-b pb-icon-typo3"
+   },
+   "uber":{
+      "id":"uber",
+      "class":"pb-icon-b pb-icon-uber"
+   },
+   "uikit":{
+      "id":"uikit",
+      "class":"pb-icon-b pb-icon-uikit"
+   },
+   "umbrella":{
+      "id":"umbrella",
+      "class":"pb-icon pb-icon-umbrella"
+   },
+   "umbrella-beach":{
+      "id":"umbrella-beach",
+      "class":"pb-icon pb-icon-umbrella-beach"
+   },
+   "underline":{
+      "id":"underline",
+      "class":"pb-icon pb-icon-underline"
+   },
+   "undo":{
+      "id":"undo",
+      "class":"pb-icon pb-icon-undo"
+   },
+   "undo-alt":{
+      "id":"undo-alt",
+      "class":"pb-icon pb-icon-undo-alt"
+   },
+   "uniregistry":{
+      "id":"uniregistry",
+      "class":"pb-icon-b pb-icon-uniregistry"
+   },
+   "universal-access":{
+      "id":"universal-access",
+      "class":"pb-icon pb-icon-universal-access"
+   },
+   "university":{
+      "id":"university",
+      "class":"pb-icon pb-icon-university"
+   },
+   "unlink":{
+      "id":"unlink",
+      "class":"pb-icon pb-icon-unlink"
+   },
+   "unlock":{
+      "id":"unlock",
+      "class":"pb-icon pb-icon-unlock"
+   },
+   "unlock-alt":{
+      "id":"unlock-alt",
+      "class":"pb-icon pb-icon-unlock-alt"
+   },
+   "untappd":{
+      "id":"untappd",
+      "class":"pb-icon-b pb-icon-untappd"
+   },
+   "upload":{
+      "id":"upload",
+      "class":"pb-icon pb-icon-upload"
+   },
+   "usb":{
+      "id":"usb",
+      "class":"pb-icon-b pb-icon-usb"
+   },
+   "user":{
+      "id":"user",
+      "class":"pb-icon pb-icon-user"
+   },
+   "user-alt":{
+      "id":"user-alt",
+      "class":"pb-icon pb-icon-user-alt"
+   },
+   "user-alt-slash":{
+      "id":"user-alt-slash",
+      "class":"pb-icon pb-icon-user-alt-slash"
+   },
+   "user-astronaut":{
+      "id":"user-astronaut",
+      "class":"pb-icon pb-icon-user-astronaut"
+   },
+   "user-check":{
+      "id":"user-check",
+      "class":"pb-icon pb-icon-user-check"
+   },
+   "user-circle":{
+      "id":"user-circle",
+      "class":"pb-icon pb-icon-user-circle"
+   },
+   "user-clock":{
+      "id":"user-clock",
+      "class":"pb-icon pb-icon-user-clock"
+   },
+   "user-cog":{
+      "id":"user-cog",
+      "class":"pb-icon pb-icon-user-cog"
+   },
+   "user-edit":{
+      "id":"user-edit",
+      "class":"pb-icon pb-icon-user-edit"
+   },
+   "user-friends":{
+      "id":"user-friends",
+      "class":"pb-icon pb-icon-user-friends"
+   },
+   "user-graduate":{
+      "id":"user-graduate",
+      "class":"pb-icon pb-icon-user-graduate"
+   },
+   "user-lock":{
+      "id":"user-lock",
+      "class":"pb-icon pb-icon-user-lock"
+   },
+   "user-md":{
+      "id":"user-md",
+      "class":"pb-icon pb-icon-user-md"
+   },
+   "user-minus":{
+      "id":"user-minus",
+      "class":"pb-icon pb-icon-user-minus"
+   },
+   "user-ninja":{
+      "id":"user-ninja",
+      "class":"pb-icon pb-icon-user-ninja"
+   },
+   "user-plus":{
+      "id":"user-plus",
+      "class":"pb-icon pb-icon-user-plus"
+   },
+   "user-secret":{
+      "id":"user-secret",
+      "class":"pb-icon pb-icon-user-secret"
+   },
+   "user-shield":{
+      "id":"user-shield",
+      "class":"pb-icon pb-icon-user-shield"
+   },
+   "user-slash":{
+      "id":"user-slash",
+      "class":"pb-icon pb-icon-user-slash"
+   },
+   "user-tag":{
+      "id":"user-tag",
+      "class":"pb-icon pb-icon-user-tag"
+   },
+   "user-tie":{
+      "id":"user-tie",
+      "class":"pb-icon pb-icon-user-tie"
+   },
+   "user-times":{
+      "id":"user-times",
+      "class":"pb-icon pb-icon-user-times"
+   },
+   "users":{
+      "id":"users",
+      "class":"pb-icon pb-icon-users"
+   },
+   "users-cog":{
+      "id":"users-cog",
+      "class":"pb-icon pb-icon-users-cog"
+   },
+   "ussunnah":{
+      "id":"ussunnah",
+      "class":"pb-icon-b pb-icon-ussunnah"
+   },
+   "utensil-spoon":{
+      "id":"utensil-spoon",
+      "class":"pb-icon pb-icon-utensil-spoon"
+   },
+   "utensils":{
+      "id":"utensils",
+      "class":"pb-icon pb-icon-utensils"
+   },
+   "vaadin":{
+      "id":"vaadin",
+      "class":"pb-icon-b pb-icon-vaadin"
+   },
+   "vector-square":{
+      "id":"vector-square",
+      "class":"pb-icon pb-icon-vector-square"
+   },
+   "venus":{
+      "id":"venus",
+      "class":"pb-icon pb-icon-venus"
+   },
+   "venus-double":{
+      "id":"venus-double",
+      "class":"pb-icon pb-icon-venus-double"
+   },
+   "venus-mars":{
+      "id":"venus-mars",
+      "class":"pb-icon pb-icon-venus-mars"
+   },
+   "viacoin":{
+      "id":"viacoin",
+      "class":"pb-icon-b pb-icon-viacoin"
+   },
+   "viadeo":{
+      "id":"viadeo",
+      "class":"pb-icon-b pb-icon-viadeo"
+   },
+   "viadeo-square":{
+      "id":"viadeo-square",
+      "class":"pb-icon-b pb-icon-viadeo-square"
+   },
+   "vial":{
+      "id":"vial",
+      "class":"pb-icon pb-icon-vial"
+   },
+   "vials":{
+      "id":"vials",
+      "class":"pb-icon pb-icon-vials"
+   },
+   "viber":{
+      "id":"viber",
+      "class":"pb-icon-b pb-icon-viber"
+   },
+   "video":{
+      "id":"video",
+      "class":"pb-icon pb-icon-video"
+   },
+   "video-slash":{
+      "id":"video-slash",
+      "class":"pb-icon pb-icon-video-slash"
+   },
+   "vimeo":{
+      "id":"vimeo",
+      "class":"pb-icon-b pb-icon-vimeo"
+   },
+   "vimeo-square":{
+      "id":"vimeo-square",
+      "class":"pb-icon-b pb-icon-vimeo-square"
+   },
+   "vimeo-v":{
+      "id":"vimeo-v",
+      "class":"pb-icon-b pb-icon-vimeo-v"
+   },
+   "vine":{
+      "id":"vine",
+      "class":"pb-icon-b pb-icon-vine"
+   },
+   "vk":{
+      "id":"vk",
+      "class":"pb-icon-b pb-icon-vk"
+   },
+   "vnv":{
+      "id":"vnv",
+      "class":"pb-icon-b pb-icon-vnv"
+   },
+   "volleyball-ball":{
+      "id":"volleyball-ball",
+      "class":"pb-icon pb-icon-volleyball-ball"
+   },
+   "volume-down":{
+      "id":"volume-down",
+      "class":"pb-icon pb-icon-volume-down"
+   },
+   "volume-off":{
+      "id":"volume-off",
+      "class":"pb-icon pb-icon-volume-off"
+   },
+   "volume-up":{
+      "id":"volume-up",
+      "class":"pb-icon pb-icon-volume-up"
+   },
+   "vuejs":{
+      "id":"vuejs",
+      "class":"pb-icon-b pb-icon-vuejs"
+   },
+   "walking":{
+      "id":"walking",
+      "class":"pb-icon pb-icon-walking"
+   },
+   "wallet":{
+      "id":"wallet",
+      "class":"pb-icon pb-icon-wallet"
+   },
+   "warehouse":{
+      "id":"warehouse",
+      "class":"pb-icon pb-icon-warehouse"
+   },
+   "weebly":{
+      "id":"weebly",
+      "class":"pb-icon-b pb-icon-weebly"
+   },
+   "weibo":{
+      "id":"weibo",
+      "class":"pb-icon-b pb-icon-weibo"
+   },
+   "weight":{
+      "id":"weight",
+      "class":"pb-icon pb-icon-weight"
+   },
+   "weight-hanging":{
+      "id":"weight-hanging",
+      "class":"pb-icon pb-icon-weight-hanging"
+   },
+   "weixin":{
+      "id":"weixin",
+      "class":"pb-icon-b pb-icon-weixin"
+   },
+   "whatsapp":{
+      "id":"whatsapp",
+      "class":"pb-icon-b pb-icon-whatsapp"
+   },
+   "whatsapp-square":{
+      "id":"whatsapp-square",
+      "class":"pb-icon-b pb-icon-whatsapp-square"
+   },
+   "wheelchair":{
+      "id":"wheelchair",
+      "class":"pb-icon pb-icon-wheelchair"
+   },
+   "whmcs":{
+      "id":"whmcs",
+      "class":"pb-icon-b pb-icon-whmcs"
+   },
+   "wifi":{
+      "id":"wifi",
+      "class":"pb-icon pb-icon-wifi"
+   },
+   "wikipedia-w":{
+      "id":"wikipedia-w",
+      "class":"pb-icon-b pb-icon-wikipedia-w"
+   },
+   "window-close":{
+      "id":"window-close",
+      "class":"pb-icon pb-icon-window-close"
+   },
+   "window-maximize":{
+      "id":"window-maximize",
+      "class":"pb-icon pb-icon-window-maximize"
+   },
+   "window-minimize":{
+      "id":"window-minimize",
+      "class":"pb-icon pb-icon-window-minimize"
+   },
+   "window-restore":{
+      "id":"window-restore",
+      "class":"pb-icon pb-icon-window-restore"
+   },
+   "windows":{
+      "id":"windows",
+      "class":"pb-icon-b pb-icon-windows"
+   },
+   "wine-glass":{
+      "id":"wine-glass",
+      "class":"pb-icon pb-icon-wine-glass"
+   },
+   "wine-glass-alt":{
+      "id":"wine-glass-alt",
+      "class":"pb-icon pb-icon-wine-glass-alt"
+   },
+   "wix":{
+      "id":"wix",
+      "class":"pb-icon-b pb-icon-wix"
+   },
+   "wolf-pack-battalion":{
+      "id":"wolf-pack-battalion",
+      "class":"pb-icon-b pb-icon-wolf-pack-battalion"
+   },
+   "won-sign":{
+      "id":"won-sign",
+      "class":"pb-icon pb-icon-won-sign"
+   },
+   "wordpress":{
+      "id":"wordpress",
+      "class":"pb-icon-b pb-icon-wordpress"
+   },
+   "wordpress-simple":{
+      "id":"wordpress-simple",
+      "class":"pb-icon-b pb-icon-wordpress-simple"
+   },
+   "wpbeginner":{
+      "id":"wpbeginner",
+      "class":"pb-icon-b pb-icon-wpbeginner"
+   },
+   "wpexplorer":{
+      "id":"wpexplorer",
+      "class":"pb-icon-b pb-icon-wpexplorer"
+   },
+   "wpforms":{
+      "id":"wpforms",
+      "class":"pb-icon-b pb-icon-wpforms"
+   },
+   "wrench":{
+      "id":"wrench",
+      "class":"pb-icon pb-icon-wrench"
+   },
+   "x-ray":{
+      "id":"x-ray",
+      "class":"pb-icon pb-icon-x-ray"
+   },
+   "xbox":{
+      "id":"xbox",
+      "class":"pb-icon-b pb-icon-xbox"
+   },
+   "xing":{
+      "id":"xing",
+      "class":"pb-icon-b pb-icon-xing"
+   },
+   "xing-square":{
+      "id":"xing-square",
+      "class":"pb-icon-b pb-icon-xing-square"
+   },
+   "y-combinator":{
+      "id":"y-combinator",
+      "class":"pb-icon-b pb-icon-y-combinator"
+   },
+   "yahoo":{
+      "id":"yahoo",
+      "class":"pb-icon-b pb-icon-yahoo"
+   },
+   "yandex":{
+      "id":"yandex",
+      "class":"pb-icon-b pb-icon-yandex"
+   },
+   "yandex-international":{
+      "id":"yandex-international",
+      "class":"pb-icon-b pb-icon-yandex-international"
+   },
+   "yelp":{
+      "id":"yelp",
+      "class":"pb-icon-b pb-icon-yelp"
+   },
+   "yen-sign":{
+      "id":"yen-sign",
+      "class":"pb-icon pb-icon-yen-sign"
+   },
+   "yoast":{
+      "id":"yoast",
+      "class":"pb-icon-b pb-icon-yoast"
+   },
+   "youtube":{
+      "id":"youtube",
+      "class":"pb-icon-b pb-icon-youtube"
+   },
+   "youtube-square":{
+      "id":"youtube-square",
+      "class":"pb-icon-b pb-icon-youtube-square"
+   }
+}

@@ -1,0 +1,19 @@
+
+.pb-button-widget
+{
+	.pb-button-icon-right
+	{
+		[class*="pb-icon-"]
+		{
+			margin-left: .25em;
+		}
+	}
+
+	.pb-button-icon-left
+	{
+		[class*="pb-icon-"]
+		{
+			margin-right: .25em;
+		}
+	}
+}
