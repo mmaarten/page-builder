@@ -1,0 +1,42 @@
+
+.pb-fields
+{
+	.pb-modal &
+	{
+		margin-left: -$modal-padding-x;
+    	margin-right: -$modal-padding-x;
+	}
+}
+
+.pb-field
+{
+	position: relative;
+    margin: 0;
+    padding: 15px 12px;
+    border-top: #EEEEEE solid 1px;
+
+    &:first-child
+    {
+    	border-top-width: 0;
+    }
+
+	.pb-label
+	{
+		display: block;
+	    font-weight: bold;
+	    margin: 0 0 3px;
+	    padding: 0;
+	}
+
+	input[type="text"], 
+	input[type="password"], 
+	input[type="number"], 
+	input[type="search"], 
+	input[type="email"], 
+	input[type="url"], 
+	textarea, 
+	select
+	{
+		width: 100%;
+	}
+}

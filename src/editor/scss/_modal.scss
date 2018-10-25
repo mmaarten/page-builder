@@ -1,0 +1,194 @@
+/**
+ * Modal
+ */
+ 
+html.with-featherlight 
+{
+	/* disable global scrolling when pb-modals are visible */
+	overflow: hidden;
+}
+
+.pb-modal 
+{
+	display: none;
+
+	/* dimensions: spanning the background from edge to edge */
+	position:fixed;
+	top: 0; right: 0; bottom: 0; left: 0;
+	z-index: $modal-z-index; /* z-index needs to be >= elements on the site. */
+
+	/* position: centering content */
+	text-align: center;
+
+	/* insures that the ::before pseudo element doesn't force wrap with fixed width content; */
+	white-space: nowrap;
+
+	/* styling */
+	cursor: pointer;
+	background: #333;
+	/* IE8 "hack" for nested pb-modals */
+	background: rgba(0, 0, 0, 0);
+	
+	&:last-of-type 
+	{
+		/* support for nested pb-modals. Does not work in IE8 (use JS to fix) */
+		background: rgba( $modal-backdrop-color, $modal-backdrop-opacity );
+	}
+
+	&:before 
+	{
+		/* position: trick to center content vertically */
+		content: '';
+		display: inline-block;
+		height: 100%;
+		vertical-align: middle;
+	}
+
+	h2
+	{
+		margin: (-$modal-padding-y) (-$modal-padding-x) $modal-padding-y;
+    	padding: 0 ( $modal-padding-x + $pb-modal-close-size ) 0 $modal-padding-x;
+
+    	font-size: $modal-title-font-size;
+    	line-height: $modal-title-line-height;
+
+    	overflow: hidden;
+	    white-space: nowrap;
+	    text-overflow: ellipsis;
+
+    	border-bottom: 1px solid #ddd;
+    	background-color: #FCFCFC;
+	}
+
+	p.submit
+	{
+		text-align: right;
+	}
+}
+
+.pb-modal-content 
+{
+	/* make content container for positioned elements (close button) */
+	position: relative;
+
+	/* position: centering vertical and horizontal */
+	text-align: left;
+	vertical-align: middle;
+	display: inline-block;
+
+	/* dimensions: cut off images */
+	overflow: auto;
+	padding: $modal-padding-y $modal-padding-x 0;
+	border-bottom: $modal-padding-y solid transparent;
+
+	/* dimensions: handling large content */
+	margin-left: 5%;
+	margin-right: 5%;
+	max-height: 95%;
+
+	/* styling */
+	background: #fff;
+	cursor: auto;
+
+	/* reset white-space wrapping */
+	white-space: normal;
+
+	box-shadow: 0 5px 15px rgba(0,0,0,0.7);
+}
+
+/* contains the content */
+.pb-modal-inner 
+{
+	/* make sure its visible */
+	display: block;
+}
+
+/* don't show these though */
+script.pb-modal-inner,
+link.pb-modal-inner,
+style.pb-modal-inner 
+{
+	display: none;
+}
+
+.pb-modal-close-icon 
+{
+	/* position: centering vertical and horizontal */
+	position: absolute;
+	z-index: 9999;
+	top: 0;
+	right: 0;
+
+	/* dimensions */
+	line-height: $pb-modal-close-size;
+	width: $pb-modal-close-size;
+
+	/* styling */
+	cursor: pointer;
+	outline: none;
+	text-align: center;
+	font-family: Arial, sans-serif;
+	background: transparent; /* Set the background in case it overlaps the content */
+	color: #666;
+	border: none;
+	padding: 0;
+
+    transition: color .1s ease-in-out, background .1s ease-in-out;
+
+    &:before
+    {
+    	content: "\f158";
+	    font: normal 20px/1 dashicons;
+	    speak: none;
+	    vertical-align: middle;
+	    -webkit-font-smoothing: antialiased;
+	    -moz-osx-font-smoothing: grayscale;
+    }
+
+    &:hover
+    {
+    	color: #00a0d2;
+    }
+}
+
+/* See http://stackoverflow.com/questions/16077341/how-to-reset-all-default-styles-of-the-html5-button-element */
+.pb-modal-close-icon::-moz-focus-inner 
+{
+	border: 0;
+	padding: 0;
+}
+
+.pb-modal-image 
+{
+	/* styling */
+	width: 100%;
+}
+
+.pb-modal-iframe .pb-modal-content 
+{
+	/* removed the border for image croping since iframe is edge to edge */
+	border-bottom: 0;
+	padding: 0;
+	-webkit-overflow-scrolling: touch;
+}
+
+.pb-modal iframe 
+{
+	/* styling */
+	border: none;
+}
+
+/* See https://github.com/noelboss/pb-modal/issues/42 */
+.pb-modal * 
+{ 
+	box-sizing: border-box;
+}
+
+/* hide non pb-modal items when printing */
+@media print
+{
+	html.with-featherlight > * > :not( .pb-modal ) 
+	{
+		display: none;
+	}
+}

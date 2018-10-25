@@ -2,38 +2,38 @@
 
 class PB_Field_Types
 {
-	protected $field_types = array();
+	protected $fields = array();
 
 	public function __construct()
 	{
 
 	}
 
-	public function register( $field_type )
+	public function register_field( $field )
 	{
-		if ( ! $field_type instanceof PB_Field ) 
+		if ( ! $field instanceof PB_Field ) 
 		{
-			$field_type = new $field_type();
+			$field = new $field();
 		}
 
-		$this->field_types[ $field_type->id ] = $field_type;
+		$this->fields[ $field->id ] = $field;
 	}
 
-	public function unregister( $id )
+	public function unregister_field( $field_id )
 	{
-		unset( $this->field_types[ $id ] );
+		unset( $this->fields[ $field_id ] );
 	}
 
-	public function get_field_types()
+	public function get_fields()
 	{
-		return $this->field_types;
+		return $this->fields;
 	}
 
-	public function get_field_type( $id )
+	public function get_field( $field_id )
 	{
-		if ( isset( $this->field_types[ $id ] ) ) 
+		if ( isset( $this->fields[ $field_id ] ) ) 
 		{
-			return $this->field_types[ $id ];
+			return $this->fields[ $field_id ];
 		}
 
 		return null;

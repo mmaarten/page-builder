@@ -4,45 +4,15 @@ class PB_Editor
 {
 	public function __construct()
 	{
+		add_action( 'add_meta_boxes'       , array( $this, 'add_meta_box' ), 5, 2 );
+		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
+
+		add_action( 'wp_ajax_pb_load'         , array( $this, 'load' ) );
+		add_action( 'wp_ajax_pb_widget_picker', array( $this, 'widget_picker' ) );
 
 	}
 
-	/**
-	 * Is Screen
-	 * 
-	 * Returns true if current screen is editor screen.
-	 *
-	 * @return boolean
-	 */
-	public function is_screen()
-	{
-		// Checks if admin area.
-
-		if ( ! is_admin() ) 
-		{
-			return false;
-		}
-
-		global $pagenow, $typenow;
-
-		// Checks if current page is post 'add' or 'edit' page
-
-		if ( $pagenow != 'post.php' && $pagenow != 'post-new.php' ) 
-		{
-			return false;
-		}
-
-		// Checks if post type supports page builder
-
-		return post_type_supports( $typenow, PB_POST_TYPE_FEATURE );
-	}
-
-	/**
-	 * Add Meta Boxes
-	 * 
-	 * Adds editor meta box.
-	 */
-	public function add_meta_boxes()
+	public function add_meta_box( $post_type, $post )
 	{
 		if ( ! $this->is_screen() ) 
 		{
@@ -52,32 +22,28 @@ class PB_Editor
 		add_meta_box( 'pb-editor-meta-box', __( 'Page Builder' ), array( $this, 'render' ), null, 'advanced', 'high' );
 	}
 
-	/**
-	 * Render
-	 * 
-	 * Renders editor
-	 * 
-	 * @param $post int|WP_Post The post object or id.
-	 */
 	public function render( $post )
 	{
-		$models = pb()->models->get_post_models( $post );
+		$widgets = pb()->widgets->get_widgets();
+
+		$options = array
+		(
+			'post'      => $post->ID,
+			'nonceName' => PB_NONCE_NAME,
+			'nonce'     => wp_create_nonce( 'editor' ),
+		);
 
 		?>
 
 		<div id="pb-editor" class="pb-editor">
 
-			<?php wp_nonce_field( 'editor', PB_NONCE_NAME ); ?>
-
-			<p class="pb-show-if-debug">
-				<textarea class="pb-source large-text code" name="pb_models" rows="10"><?php echo json_encode( $models ); ?></textarea>
-			</p>
-
 			<div class="pb-available-widgets">
-				<?php pb()->widgets->list_editor_widgets(); ?>
+				<?php foreach ( $widgets as $widget ) : ?>
+				<?php $this->render_widget( $widget ); ?>
+				<?php endforeach; ?>
 			</div>
 
-			<div class="pb-main-widget-container"></div>
+			<div class="pb-widgets"></div>
 
 			<div class="pb-editor-footer">
 				<button type="button" class="pb-add-widget-control"><?php esc_html_e( 'Add Widget' ); ?></button>
@@ -85,40 +51,11 @@ class PB_Editor
 
 		</div>
 
-		<?php
-
-		/**
-		 * JavaScript
-		 * -----------------------------------------------------------
-		 */
-
-		// Editor options
-		
-		$options = array
-		(
-			'nonce'          => wp_create_nonce( 'editor', PB_NONCE_NAME ),
-			'nonceName'      => PB_NONCE_NAME,
-			'widgetDefaults' => array()
-		);
-
-		// Sets widget defaults
-
-		$widgets = pb()->widgets->get_widgets();
-
-		foreach ( $widgets as $widget ) 
-		{
-			$options['widgetDefaults'][ $widget->id ] = $widget->get_defaults();
-		}
-
-		//
-
-		?>
-
 		<script type="text/javascript">
 			
 			jQuery( document ).ready( function()
 			{
-				pb.init( '#pb-editor', <?php echo json_encode( $options ); ?> );
+				jQuery( '#pb-editor' ).pageBuilder( <?php echo json_encode( $options ); ?> );
 			});
 
 		</script>
@@ -126,152 +63,85 @@ class PB_Editor
 		<?php
 	}
 
-	public function save_post( $post_id, $update )
+	public function render_widget( $widget )
 	{
-		/*
-         * We need to verify this came from the our screen and with proper authorization,
-         * because save_post can be triggered at other times.
-         */
- 
-        // Check if our nonce is set.
-        if ( ! isset( $_POST[ PB_NONCE_NAME ] ) ) 
-        {
-            return $post_id;
-        }
- 
-        $nonce = $_POST[ PB_NONCE_NAME ];
- 
-        // Verify that the nonce is valid.
-        if ( ! wp_verify_nonce( $nonce, 'editor' ) ) 
-        {
-            return $post_id;
-        }
- 
-        /*
-         * If this is an autosave, our form has not been submitted,
-         * so we don't want to do anything.
-         */
-        if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) 
-        {
-            return $post_id;
-        }
- 
-        // Check the user's permissions.
-        if ( $_POST['post_type'] == 'page' ) 
-        {
-            if ( ! current_user_can( 'edit_page', $post_id ) ) 
-            {
-                return $post_id;
-            }
-        } 
+		$controls = array
+		(
+			'add'    => array( 'title' => __( 'Add' )   , 'description' => __( 'Add widget.' )           , 'icon' => 'dashicons dashicons-plus' ),
+			'edit'   => array( 'title' => __( 'Edit' )  , 'description' => __( 'Edit widget.' )          , 'icon' => 'dashicons dashicons-edit' ),
+			'copy'   => array( 'title' => __( 'Copy' )  , 'description' => __( 'Copy widget.' )          , 'icon' => 'dashicons dashicons-admin-page' ),
+			'delete' => array( 'title' => __( 'Delete' ), 'description' => __( 'Delete widget.' )        , 'icon' => 'dashicons dashicons-trash' ),
+			'toggle' => array( 'title' => __( 'Toggle' ), 'description' => __( 'Toggle widget content.' ), 'icon' => 'pb-toggle-indicator' ),
+		);
 
-        else 
-        {
-            if ( ! current_user_can( 'edit_post', $post_id ) ) 
-            {
-                return $post_id;
-            }
-        }
- 
-        // OK, it's safe for us to save the data now
+		?>
 
-        $models = isset( $_POST['pb_models'] ) ? $_POST['pb_models'] : '';
-        $models = stripcslashes( $models );
-        $models = json_decode( $models, true );
+		<div class="pb-widget pb-<?php echo esc_attr( $widget->id ); ?>-widget" data-type="<?php echo esc_attr( $widget->id ); ?>">
+			<div class="pb-widget-top">
+				<h3 class="pb-widget-title"><?php echo esc_html( $widget->title ); ?></h3>
+				<div class="pb-widget-controls">
+					<?php foreach ( $controls as $control_id => $control ) : ?>
+					<button type="button" class="pb-widget-control pb-widget-<?php echo esc_attr( $control_id ); ?>-control" title="<?php echo esc_attr( $control['title'] ); ?>">
+						<span class="<?php echo esc_attr( $control['icon'] ); ?>" area-hidden="true"></span>
+						<span class="screen-reader-text"><?php echo esc_html( $control['description'] ); ?></span>
+					</button>
+					<?php endforeach; ?>
+				</div>
+			</div>
+			<div class="pb-widget-inside">
+				<div class="pb-widget-preview"></div>
+				<div class="pb-widget-container"></div>
+			</div>
+		</div>
 
-        if ( json_last_error() != JSON_ERROR_NONE ) 
-        {
-        	error_log( sprintf( 'Unable to save data: %s', json_last_error() ) );
+		<?php
+	}
 
-        	$models = array();
-        }
+	public function render_widget_button( $widget )
+	{
+		?>
 
-        pb()->models->save_post_models( $models, $post_id );
+		<button class="pb-widget-button pb-<?php echo esc_attr( $widget->id ); ?>-widget-button" data-type="<?php echo esc_attr( $widget->id ); ?>">
+			<span class="pb-widget-button-title"><?php echo esc_html( $widget->title ); ?></span>
+			<span class="pb-widget-button-description"><?php echo $widget->description; ?></span>
+		</button>
+
+		<?php
 	}
 
 	public function widget_picker()
 	{
-		// Checks if ajax
-
-		if ( ! defined( 'DOING_AJAX' ) || ! DOING_AJAX ) 
+		if ( ! wp_doing_ajax() ) 
 		{
 			return;
 		}
 
-		// Checks nonce and referer
-
 		check_admin_referer( 'editor', PB_NONCE_NAME );
 
-		//
+		$widgets = pb()->widgets->get_widgets();
 
-		$parent = isset( $_POST['parent'] ) ? $_POST['parent'] : '';
+		$col = 'pb-col-12 pb-col-sm-6';
 
-		$available = pb()->widgets->get_widgets();
-		$available = array_combine( array_keys( $available ), array_fill( 0, count( $available ), true ) );
-
-		switch ( $parent ) 
+		if ( count( $widgets ) > 2 ) 
 		{
-			case '' :
-
-				$available['column'] = false;
-
-				break;
-
-			case 'row':
-
-				$available = array( 'column' => true );
-
-				break;
-
-			case 'column':
-
-				$available['column'] = false;
-
-				break;
-
-			default :
-
-				$available = array();
+			$col .= ' pb-col-md-4';
 		}
-
-		$available = array_filter( $available );
 
 		?>
 
 		<div id="pb-widget-picker">
 
-			<h1><?php _e( 'Available Widgets' ); ?></h1>
+			<h2><?php esc_html_e( 'Available Widgets' ); ?></h2>
 
-			<?php 
-
-				if ( ! $available ) 
-				{
-					if ( $parent ) 
-					{
-						$widget = pb()->widgets->get_widget( $parent );
-
-						pb_notice( sprintf( __( '%s widget cannot contain other widgets.' ), $widget->title ) );
-					}
-
-					else
-					{
-						pb_notice( __( 'No widgets available.' ) );
-					}
-				}
-
-				else
-				{
-					pb()->widgets->list_editor_widgets( array
-					(
-						'before'        => '<div class="pb-row">',
-						'before_widget' => '<div class="pb-col-md-4">',
-						'after_widget'  => '</div>',
-						'after'         => '</div>',
-						'include'       => array_keys( $available )
-					));
-				}
-
-			?>
+			<div class="pb-widgets">
+				<div class="pb-row">
+					<?php foreach ( $widgets as $widget ) : ?>
+					<div class="<?php echo esc_attr( $col ); ?>">
+						<?php $this->render_widget_button( $widget ); ?>
+					</div>
+					<?php endforeach; ?>
+				</div>
+			</div>
 
 		</div>
 
@@ -280,76 +150,28 @@ class PB_Editor
 		wp_die();
 	}
 
-	public function widget_settings()
+	public function load()
 	{
-		// Checks if ajax
-
-		if ( ! defined( 'DOING_AJAX' ) || ! DOING_AJAX ) 
+		if ( ! wp_doing_ajax() ) 
 		{
 			return;
 		}
 
-		// Checks nonce and referer
-
 		check_admin_referer( 'editor', PB_NONCE_NAME );
 
-		//
+		$post_id = $_POST['post'];
 
-		$widget_id = isset( $_POST['widget'] ) ? $_POST['widget'] : '';
+		$models = get_post_meta( $post_id, 'pb_models', true );
 
-		$widget = pb()->widgets->get_widget( $widget_id );
-
-		$widget->form();
-
-		wp_die();
-	}
-
-	public function widget_preview()
-	{
-		// Checks if ajax
-
-		if ( ! defined( 'DOING_AJAX' ) || ! DOING_AJAX ) 
+		if ( ! is_array( $models ) ) 
 		{
-			return;
+			$models = array();
 		}
 
-		// Checks nonce and referer
-
-		check_admin_referer( 'editor', PB_NONCE_NAME );
-
-		//
-
-		$models = isset( $_POST['models'] ) ? (array) $_POST['models'] : array();
-
-		$preview = array();
-
-		foreach ( $models as $model ) 
-		{
-			pb_stripcslashes( $model );
-			
-			// Makes sure all properties are set
-
-			$model = pb()->models->create_model( $model );
-
-			// Gets widget
-
-			$widget = pb()->widgets->get_widget( $model['type'] );
-
-			if ( ! $widget ) 
-			{
-				continue;
-			}
-
-			// Gets preview
-
-			ob_start();
-
-			$widget->preview( $model['data'] );
-
-			$preview[ $model['id'] ] = ob_get_clean();
-		}
-
-		wp_send_json( $preview );
+		wp_send_json( array
+		(
+			'models' => $models,
+		));
 	}
 
 	public function enqueue_scripts()
@@ -359,71 +181,36 @@ class PB_Editor
 			return;
 		}
 
+		$min = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
+
+		// Vendor
 		wp_enqueue_style( 'dashicons' );
-		wp_enqueue_script( 'wp-util' );
 		wp_enqueue_script( 'jquery-ui-sortable' );
-
-		// Select2
-		wp_enqueue_style( 'select2', plugins_url( 'vendor/select2/dist/css/select2.min.css', PB_FILE ), null, '4.0.5' );
-		wp_enqueue_script( 'select2', plugins_url( 'vendor/select2/dist/js/select2.min.js', PB_FILE ), array( 'jquery' ), '4.0.5' );
-
-		// Featherlight
-		wp_enqueue_script( 'featherlight', plugins_url( 'vendor/featherlight/release/featherlight.min.js', PB_FILE ), array( 'jquery' ), '1.7.13' );
-		
-		// Match Height
-		wp_enqueue_script( 'match-height', plugins_url( 'vendor/matchHeight/dist/jquery.matchHeight-min.js', PB_FILE ), array( 'jquery' ), '0.7.2' );
+		wp_enqueue_script( 'featherlight', plugins_url( "assets/js/featherlight$min.js", PB_FILE ), array( 'jquery' ), '1.7.13', true );
 
 		// Core
-		wp_enqueue_style( 'pb-editor', plugins_url( 'css/editor.min.css', PB_FILE ) );
-		wp_enqueue_script( 'pb-editor', plugins_url( 'js/dist/editor.min.js', PB_FILE ), array( 'jquery' ), true );
-	
-		do_action( 'pb_editor_enqueue_scripts' );
+		wp_enqueue_style( 'pb-editor', plugins_url( 'assets/css/editor.css', PB_FILE ) );
+		wp_enqueue_script( 'pb-editor', plugins_url( "assets/js/editor$min.js", PB_FILE ), array( 'jquery' ), false, true );
 	}
 
-	public function render_scripts()
+	public function is_screen()
 	{
-		if ( ! $this->is_screen() ) 
+		if ( ! is_admin() ) 
 		{
-			return;
+			return false;
 		}
 
-		do_action( 'pb_editor_render_scripts' );
-	}
+		global $pagenow;
 
-	public function body_class( $class )
-	{
-		if ( ! $this->is_screen() ) 
+		if ( $pagenow != 'post.php' && $pagenow != 'post-new.php' ) 
 		{
-			return $class;
+			return false;
 		}
 
-		$class .= ' page-builder';
+		global $typenow;
 
-		return trim( $class );
+		return post_type_supports( $typenow, PB_POST_TYPE_FEATURE );
 	}
 }
 
 pb()->editor = new PB_Editor();
-
-add_action( 'add_meta_boxes'	   , array( pb()->editor, 'add_meta_boxes' ) );
-add_action( 'save_post'			   , array( pb()->editor, 'save_post' ), 10, 2 );
-add_action( 'admin_enqueue_scripts', array( pb()->editor, 'enqueue_scripts' ) );
-add_action( 'admin_print_scripts'  , array( pb()->editor, 'render_scripts' ) );
-add_action( 'admin_body_class'     , array( pb()->editor, 'body_class' ) );
-
-add_action( 'wp_ajax_pb_widget_picker'  , array( pb()->editor, 'widget_picker' ) );
-add_action( 'wp_ajax_pb_widget_settings', array( pb()->editor, 'widget_settings' ) );
-add_action( 'wp_ajax_pb_widget_preview' , array( pb()->editor, 'widget_preview' ) );
-
-add_action( 'wp_ajax_pb_save_widget_preview', function()
-{
-	$model = $_POST['model'];
-
-	$models = get_option( 'pb_widget_preview', array() );
-
-	$models[ $model['id'] ] = $model;
-
-	update_option( 'pb_widget_preview', $models );
-});
-
-
