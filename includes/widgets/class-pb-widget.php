@@ -18,5 +18,17 @@ class PB_Widget
 		$this->id          = $id;
 		$this->title       = $title;
 		$this->description = $args['description'];
+
+		do_action( 'pb/widget', $this );
+	}
+
+	public function render( $args, $instance )
+	{
+		
+	}
+
+	public function enqueue_scripts()
+	{
+		
 	}
 }

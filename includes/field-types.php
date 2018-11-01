@@ -6,7 +6,7 @@ class PB_Field_Types
 
 	public function __construct()
 	{
-
+		
 	}
 
 	public function register_field( $field )
@@ -19,9 +19,9 @@ class PB_Field_Types
 		$this->fields[ $field->id ] = $field;
 	}
 
-	public function unregister_field( $field_id )
+	public function unregister_field( $id )
 	{
-		unset( $this->fields[ $field_id ] );
+		unset( $this->fields[ $id ] );
 	}
 
 	public function get_fields()
@@ -29,11 +29,11 @@ class PB_Field_Types
 		return $this->fields;
 	}
 
-	public function get_field( $field_id )
+	public function get_field( $id )
 	{
-		if ( isset( $this->fields[ $field_id ] ) ) 
+		if ( isset( $this->fields[ $id ] ) ) 
 		{
-			return $this->fields[ $field_id ];
+			return $this->fields[ $id ];
 		}
 
 		return null;

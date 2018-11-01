@@ -6,12 +6,12 @@ class PB_Widgets
 
 	public function __construct()
 	{
-
+		
 	}
 
 	public function register_widget( $widget )
 	{
-		if ( ! $widget instanceof PB_Widget ) 
+		if ( ! $widget instanceof PB_Field ) 
 		{
 			$widget = new $widget();
 		}
@@ -19,9 +19,9 @@ class PB_Widgets
 		$this->widgets[ $widget->id ] = $widget;
 	}
 
-	public function unregister_widget( $widget_id )
+	public function unregister_widget( $id )
 	{
-		unset( $this->widgets[ $widget_id ] );
+		unset( $this->widgets[ $id ] );
 	}
 
 	public function get_widgets()
@@ -29,11 +29,11 @@ class PB_Widgets
 		return $this->widgets;
 	}
 
-	public function get_widget( $widget_id )
+	public function get_widget( $id )
 	{
-		if ( isset( $this->widgets[ $widget_id ] ) ) 
+		if ( isset( $this->widgets[ $id ] ) ) 
 		{
-			return $this->widgets[ $widget_id ];
+			return $this->widgets[ $id ];
 		}
 
 		return null;

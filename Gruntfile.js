@@ -58,8 +58,12 @@ module.exports = function( grunt )
 			{
 				src:
 				[
+					'src/editor/js/event-manager.js',
 					'src/editor/js/main.js',
-					'src/editor/js/widgets.js',
+					'src/editor/js/hooks.js',
+					'src/editor/js/fields.js',
+					'src/editor/js/fields/image.js',
+					'src/editor/js/fields/wysiwyg.js',
 				],
 				
 				dest: 'assets/js/editor.js',
@@ -142,6 +146,6 @@ module.exports = function( grunt )
 	grunt.loadNpmTasks( 'grunt-contrib-copy' );
 	grunt.loadNpmTasks( 'grunt-contrib-watch' );
 
-	grunt.registerTask( 'dist', [ 'copy', 'sass', 'postcss', 'cssmin', 'concat', 'uglify' ] );
 	grunt.registerTask( 'default', ['watch'] );
+	grunt.registerTask( 'dist', [ 'copy', 'sass', 'postcss', 'cssmin', 'concat', 'uglify' ] );
 };

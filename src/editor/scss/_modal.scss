@@ -1,21 +1,20 @@
 /**
  * Modal
  */
- 
+
 html.with-featherlight 
 {
 	/* disable global scrolling when pb-modals are visible */
 	overflow: hidden;
 }
 
-.pb-modal 
-{
+.pb-modal {
 	display: none;
 
 	/* dimensions: spanning the background from edge to edge */
 	position:fixed;
 	top: 0; right: 0; bottom: 0; left: 0;
-	z-index: $modal-z-index; /* z-index needs to be >= elements on the site. */
+	z-index: 2147483647; /* z-index needs to be >= elements on the site. */
 
 	/* position: centering content */
 	text-align: center;
@@ -28,11 +27,11 @@ html.with-featherlight
 	background: #333;
 	/* IE8 "hack" for nested pb-modals */
 	background: rgba(0, 0, 0, 0);
-	
+
+	/* support for nested pb-modals. Does not work in IE8 (use JS to fix) */
 	&:last-of-type 
 	{
-		/* support for nested pb-modals. Does not work in IE8 (use JS to fix) */
-		background: rgba( $modal-backdrop-color, $modal-backdrop-opacity );
+		background: rgba(0, 0, 0, 0.8);
 	}
 
 	&:before 
@@ -44,25 +43,17 @@ html.with-featherlight
 		vertical-align: middle;
 	}
 
-	h2
+	* 
 	{
-		margin: (-$modal-padding-y) (-$modal-padding-x) $modal-padding-y;
-    	padding: 0 ( $modal-padding-x + $pb-modal-close-size ) 0 $modal-padding-x;
-
-    	font-size: $modal-title-font-size;
-    	line-height: $modal-title-line-height;
-
-    	overflow: hidden;
-	    white-space: nowrap;
-	    text-overflow: ellipsis;
-
-    	border-bottom: 1px solid #ddd;
-    	background-color: #FCFCFC;
+		/* See https://github.com/noelboss/pb-modal/issues/42 */
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;
 	}
 
-	p.submit
+	iframe 
 	{
-		text-align: right;
+		border: none;
 	}
 }
 
@@ -78,8 +69,8 @@ html.with-featherlight
 
 	/* dimensions: cut off images */
 	overflow: auto;
-	padding: $modal-padding-y $modal-padding-x 0;
-	border-bottom: $modal-padding-y solid transparent;
+	padding: 25px 25px 0;
+	border-bottom: 25px solid transparent;
 
 	/* dimensions: handling large content */
 	margin-left: 5%;
@@ -92,8 +83,6 @@ html.with-featherlight
 
 	/* reset white-space wrapping */
 	white-space: normal;
-
-	box-shadow: 0 5px 15px rgba(0,0,0,0.7);
 }
 
 /* contains the content */
@@ -119,43 +108,26 @@ style.pb-modal-inner
 	top: 0;
 	right: 0;
 
-	/* dimensions */
-	line-height: $pb-modal-close-size;
-	width: $pb-modal-close-size;
+	/* dimensions: 25px x 25px */
+	line-height: 25px;
+	width: 25px;
 
 	/* styling */
 	cursor: pointer;
-	outline: none;
 	text-align: center;
 	font-family: Arial, sans-serif;
-	background: transparent; /* Set the background in case it overlaps the content */
-	color: #666;
+	background: #fff; /* Set the background in case it overlaps the content */
+	background: rgba(255, 255, 255, 0.3);
+	color: #000;
 	border: none;
 	padding: 0;
 
-    transition: color .1s ease-in-out, background .1s ease-in-out;
-
-    &:before
-    {
-    	content: "\f158";
-	    font: normal 20px/1 dashicons;
-	    speak: none;
-	    vertical-align: middle;
-	    -webkit-font-smoothing: antialiased;
-	    -moz-osx-font-smoothing: grayscale;
-    }
-
-    &:hover
-    {
-    	color: #00a0d2;
-    }
-}
-
-/* See http://stackoverflow.com/questions/16077341/how-to-reset-all-default-styles-of-the-html5-button-element */
-.pb-modal-close-icon::-moz-focus-inner 
-{
+	/* See http://stackoverflow.com/questions/16077341/how-to-reset-all-default-styles-of-the-html5-button-element */
+	&::-moz-focus-inner 
+	{
 	border: 0;
 	padding: 0;
+	}
 }
 
 .pb-modal-image 
@@ -172,20 +144,8 @@ style.pb-modal-inner
 	-webkit-overflow-scrolling: touch;
 }
 
-.pb-modal iframe 
-{
-	/* styling */
-	border: none;
-}
-
-/* See https://github.com/noelboss/pb-modal/issues/42 */
-.pb-modal * 
-{ 
-	box-sizing: border-box;
-}
-
 /* hide non pb-modal items when printing */
-@media print
+@media print 
 {
 	html.with-featherlight > * > :not( .pb-modal ) 
 	{

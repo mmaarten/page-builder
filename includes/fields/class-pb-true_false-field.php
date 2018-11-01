@@ -1,10 +1,10 @@
 <?php if ( ! defined( 'ABSPATH' ) ) exit; // Exits when accessed directly.
 
-class PB_Text_Field extends PB_Field
+class PB_True_False_Field extends PB_Field
 {
 	public function __construct()
 	{
-		parent::__construct( 'text' );
+		parent::__construct( 'true_false' );
 	}
 
 	public function field( $field )
@@ -28,4 +28,4 @@ class PB_Text_Field extends PB_Field
 	}
 }
 
-pb()->field_types->register_field( 'PB_Text_Field' );
+pb()->field_types->register_field( 'PB_True_False_Field' );
