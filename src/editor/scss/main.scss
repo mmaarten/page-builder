@@ -2,5 +2,18 @@
  * Editor
  */
 
+@import "variables";
+@import "mixins";
+
 @import "modal";
 @import "fields";
+@import "widgets";
+
+.pb-editor
+{
+	.pb-available-widgets
+	{
+		display: none;
+	}
+}
+

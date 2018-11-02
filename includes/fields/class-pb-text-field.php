@@ -7,24 +7,24 @@ class PB_Text_Field extends PB_Field
 		parent::__construct( 'text' );
 	}
 
-	public function field( $field )
-	{
-		return $field;
-	}
-
-	public function prepare( $field )
-	{
-		return $field;
-	}
-
 	public function render( $field )
 	{
-		
+		$atts = array
+		(
+			'type'  => 'text',
+			'id'    => $field['id'],
+			'name'  => $field['name'],
+			'value' => $field['value'],
+		);
+
+		$atts = array_filter( $atts );
+
+		echo '<input' . pb_esc_attr( $atts ) . '>';
 	}
 
 	public function sanitize( $value, $field )
 	{
-		return $value;
+		return sanitize_text_field( $value );
 	}
 }
 

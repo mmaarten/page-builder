@@ -42,3 +42,13 @@ function pb_dropdown_options( $options, $selected = '' )
 			esc_attr( $value ), selected( $value, $selected, false ), esc_html( $text ) );
 	}
 }
+
+function pb_stripslashes( $value )
+{
+	if ( is_array( $value ) ) 
+	{
+		return array_map( 'pb_stripslashes', $value );
+	}
+
+	return stripslashes( $value );
+}

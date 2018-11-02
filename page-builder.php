@@ -23,16 +23,21 @@ class PB
 
 	public function init()
 	{
+		// Enable page builder for pages.
 		add_post_type_support( 'page', PB_POST_TYPE_FEATURE );
 	}
 }
 
 require_once plugin_dir_path( PB_FILE ) . 'includes/common.php';
+require_once plugin_dir_path( PB_FILE ) . 'includes/fields.php';
+require_once plugin_dir_path( PB_FILE ) . 'includes/editor.php';
 
 require_once plugin_dir_path( PB_FILE ) . 'includes/field-types.php';
 require_once plugin_dir_path( PB_FILE ) . 'includes/fields/class-pb-field.php';
+require_once plugin_dir_path( PB_FILE ) . 'includes/fields/class-pb-group-field.php';
 require_once plugin_dir_path( PB_FILE ) . 'includes/fields/class-pb-editor-field.php';
 require_once plugin_dir_path( PB_FILE ) . 'includes/fields/class-pb-image-field.php';
+require_once plugin_dir_path( PB_FILE ) . 'includes/fields/class-pb-message-field.php';
 require_once plugin_dir_path( PB_FILE ) . 'includes/fields/class-pb-number-field.php';
 require_once plugin_dir_path( PB_FILE ) . 'includes/fields/class-pb-select-field.php';
 require_once plugin_dir_path( PB_FILE ) . 'includes/fields/class-pb-text-field.php';
@@ -49,6 +54,3 @@ require_once plugin_dir_path( PB_FILE ) . 'includes/widgets/class-pb-html-widget
 require_once plugin_dir_path( PB_FILE ) . 'includes/widgets/class-pb-image-widget.php';
 require_once plugin_dir_path( PB_FILE ) . 'includes/widgets/class-pb-row-widget.php';
 require_once plugin_dir_path( PB_FILE ) . 'includes/widgets/class-pb-text-widget.php';
-
-require_once plugin_dir_path( PB_FILE ) . 'includes/fields.php';
-require_once plugin_dir_path( PB_FILE ) . 'includes/editor.php';

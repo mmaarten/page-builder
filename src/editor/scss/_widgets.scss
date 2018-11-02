@@ -1,0 +1,172 @@
+/**
+ * Widgets
+ */
+
+.pb-widget
+{
+	margin: 15px auto 0;
+    position: relative;
+    box-sizing: border-box;
+
+    &.ui-sortable-helper 
+    {
+        opacity: 0.8;
+    }
+
+    &.closed
+    {
+        > .pb-widget-inside
+        {
+            display: none;
+        }
+    }
+}
+
+.pb-widget-top
+{
+	display: flex;
+	flex-wrap: nowrap;
+	align-items: center;
+
+    color: #23282d;
+    font-size: 13px;
+    line-height: 1.4em;
+    font-weight: 600;
+    border: 1px solid #e5e5e5;
+    background: #fafafa;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.04);
+
+    &:hover
+    {
+    	border-color: #999;
+    	box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+    }
+
+	.js &
+	{
+		    cursor: move;
+	}
+}
+
+.pb-widget-title
+{
+	width: 100%;
+	margin: 0;
+    padding: 15px;
+    font-size: 1em;
+    line-height: 1;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    user-select: none;
+}
+
+.pb-widget-controls
+{
+	display: flex;
+	flex-wrap: nowrap;
+	align-items: center;
+
+	padding-right: 10px;
+}
+
+.pb-widget-control
+{
+	color: #72777c;
+	padding: 5px;
+	border: none;
+    background: none;
+    outline: none;
+    cursor: pointer;
+
+    &:hover
+    {
+    	color: inherit;
+    }
+}
+
+.pb-widget-inside
+{
+    padding: 1px 15px 15px 15px;
+    line-height: 16px;
+    border: 1px solid #e5e5e5;
+    border-top: none;
+    background: #fff;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.04);
+}
+
+.pb-widget-preview
+{
+	user-select: none;
+}
+
+.pb-widget-meta
+{
+    margin: 15px 0 0;
+    padding: 0;
+    list-style: none;
+    display: block;
+
+    > li
+    {
+        display: inline;
+        margin: 0;
+        padding: 0;
+
+        &:not( :last-child )
+        {
+            &:after
+            {
+                content: ', ';
+            }
+        }
+    }
+}
+
+.pb-widget-container
+{
+	
+}
+
+.pb-widget-description
+{
+	display: none;
+}
+
+.pb-widget-placeholder 
+{
+    border: 1px dashed #b4b9be;
+    margin: 15px auto 0;
+    height: 45px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.pb-add-widget-control
+{
+    border: 1px dashed #b4b9be;
+    margin: 15px auto 0;
+    height: 45px;
+    width: 100%;
+    box-sizing: border-box;
+
+    &:hover
+    {
+        border-color: #999;
+    }
+
+    .js &
+    {
+        cursor: pointer;
+    }
+}
+
+.pb-toggle-indicator
+{
+	@include make-dashicon( "\f142" );
+
+    .closed &:before
+    {
+    	content: "\f140";
+    }
+}

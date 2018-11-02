@@ -1,5 +1,9 @@
+@charset "UTF-8";
 /*!
  * Editor
+ */
+/**
+ * Variables
  */
 /**
  * Modal
@@ -28,10 +32,10 @@ html.with-featherlight {
   background: #333;
   /* IE8 "hack" for nested pb-modals */
   background: rgba(0, 0, 0, 0);
-  /* support for nested pb-modals. Does not work in IE8 (use JS to fix) */
 }
 .pb-modal:last-of-type {
-  background: rgba(0, 0, 0, 0.8);
+  /* support for nested pb-modals. Does not work in IE8 (use JS to fix) */
+  background: rgba(0, 0, 0, 0.7);
 }
 .pb-modal:before {
   /* position: trick to center content vertically */
@@ -40,13 +44,19 @@ html.with-featherlight {
   height: 100%;
   vertical-align: middle;
 }
-.pb-modal * {
-  /* See https://github.com/noelboss/pb-modal/issues/42 */
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
+.pb-modal h1 {
+  margin: -20px -20px 20px;
+  padding: 0 70px 0 20px;
+  font-size: 22px;
+  line-height: 50px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  border-bottom: 1px solid #ddd;
+  background-color: #FCFCFC;
 }
-.pb-modal iframe {
-  border: none;
+.pb-modal p.submit {
+  text-align: right;
 }
 
 .pb-modal-content {
@@ -58,8 +68,8 @@ html.with-featherlight {
   display: inline-block;
   /* dimensions: cut off images */
   overflow: auto;
-  padding: 25px 25px 0;
-  border-bottom: 25px solid transparent;
+  padding: 20px 20px 0;
+  border-bottom: 20px solid transparent;
   /* dimensions: handling large content */
   margin-left: 5%;
   margin-right: 5%;
@@ -69,6 +79,8 @@ html.with-featherlight {
   cursor: auto;
   /* reset white-space wrapping */
   white-space: normal;
+  -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.7);
+          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.7);
 }
 
 /* contains the content */
@@ -90,21 +102,35 @@ style.pb-modal-inner {
   z-index: 9999;
   top: 0;
   right: 0;
-  /* dimensions: 25px x 25px */
-  line-height: 25px;
-  width: 25px;
+  /* dimensions */
+  line-height: 50px;
+  width: 50px;
   /* styling */
   cursor: pointer;
+  outline: none;
   text-align: center;
   font-family: Arial, sans-serif;
-  background: #fff;
+  background: transparent;
   /* Set the background in case it overlaps the content */
-  background: rgba(255, 255, 255, 0.3);
-  color: #000;
+  color: #666;
   border: none;
   padding: 0;
-  /* See http://stackoverflow.com/questions/16077341/how-to-reset-all-default-styles-of-the-html5-button-element */
+  -webkit-transition: color .1s ease-in-out, background .1s ease-in-out;
+  transition: color .1s ease-in-out, background .1s ease-in-out;
 }
+.pb-modal-close-icon:before {
+  content: "\f158";
+  font: normal 20px/1 dashicons;
+  speak: none;
+  vertical-align: middle;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.pb-modal-close-icon:hover {
+  color: #00a0d2;
+}
+
+/* See http://stackoverflow.com/questions/16077341/how-to-reset-all-default-styles-of-the-html5-button-element */
 .pb-modal-close-icon::-moz-focus-inner {
   border: 0;
   padding: 0;
@@ -122,6 +148,17 @@ style.pb-modal-inner {
   -webkit-overflow-scrolling: touch;
 }
 
+.pb-modal iframe {
+  /* styling */
+  border: none;
+}
+
+/* See https://github.com/noelboss/pb-modal/issues/42 */
+.pb-modal * {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
 /* hide non pb-modal items when printing */
 @media print {
   html.with-featherlight > * > :not(.pb-modal) {
@@ -137,16 +174,6 @@ style.pb-modal-inner {
   padding: 0;
   vertical-align: top;
   font-weight: bold;
-}
-
-.pb-fields > .pb-field {
-  position: relative;
-  margin: 0;
-  padding: 15px 12px;
-  border-top: #EEEEEE solid 1px;
-}
-.pb-fields > .pb-field:first-child {
-  border-top-width: 0;
 }
 
 .pb-field input[type="text"],
@@ -180,15 +207,195 @@ style.pb-modal-inner {
   padding: 0;
 }
 
-.postbox#pb-editor-meta-box > .inside {
-  margin: 0 !important;
-  padding: 0 !important;
+.pb-fields > .pb-field {
+  position: relative;
+  margin: 0;
+  padding: 15px 12px;
+  border-top: #eee solid 1px;
+}
+.pb-fields > .pb-field:first-child {
+  border-top-width: 0;
+}
+.pb-modal .pb-fields {
+  margin-left: -20px;
+  margin-right: -20px;
+}
+.pb-modal .pb-fields > .pb-field {
+  padding: 15px 20px;
+  border-top: none;
+  border-bottom: #eee solid 1px;
+}
+
+.pb-sub-fields > .pb-field {
+  margin-top: 15px;
+}
+.pb-sub-fields > .pb-field:first-child {
+  margin-top: 0;
 }
 
 .pb-field-wysiwyg .mce-tinymce {
   border: 1px solid #E5E5E5;
   -webkit-box-shadow: none;
           box-shadow: none;
+}
+
+/**
+ * Widgets
+ */
+.pb-widget {
+  margin: 15px auto 0;
+  position: relative;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+.pb-widget.ui-sortable-helper {
+  opacity: 0.8;
+}
+.pb-widget.closed > .pb-widget-inside {
+  display: none;
+}
+
+.pb-widget-top {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #23282d;
+  font-size: 13px;
+  line-height: 1.4em;
+  font-weight: 600;
+  border: 1px solid #e5e5e5;
+  background: #fafafa;
+  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
+          box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
+}
+.pb-widget-top:hover {
+  border-color: #999;
+  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+.js .pb-widget-top {
+  cursor: move;
+}
+
+.pb-widget-title {
+  width: 100%;
+  margin: 0;
+  padding: 15px;
+  font-size: 1em;
+  line-height: 1;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.pb-widget-controls {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-right: 10px;
+}
+
+.pb-widget-control {
+  color: #72777c;
+  padding: 5px;
+  border: none;
+  background: none;
+  outline: none;
+  cursor: pointer;
+}
+.pb-widget-control:hover {
+  color: inherit;
+}
+
+.pb-widget-inside {
+  padding: 1px 15px 15px 15px;
+  line-height: 16px;
+  border: 1px solid #e5e5e5;
+  border-top: none;
+  background: #fff;
+  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
+          box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
+}
+
+.pb-widget-preview {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.pb-widget-meta {
+  margin: 15px 0 0;
+  padding: 0;
+  list-style: none;
+  display: block;
+}
+.pb-widget-meta > li {
+  display: inline;
+  margin: 0;
+  padding: 0;
+}
+.pb-widget-meta > li:not(:last-child):after {
+  content: ', ';
+}
+
+.pb-widget-description {
+  display: none;
+}
+
+.pb-widget-placeholder {
+  border: 1px dashed #b4b9be;
+  margin: 15px auto 0;
+  height: 45px;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.pb-add-widget-control {
+  border: 1px dashed #b4b9be;
+  margin: 15px auto 0;
+  height: 45px;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+.pb-add-widget-control:hover {
+  border-color: #999;
+}
+.js .pb-add-widget-control {
+  cursor: pointer;
+}
+
+.pb-toggle-indicator:before {
+  content: "";
+  display: inline-block;
+  font: normal 20px/1 dashicons;
+  speak: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-decoration: none !important;
+}
+.closed .pb-toggle-indicator:before {
+  content: "\f140";
+}
+
+.pb-editor .pb-available-widgets {
+  display: none;
 }
 
 /*# sourceMappingURL=editor.css.map */

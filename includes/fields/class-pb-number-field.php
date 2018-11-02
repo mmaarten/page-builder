@@ -9,22 +9,44 @@ class PB_Number_Field extends PB_Field
 
 	public function field( $field )
 	{
-		return $field;
-	}
+		$defaults = array
+		(
+			'min'   => '',
+			'max'   => '',
+			'step'  => '',
+		);
 
-	public function prepare( $field )
-	{
+		$field = wp_parse_args( $field, $defaults );
+
 		return $field;
 	}
 
 	public function render( $field )
 	{
-		
+		$atts = array
+		(
+			'type'  => 'number',
+			'id'    => $field['id'],
+			'name'  => $field['name'],
+			'value' => $field['value'],
+			'min'   => $field['min'],
+			'max'   => $field['max'],
+			'step'  => $field['step'],
+		);
+
+		$atts = array_filter( $atts );
+
+		echo '<input' . pb_esc_attr( $atts ) . '>';
 	}
 
 	public function sanitize( $value, $field )
 	{
-		return $value;
+		return intval( $value );
+	}
+
+	public function translate( $value, $field )
+	{
+		return intval( $value );
 	}
 }
 

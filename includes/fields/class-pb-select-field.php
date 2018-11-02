@@ -9,22 +9,44 @@ class PB_Select_Field extends PB_Field
 
 	public function field( $field )
 	{
-		return $field;
-	}
+		if ( ! isset( $field['choices'] ) || ! is_array( $field['choices'] ) ) 
+		{
+			$field['choices'] = array();
+		}
 
-	public function prepare( $field )
-	{
 		return $field;
 	}
 
 	public function render( $field )
 	{
-		
+		$atts = array
+		(
+			'id'    => $field['id'],
+			'name'  => $field['name'],
+		);
+
+		$atts = array_filter( $atts );
+
+		echo '<select' . pb_esc_attr( $atts ) . '>';
+
+		pb_dropdown_options( $field['choices'], $field['value'] );
+
+		echo '</select>';
 	}
 
 	public function sanitize( $value, $field )
 	{
 		return $value;
+	}
+
+	public function translate( $value, $field )
+	{
+		if ( isset( $field['choices'][ $value ] ) ) 
+		{
+			$value = $field['choices'][ $value ];
+		}
+
+		return esc_html( $value );
 	}
 }
 

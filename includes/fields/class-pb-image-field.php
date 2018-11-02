@@ -24,7 +24,12 @@ class PB_Image_Field extends PB_Field
 
 	public function sanitize( $value, $field )
 	{
-		return $value;
+		if ( $value && get_post_type( $value ) == 'attachment' ) 
+		{
+			return $value;
+		}
+
+		return 0;
 	}
 }
 
