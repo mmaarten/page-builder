@@ -27,12 +27,19 @@ class PB_Fields
 			'description_placement' => 'field',
 			'type'                  => '',
 			'default_value'         => '',
+			'wrapper'               => array
+			(
+				'id'    => '',
+				'class' => '',
+				'width' => '',
+			),
 			'order'                 => 0,
 			'group'                 => '',
 		);
 
 		// Create
-		$field = wp_parse_args( $args, $defaults );
+		$field            = wp_parse_args( $args, $defaults );
+		$field['wrapper'] = wp_parse_args( $field['wrapper'], $defaults['wrapper'] );
 
 		// Extend
 		$field = apply_filters( "pb/field/type={$field['type']}", $field );
@@ -89,7 +96,7 @@ class PB_Fields
 
 		$wrapper = array
 		(
-			'class'     => "pb-field",
+			'class'     => 'pb-field',
 			'data-key'  => $field['key'],
 			'data-type' => $field['type'],
 		);
@@ -99,7 +106,24 @@ class PB_Fields
 			$wrapper['class'] .= " pb-field-{$field['key']}";
 		}
 
+		if ( $field['wrapper']['id'] ) 
+		{
+			$wrapper['id'] .= $field['wrapper']['id'];
+		}
+
+		if ( $field['wrapper']['class'] ) 
+		{
+			$wrapper['class'] .= ' ' . $field['wrapper']['class'];
+		}
+
+		if ( $field['wrapper']['width'] ) 
+		{
+			$wrapper['style'] = sprintf( 'flex-basis:%1$d%%; max-width:%1$d%%;', $field['wrapper']['width'] );
+		}
+
 		$wrapper = array_filter( $wrapper );
+
+		// Output
 
 		?>
 
@@ -122,11 +146,13 @@ class PB_Fields
 
 	public function render_field_description( $field, $context )
 	{
+		// Check description and context
 		if ( ! $field['description'] || $context != $field['description_placement'] ) 
 		{
 			return;
 		}
 
+		// Output
 		echo '<p class="description">' . $field['description'] . '</p>' . "\n";
 	}
 
@@ -140,7 +166,7 @@ class PB_Fields
 		}
 
 		// Sort fields
-		usort( $fields, 'pb_sort_order' );
+		uasort( $fields, 'pb_sort_order' );
 
 		?>
 

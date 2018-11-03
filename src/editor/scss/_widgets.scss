@@ -4,7 +4,9 @@
 
 .pb-widget
 {
-	margin: 15px auto 0;
+    // Don't set left and right margins for column widget
+	margin-top: 15px; 
+    
     position: relative;
     box-sizing: border-box;
 
@@ -170,3 +172,34 @@
     	content: "\f140";
     }
 }
+
+#pb-widget-settings-modal
+{
+    h1
+    {
+        margin-bottom: 0;
+    }
+
+    .pb-fields
+    {
+        > .nav-tab-wrapper
+        {
+            border: none;
+            padding: 0;
+            background: #e5e5e5;
+
+            .nav-tab
+            {
+                border: none;
+                margin-left: 0;
+                padding: 12px 20px;
+
+                &.nav-tab-active
+                {
+                    background-color: #fff;
+                }
+            }
+        }
+    }
+}
+

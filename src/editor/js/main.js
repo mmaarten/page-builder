@@ -21,7 +21,7 @@
 			this.$elem   = $( elem );
 			this.options = $.extend( {}, this.defaultOptions, options );
 
-			console.log( this.options );
+			console.log( 'init', this.options );
 
 			this.$elem.on( 'click', '.pb-widget-add-control', function( event )
 			{
@@ -32,24 +32,40 @@
 				{
 					// Add choosen widget
 					$widget.find( '> .pb-widget-inside > .pb-widget-container' ).append( $choosen );
+
+					pb.doAction( 'widgetAdded' + $choosen.data( 'type' ), $choosen );
+					pb.doAction( 'widgetAdded/type=' + $choosen.data( 'type' ), $choosen );
 				});
 			});
 
 			this.$elem.on( 'click', '.pb-widget-edit-control', function( event )
 			{
+				// Get widget
 				var $widget = $( this ).closest( '.pb-widget' );
 
+				// Load settings
 				pb.widgetSettings( $widget );
 			});
 
 			this.$elem.on( 'click', '.pb-widget-copy-control', function( event )
 			{
+				// Get widget
 				var $widget = $( this ).closest( '.pb-widget' );
+
+				// Create copy
+				var $duplicate = pb.duplicateWidget( $widget );
+
+				// Add copy to DOM
+				$duplicate.insertAfter( $widget );
 			});
 
 			this.$elem.on( 'click', '.pb-widget-delete-control', function( event )
 			{
+				// Get widget
 				var $widget = $( this ).closest( '.pb-widget' );
+
+				// Remove widget
+				pb.removeWidget( $widget );
 			});
 
 			this.$elem.on( 'click', '.pb-widget-toggle-control, .pb-widget-title', function( event )
@@ -66,6 +82,9 @@
 				{
 					// Add choosen widget
 					pb.$elem.find( '.pb-widgets' ).append( $choosen );
+
+					pb.doAction( 'widgetAdded' + $choosen.data( 'type' ), $choosen );
+					pb.doAction( 'widgetAdded/type=' + $choosen.data( 'type' ), $choosen );
 				});
 			});
 
@@ -95,6 +114,11 @@
 				pb.loadWidgetPreview();
 			});
 
+			this.addAction( 'widgetUpdated', function( $widget )
+			{
+				pb.loadWidgetPreview( $widget );
+			});
+
 			// Widget Sorting
 			this.$elem.find( '.pb-widgets' ).sortable(
 			{
@@ -108,8 +132,10 @@
 				refreshPositions: true,
 			});
 
+			// Notify init
 			this.doAction( 'init' );
 
+			// Load
 			this.load();
 		},
 
@@ -133,6 +159,20 @@
 			};
 
 			return data;
+		},
+
+		modal : function( content, options )
+		{
+			var defaults = 
+			{
+				namespace : 'pb-modal',
+				closeIcon : '',
+			};
+
+			options = $.extend( {}, defaults, options );
+
+			// Open modal
+			$.featherlight( content, options );
 		},
 
 		addAction : function()
@@ -199,9 +239,16 @@
 				data : defaultData,
 			};
 
-			var model = $.extend( {}, defaults, args );
+			var model = $.extend( true, {}, defaults, args );
 
 			return model;
+		},
+
+		getWidgetModel : function( widget )
+		{
+			var id = $( widget ).data( 'model' );
+
+			return this.models[ id ];
 		},
 
 		createWidget : function( model )
@@ -219,20 +266,61 @@
 			}).clone();
 
 			// Set model reference
-			$widget.attr( 'data-model', model.id );
+			$widget.data( 'model', model.id );
+
+			// Extend
+			this.doAction( 'widget', $widget );
+			this.doAction( 'widget/type=' + $widget.data( 'type' ), $widget );
 
 			// Return
 			return $widget;
 		},
 
-		duplicateWidget : function( model )
+		duplicateWidget : function( widget )
 		{
+			var $duplicate = $( widget ).clone( true );
 
+			// Copy models
+			$duplicate.find( '.pb-widget' ).addBack().each( function()
+			{
+				var modelId = $( this ).data( 'model' );
+
+				var copy = $.extend( {}, pb.models[ modelId ] );
+
+				// Generate id
+				delete copy.id;
+				copy = pb.createModel( copy );
+
+				// Register
+				pb.models[ copy.id ] = copy;
+
+				// Set reference
+				$( this ).data( 'model', copy.id );
+			});
+
+			return $duplicate;
 		},
 
-		removeWidget : function( model )
+		removeWidget : function( widget )
 		{
+			var $widget = $( widget );
 
+			// Remove models
+			$widget.find( '.pb-widget' ).addBack().each( function()
+			{
+				var modelId = $( this ).data( 'model' );
+
+				delete pb.models[ modelId ];
+
+				$.removeData( this, 'model' );
+			});
+
+			$widget.remove();
+
+			pb.doAction( 'widgetRemoved', $widget );
+			pb.doAction( 'widgetRemoved/type=' + $widget.data( 'type' ), $widget );
+
+			return $widget;
 		},
 
 		widgetPicker : function( parentWidget, callback )
@@ -250,13 +338,15 @@
 				success : function( content )
 				{
 					// Open modal
-					$.featherlight( content, 
+					pb.modal( content, 
 					{
-						namespace : 'pb-modal',
-						closeIcon : '',
 						afterContent : function()
 						{
 							var modal = this;
+
+							// Set modal id
+							this.$content.closest( '.pb-modal' )
+								.attr( 'id', 'pb-widget-picker-modal' );
 
 							// Widget click
 							this.$content.on( 'click', '.pb-widget', function()
@@ -297,13 +387,15 @@
 				success : function( content )
 				{
 					// Open modal
-					$.featherlight( content, 
+					pb.modal( content, 
 					{
-						namespace : 'pb-modal',
-						closeIcon : '',
 						afterContent : function()
 						{
 							var modal = this;
+
+							// Set modal id
+							this.$content.closest( '.pb-modal' )
+								.attr( 'id', 'pb-widget-settings-modal' );
 
 							// Form submit
 							this.$content.on( 'submit', 'form', function( event )
@@ -326,6 +418,9 @@
 
 										pb.models[ model.id ] = updated;
 
+										pb.doAction( 'widgetUpdated', $widget );
+										pb.doAction( 'widgetUpdated/type=' + $widget.data( 'type' ), $widget );
+
 										// Close modal
 										modal.close();
 									},
@@ -333,6 +428,7 @@
 							});
 
 							pb.doAction( 'widgetSettings', this.$content, $widget );
+							pb.doAction( 'widgetSettings/type=' + $widget.data( 'type' ), this.$content, $widget );
 						},
 					});
 				},
@@ -497,28 +593,28 @@
 
 			var setActiveTab = function( index )
 			{
-				var $active = $nav.find( '.nav-tab-active' );
+				var $active = $nav.find( '.active' );
 
 				if ( $active.length ) 
 				{
-					$active.removeClass( 'nav-tab-active' )
+					$active.removeClass( 'active' )
 						.data( 'field' ).nextUntil( '[data-type="tab"]' )
 							.hide();
 				};
 
-				var $tab = $nav.find( '.nav-tab' ).eq( index );
+				var $tab = $nav.find( '.pb-nav-item' ).eq( index );
 
-				$tab.addClass( 'nav-tab-active' )
+				$tab.addClass( 'active' )
 					.data( 'field' ).nextUntil( '[data-type="tab"]' )
 						.show();
 			};
 
-			var $nav = $( '<h2 class="nav-tab-wrapper"></h2>' );
+			var $nav = $( '<nav class="pb-nav"></nav>' );
 
 			$tabFields.each( function()
 			{
 				var $field = $( this );
-				var $tab   = $( '<a href="#" class="nav-tab"></a>' );
+				var $tab   = $( '<a href="#" class="pb-nav-item pb-nav-link"></a>' );
 
 				$tab
 					.text( $field.find( '> .pb-label' ).text() )
@@ -533,10 +629,12 @@
 				$nav.append( $tab );
 			});
 
-			$nav.insertBefore( $tabFields.first() );
+			var $field = $( '<div class="pb-field" data-type="tabnav"></div>' );
+			$field.append( $nav );
+			$field.insertBefore( $tabFields.first() );
 
 			setActiveTab( 0 );
 		});
 	});
 
-})( jQuery );
+})( jQuery, window, undefined );

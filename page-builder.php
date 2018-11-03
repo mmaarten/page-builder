@@ -13,6 +13,8 @@ Domain Path: /languages
 define( 'PB_FILE'      , __FILE__ );
 define( 'PB_NONCE_NAME', 'pbnonce' );
 define( 'PB_POST_TYPE_FEATURE', 'page-builder' );
+define( 'PB_CHOICE_DONT_SET', __( "Don't set" ) );
+define( 'PB_CHOICE_INHERIT' , __( 'Inherit from smaller' ) );
 
 class PB 
 {
@@ -32,6 +34,9 @@ require_once plugin_dir_path( PB_FILE ) . 'includes/common.php';
 require_once plugin_dir_path( PB_FILE ) . 'includes/fields.php';
 require_once plugin_dir_path( PB_FILE ) . 'includes/editor.php';
 
+require_once plugin_dir_path( PB_FILE ) . 'includes/class-pb-supportable.php';
+
+// Field types
 require_once plugin_dir_path( PB_FILE ) . 'includes/field-types.php';
 require_once plugin_dir_path( PB_FILE ) . 'includes/fields/class-pb-field.php';
 require_once plugin_dir_path( PB_FILE ) . 'includes/fields/class-pb-group-field.php';
@@ -45,6 +50,15 @@ require_once plugin_dir_path( PB_FILE ) . 'includes/fields/class-pb-textarea-fie
 require_once plugin_dir_path( PB_FILE ) . 'includes/fields/class-pb-true_false-field.php';
 require_once plugin_dir_path( PB_FILE ) . 'includes/fields/class-pb-url-field.php';
 
+// Features
+require_once plugin_dir_path( PB_FILE ) . 'includes/features.php';
+require_once plugin_dir_path( PB_FILE ) . 'includes/features/class-pb-feature.php';
+require_once plugin_dir_path( PB_FILE ) . 'includes/features/class-pb-class-feature.php';
+require_once plugin_dir_path( PB_FILE ) . 'includes/features/class-pb-id-feature.php';
+require_once plugin_dir_path( PB_FILE ) . 'includes/features/class-pb-margin-feature.php';
+require_once plugin_dir_path( PB_FILE ) . 'includes/features/class-pb-padding-feature.php';
+
+// Widgets
 require_once plugin_dir_path( PB_FILE ) . 'includes/widgets.php';
 require_once plugin_dir_path( PB_FILE ) . 'includes/widgets/class-pb-widget.php';
 require_once plugin_dir_path( PB_FILE ) . 'includes/widgets/class-pb-button-widget.php';

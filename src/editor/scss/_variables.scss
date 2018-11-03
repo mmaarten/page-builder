@@ -11,6 +11,13 @@ $pb-modal-close-size: 		50px !default;
 $modal-backdrop-color: 		#000 !default;
 $modal-backdrop-opacity: 	0.7 !default;
 
+$theme-colors: (
+  primary   : #0073aa,
+  secondary : #00a0d2,
+  teriary   : #333,
+  quaternary: #222,
+) !default;
+
 $grid-breakpoints: (
   xs: 0,
   sm: 401px,

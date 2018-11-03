@@ -7,7 +7,10 @@ class PB_Button_Widget extends PB_Widget
 		parent::__construct( 'button', __( 'Button' ), array
 		(
 			'description' => __( 'Displays a button.' ),
+			'features'    => array( 'id', 'class', 'mt', 'mr', 'mb', 'ml' ),
 		));
+
+		// General
 
 		$this->add_field( array
 		(
@@ -43,6 +46,24 @@ class PB_Button_Widget extends PB_Widget
 
 		$this->add_field( array
 		(
+			'key'           => "{$this->id}_toggle",
+			'name'          => 'toggle',
+			'label'         => __( 'Toggle' ),
+			'description'   => '',
+			'type'          => 'select',
+			'choices'       => array
+			(
+				''         => __( "- Don't toggle -" ),
+				'modal'    => __( 'Modal' ),
+				'collapse' => __( 'Collapse' ),
+			),
+			'default_value' => '',
+		));
+
+		// Layout
+
+		$this->add_field( array
+		(
 			'key'           => "{$this->id}_type",
 			'name'          => 'type',
 			'label'         => __( 'Type' ),
@@ -61,6 +82,7 @@ class PB_Button_Widget extends PB_Widget
 				'link'      => __( 'Link' ),
 			),
 			'default_value' => 'primary',
+			'category'      => 'layout',
 			'preview'       => true,
 		));
 
@@ -72,6 +94,7 @@ class PB_Button_Widget extends PB_Widget
 			'description'   => '',
 			'type'          => 'true_false',
 			'default_value' => 0,
+			'category'      => 'layout',
 		));
 
 		$this->add_field( array
@@ -88,22 +111,7 @@ class PB_Button_Widget extends PB_Widget
 				'lg' => __( 'Large' ),
 			),
 			'default_value' => 'md',
-		));
-
-		$this->add_field( array
-		(
-			'key'           => "{$this->id}_toggle",
-			'name'          => 'toggle',
-			'label'         => __( 'Toggle' ),
-			'description'   => '',
-			'type'          => 'select',
-			'choices'       => array
-			(
-				''         => __( "- Don't toggle -" ),
-				'modal'    => __( 'Modal' ),
-				'collapse' => __( 'Collapse' ),
-			),
-			'default_value' => '',
+			'category'      => 'layout',
 		));
 	}
 }

@@ -1,6 +1,6 @@
 <?php if ( ! defined( 'ABSPATH' ) ) exit; // Exits when accessed directly.
 
-class PB_Widget
+class PB_Widget extends PB_Supportable
 {
 	public $id          = null;
 	public $title       = null;
@@ -9,9 +9,12 @@ class PB_Widget
 
 	public function __construct( $id, $title, $args = array() )
 	{
+		parent::__construct();
+
 		$defaults = array
 		(
 			'description' => '',
+			'features'    => array(),
 		);
 
 		$args = wp_parse_args( $args, $defaults );
@@ -21,12 +24,19 @@ class PB_Widget
 		$this->description = $args['description'];
 		$this->field_group = "{$this->id}_widget";
 
+		$this->add_support( $args['features'] );
+
 		do_action( 'pb/widget', $this );
 	}
 
-	public function get_fields()
+	public function get_fields( $search = null )
 	{
-		return pb()->fields->get_fields( array( 'group' => $this->field_group ) );
+		$search = wp_parse_args( $search, array
+		(
+			'group' => $this->field_group,
+		));
+
+		return pb()->fields->get_fields( $search );
 	}
 
 	public function get_defaults()
@@ -46,12 +56,54 @@ class PB_Widget
 		// Defaults
 		$defaults = array
 		(
-			'group'   => $this->field_group,
-			'preview' => false,
+			'group'    => $this->field_group,
+			'preview'  => false,
+			'category' => 'default',
+			'order'    => 0,
 		);
 
 		// Create
 		$field = wp_parse_args( $args, $defaults );
+
+		// Category
+
+		$categories = array
+		(
+			'default'    => array( 'title' => __( 'General' )   , 'order' => 0 ),
+			'layout'     => array( 'title' => __( 'Layout' )    , 'order' => 1000 ),
+			'background' => array( 'title' => __( 'Background' ), 'order' => 2000 ),
+			'spacing'    => array( 'title' => __( 'Spacing' )   , 'order' => 3000 ),
+			'attributes' => array( 'title' => __( 'Attributes' ), 'order' => 4000 ),
+		);
+
+		if ( isset( $categories[ $field['category'] ] ) ) 
+		{
+			$cat_id   = $field['category'];
+			$cat_key  = "{$this->id}_category_{$cat_id}";
+			$category = $categories[ $field['category'] ];
+
+			$cat_field = $this->get_fields( array( 'key' => $cat_key ) );
+			$cat_field = reset( $cat_field );
+
+			if ( ! $cat_field ) 
+			{
+				$cat_field = array
+				(
+					'key'     => $cat_key,
+					'label'   => $category['title'],
+					'type'    => 'tab',
+					'order'   => $category['order'],
+					'group'   => $field['group'],
+					'preview' => false,
+				);
+
+				pb()->fields->add_field( $cat_field );
+			}
+
+			$field['order'] += $cat_field['order'] + 1;
+		}
+
+		// Register field
 
 		pb()->fields->add_field( $field );
 	}

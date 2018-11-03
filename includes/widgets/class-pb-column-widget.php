@@ -2,6 +2,115 @@
 
 class PB_Column_Widget extends PB_Widget
 {
+	public function __construct()
+	{
+		parent::__construct( 'column', __( 'Column' ), array
+		(
+			'description' => __( 'Displays a column.' ),
+			'features'    => array( 'id', 'class', 'mt', 'mr', 'mb', 'ml' ),
+		));
+
+		$this->add_field( array
+		(
+			'key'           => "{$this->id}_cols",
+			'name'          => 'cols',
+			'label'         => __( 'Width' ),
+			'type'          => 'select',
+			'choices'       => $this->get_choices( 'cols' ),
+			'default_value' => 12,
+		));
+
+		$sub_fields = array();
+
+		foreach ( pb_get_grid_breakpoints() as $breakpoint => $format ) 
+		{
+			$choices = $this->get_choices( 'cols' );
+
+			if ( $breakpoint == 'xs' ) 
+			{
+				$choices = $this->get_choices( 'dont_set' );
+			}
+
+			$wrapper = array( 'width' => 25 );
+
+			$sub_fields[] = array
+			(
+				'name'          => "tab_{$breakpoint}",
+				'label'         => $breakpoint,
+				'description'   => '',
+				'type'          => 'tab',
+				'default_value' => '',
+			);
+
+			$sub_fields[] = array
+			(
+				'name'          => "offset_{$breakpoint}",
+				'label'         => __( 'Offset' ),
+				'description'   => '',
+				'type'          => 'select',
+				'choices'       => $this->get_choices( 'dont_set' ),
+				'default_value' => '',
+				'wrapper'       => $wrapper,
+			);
+
+			if ( $breakpoint == 'sm' )
+			{
+				$sub_fields[] = array
+				(
+					'name'          => "cols_{$breakpoint}",
+					'label'         => __( 'Width' ),
+					'type'          => 'message',
+					'message'       => __( "Value from 'width' attribute." ),
+					'wrapper'       => $wrapper,
+				);
+			}
+
+			else
+			{
+				$sub_fields[] = array
+				(
+					'name'          => "cols_{$breakpoint}",
+					'label'         => __( 'Width' ),
+					'description'   => '',
+					'type'          => 'select',
+					'choices'       => $choices,
+					'default_value' => '',
+					'wrapper'       => $wrapper,
+				);
+			}
+
+			$sub_fields[] = array
+			(
+				'name'          => "order_{$breakpoint}",
+				'label'         => __( 'Order' ),
+				'description'   => '',
+				'type'          => 'number',
+				'default_value' => '',
+				'wrapper'       => $wrapper,
+			);
+
+			$sub_fields[] = array
+			(
+				'name'          => "hidden_{$breakpoint}",
+				'label'         => __( 'Hidden' ),
+				'description'   => '',
+				'type'          => 'true_false',
+				'default_value' => 0,
+				'wrapper'       => $wrapper,
+			);
+		}
+
+		$this->add_field( array
+		(
+			'key'           => "{$this->id}_responsiveness",
+			'name'          => 'responsiveness',
+			'label'         => __( 'Responsiveness' ),
+			'description'   => __( 'Set options per screen size.' ),
+			'type'          => 'group',
+			'sub_fields'    => $sub_fields,
+		));
+	}
+
 	public function get_choices( $context )
 	{
 		$choices['cols'] = array
@@ -36,125 +145,6 @@ class PB_Column_Widget extends PB_Widget
 		}
 
 		return false;
-	}
-
-	public function __construct()
-	{
-		parent::__construct( 'column', __( 'Column' ), array
-		(
-			'description' => __( 'Displays a column.' ),
-		));
-
-		$this->add_field( array
-		(
-			'key'           => "{$this->id}_general",
-			'name'          => 'general',
-			'label'         => __( 'General' ),
-			'type'          => 'tab',
-		));
-
-		$this->add_field( array
-		(
-			'key'           => "{$this->id}_cols",
-			'name'          => 'cols',
-			'label'         => __( 'Width' ),
-			'type'          => 'select',
-			'choices'       => $this->get_choices( 'cols' ),
-			'default_value' => 12,
-		));
-
-		$this->add_field( array
-		(
-			'key'           => "{$this->id}_tab_responsiveness",
-			'name'          => 'tab_responsiveness',
-			'label'         => __( 'Responsiveness' ),
-			'type'          => 'tab',
-		));
-
-		$breakpoints = array( 'xs', 'sm', 'md', 'lg', 'xl' );
-
-		$sub_fields = array();
-
-		foreach ( $breakpoints as $breakpoint ) 
-		{
-			$choices = $this->get_choices( 'cols' );
-
-			if ( $breakpoint == 'xs' ) 
-			{
-				$choices = $this->get_choices( 'dont_set' );
-			}
-
-			$sub_fields[] = array
-			(
-				'name'          => "tab_{$breakpoint}",
-				'label'         => $breakpoint,
-				'description'   => '',
-				'type'          => 'tab',
-				'default_value' => '',
-			);
-
-			$sub_fields[] = array
-			(
-				'name'          => "offset_{$breakpoint}",
-				'label'         => __( 'Offset' ),
-				'description'   => '',
-				'type'          => 'select',
-				'choices'       => $this->get_choices( 'dont_set' ),
-				'default_value' => '',
-			);
-
-			if ( $breakpoint == 'sm' )
-			{
-				$sub_fields[] = array
-				(
-					'name'          => "cols_{$breakpoint}",
-					'label'         => __( 'Width' ),
-					'type'          => 'message',
-					'message'       => __( 'Value from general width attribute.' ),
-				);
-			}
-
-			else
-			{
-				$sub_fields[] = array
-				(
-					'name'          => "cols_{$breakpoint}",
-					'label'         => __( 'Width' ),
-					'description'   => '',
-					'type'          => 'select',
-					'choices'       => $choices,
-					'default_value' => '',
-				);
-			}
-
-			$sub_fields[] = array
-			(
-				'name'          => "order_{$breakpoint}",
-				'label'         => __( 'Order' ),
-				'description'   => '',
-				'type'          => 'number',
-				'default_value' => '',
-			);
-
-			$sub_fields[] = array
-			(
-				'name'          => "hidden_{$breakpoint}",
-				'label'         => __( 'Hidden' ),
-				'description'   => '',
-				'type'          => 'true_false',
-				'default_value' => 0,
-			);
-		}
-
-		$this->add_field( array
-		(
-			'key'           => "{$this->id}_responsiveness",
-			'name'          => 'responsiveness',
-			'label'         => '',
-			'description'   => __( 'Set options per screen size.' ),
-			'type'          => 'group',
-			'sub_fields'    => $sub_fields,
-		));
 	}
 }
 

@@ -41,12 +41,22 @@ class PB_Number_Field extends PB_Field
 
 	public function sanitize( $value, $field )
 	{
-		return intval( $value );
+		if ( $value !== '' ) 
+		{
+			return intval( $value );
+		}
+
+		return $value;
 	}
 
 	public function translate( $value, $field )
 	{
-		return intval( $value );
+		if ( $value !== '' ) 
+		{
+			return intval( $value );
+		}
+
+		return $value;
 	}
 }
 

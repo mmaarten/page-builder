@@ -52,3 +52,16 @@ function pb_stripslashes( $value )
 
 	return stripslashes( $value );
 }
+
+function pb_get_grid_breakpoints()
+{
+	return apply_filters( 'pb/grid_breakpoints', array
+	(
+		// slug => css class format
+		'xs' => '%s-%d', 
+		'sm' => '%s-sm-%d', 
+		'md' => '%s-md-%d', 
+		'lg' => '%s-lg-%d', 
+		'xl' => '%s-xl-%d', 
+	));
+}
