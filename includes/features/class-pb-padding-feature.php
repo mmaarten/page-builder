@@ -108,6 +108,25 @@ class PB_Padding_Feature extends PB_Feature
 
 	public function widget_html_attributes( $atts, $widget, $instance )
 	{
+		$features = $this->get_features( $widget );
+
+		if ( $features ) 
+		{
+			foreach ( pb_get_grid_breakpoints() as $breakpoint => $format ) 
+			{
+				foreach ( $features as $feature => $label ) 
+				{
+					$name  = "{$feature}_{$breakpoint}";
+					$value = isset( $instance['padding'][ $name ] ) ? $instance['padding'][ $name ] : null;
+
+					if ( $value ) 
+					{
+						$atts['class'] .= ' ' . sprintf( $format, $feature, $value );
+					}
+				}
+			}
+		}
+
 		return $atts;
 	}
 }

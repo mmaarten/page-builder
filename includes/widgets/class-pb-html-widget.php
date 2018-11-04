@@ -40,6 +40,21 @@ class PB_HTML_Widget extends PB_Widget
 
 		<?php
 	}
+
+	public function render( $args, $instance )
+	{
+		// Instance
+
+		$instance = wp_parse_args( $instance, $this->get_defaults() );
+
+		// Output
+
+		echo $args['before'];
+
+		echo apply_filters( 'the_content', $instance['content'] );
+
+		echo $args['after'];
+	}
 }
 
 pb()->widgets->register_widget( 'PB_HTML_Widget' );

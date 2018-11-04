@@ -29,6 +29,17 @@ class PB_BG_Image_Feature extends PB_Feature
 					'label'         => __( 'Image' ),
 					'description'   => '',
 					'type'          => 'image',
+					'wrapper'       => array( 'width' => 50 ),
+				),
+
+				array
+				(
+					'name'          => 'size',
+					'label'         => __( 'Image Size' ),
+					'description'   => __( "WordPress image size: 'thumbnail', 'large', 'medium', 'small' or custom." ),
+					'type'          => 'text',
+					'default_value' => 'large',
+					'wrapper'       => array( 'width' => 50 ),
 				),
 
 				array
@@ -82,6 +93,49 @@ class PB_BG_Image_Feature extends PB_Feature
 
 	public function widget_html_attributes( $atts, $widget, $instance )
 	{
+		if ( $widget->supports( $this->id ) && isset( $instance['bg_image'] ) ) 
+		{
+			$id       = $instance['bg_image']['id'];
+			$size     = $instance['bg_image']['size'];
+			$type     = $instance['bg_image']['type'];
+			$position = $instance['bg_image']['position'];
+
+			// Image
+
+			if ( $id && get_post_type( $id ) == 'attachment' ) 
+			{
+				list( $image_url ) = wp_get_attachment_image_src( $id, $size );
+
+				$atts['style'] = sprintf( 'background-image: url(%s);', esc_url( $image_url ) );
+			}
+
+			// Type
+
+			if ( $type == 'repeat' || $type == 'repeat-x' || $type == 'repeat-y' || $type == 'no-repeat' ) 
+			{
+				$atts['class'] .= " bg-repeat-$type";
+			}
+
+			else if ( $type == 'cover' || $type == 'contain' )
+			{
+				$atts['class'] .= " bg-size-{$type}";
+			}
+
+			else if ( $type == 'parallax' )
+			{
+				$atts['class'] .= ' parallax';
+			}
+
+			// Position
+
+			if ( $position ) 
+			{
+				$atts['class'] .= " bg-position-{$position}";
+			}
+
+			return $atts;
+		}
+
 		return $atts;
 	}
 }

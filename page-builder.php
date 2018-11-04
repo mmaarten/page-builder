@@ -20,13 +20,33 @@ class PB
 {
 	public function __construct()
 	{
-		add_action( 'init', array( $this, 'init' ) );
+		add_action( 'init'              , array( $this, 'init' ) );
+		add_action( 'wp_enqueue_scripts', array( $this, 'auto_enqueue_scripts' ) );
 	}
 
 	public function init()
 	{
 		// Enable page builder for pages.
 		add_post_type_support( 'page', PB_POST_TYPE_FEATURE );
+	}
+
+	public function auto_enqueue_scripts()
+	{
+		if ( ! pb()->widgets->has_widgets() ) 
+		{
+			return;
+		}
+
+		$this->enqueue_scripts();
+	}
+
+	public function enqueue_scripts()
+	{
+		// Enqueue widget scripts
+		pb()->widgets->enqueue_widgets_scripts();
+
+		// Enqueue core scripts
+		wp_enqueue_style( 'pb-editor', plugins_url( "assets/css/front.min.css", PB_FILE ) );
 	}
 }
 

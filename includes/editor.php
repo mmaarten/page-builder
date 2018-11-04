@@ -27,6 +27,62 @@ class PB_Editor
 		}, 10, 2 );
 	}
 
+	public function get_available_widgets( $parent = null )
+	{
+		if ( $parent instanceof PB_Widget ) 
+		{
+			$parent = $parent->id;
+		}
+
+		$widgets = pb()->widgets->get_widgets();
+
+		// Row
+		if ( $parent == 'row' ) 
+		{
+			// Only columns
+			$available = array( 'column' );
+		}
+
+		// Column
+		elseif ( $parent == 'column' )
+		{
+			// All but columns
+			$available = $widgets;
+
+			unset( $available['column'] );
+
+			$available = array_keys( $available );
+		}
+
+		// Other than row or column
+		elseif ( $parent )
+		{
+			// None
+			$available = array();
+		}
+
+		// No parent
+		else
+		{
+			// All but columns
+			$available = $widgets;
+
+			unset( $available['column'] );
+
+			$available = array_keys( $available );
+		}
+
+		// Filter
+		$available = apply_filters( 'pb/available_widgets'                 , $available, $parent );
+		$available = apply_filters( "pb/available_widgets/parent={$parent}", $available, $parent );
+
+		// Get objects
+		$available = array_intersect_key( $widgets, array_flip( $available ) );
+
+		// Return
+		return $available;
+	}
+
 	public function add_meta_box( $post_type, $post )
 	{
 		if ( ! $this->is_screen() ) 
@@ -111,6 +167,8 @@ class PB_Editor
 
 	public function render_widget_controls( $widget )
 	{
+		// Available controls
+
 		$controls = array
 		(
 			'add'    => array( 'title' => __( 'Add' )   , 'description' => __( 'Add widget' )           , 'icon' => 'dashicons dashicons-plus' ),
@@ -119,6 +177,18 @@ class PB_Editor
 			'delete' => array( 'title' => __( 'Delete' ), 'description' => __( 'Delete widget' )        , 'icon' => 'dashicons dashicons-trash' ),
 			'toggle' => array( 'title' => __( 'Toggle' ), 'description' => __( 'Toggle widget content' ), 'icon' => 'pb-toggle-indicator' ),
 		);
+
+		// Check if widget can contain widgets
+
+		$available_widgets = $this->get_available_widgets( $widget );
+
+		// Remove 'add' control
+		if ( ! $available_widgets ) 
+		{
+			unset( $controls['add'] );
+		}
+
+		// Output
 
 		foreach ( $controls as $control_id => $control ) 
 		{
@@ -154,9 +224,29 @@ class PB_Editor
 
 		$parent = isset( $_POST['parent'] ) ? $_POST['parent'] : null;
 
+		//
+
+		if ( $parent ) 
+		{
+			$parent = pb()->widgets->get_widget( $parent );
+		}
+
+		// Get available widgets
+		$available = $this->get_available_widgets( $parent );
+
 		// Output
 
-		$widgets = pb()->widgets->get_widgets();
+		$cols = 'pb-col-12';
+
+		if ( count( $available ) > 1 ) 
+		{
+			$cols .= ' pb-col-sm-6';
+
+			if ( count( $available ) > 2 ) 
+			{
+				$cols .= ' pb-col-md-4 pb-col-lg-3';
+			}
+		}
 
 		?>
 
@@ -164,11 +254,32 @@ class PB_Editor
 
 			<h1><?php esc_html_e( 'Available Widgets' ); ?></h1>
 
+			<?php if ( $available ) : ?>
 			<div class="pb-available-widgets">
-				<?php foreach ( $widgets as $widget ) : ?>
-				<?php $this->render_widget( $widget ); ?>
-				<?php endforeach; ?>
+				<div class="pb-row">
+					<?php foreach ( $available as $widget ) : ?>
+					<div class="<?php echo esc_attr( $cols ); ?>">
+						<?php $this->render_widget( $widget ); ?>
+					</div>
+					<?php endforeach; ?>
+				</div>
 			</div>
+
+			<?php 
+
+			elseif ( $parent ) :
+			
+				$name = sprintf( '<strong>%s</strong>', $parent->title );
+
+				pb_admin_notice( sprintf( __( '%s widget cannot contain widgets.' ), $name ) );
+
+			else :
+			
+				pb_admin_notice( __( 'No widgets available.' ) );
+			
+			endif;
+
+			?>
 
 		</div>
 
@@ -322,9 +433,6 @@ class PB_Editor
 		$post_id = $_POST['post'];
 		$models  = isset( $_POST['models'] ) ? pb_stripslashes( $_POST['models'] ) : array();
 		$append  = $_POST['append'] ? true : false;
-
-		error_log( var_export( $append, true ) );
-		error_log( var_export( array_keys( $models ), true ) );
 
 		// Save models
 

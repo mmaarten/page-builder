@@ -34,6 +34,16 @@ class PB_Block_Align_Feature extends PB_Feature
 
 	public function widget_html_attributes( $atts, $widget, $instance )
 	{
+		if ( $widget->supports( $this->id ) ) 
+		{
+			$value = isset( $instance['block_align'] ) ? sanitize_html_class( $instance['block_align'] ) : null;
+
+			if ( $value ) 
+			{
+				$atts['class'] .= " block-{$instance['block_align']}";
+			}
+		}
+
 		return $atts;
 	}
 }

@@ -114,6 +114,62 @@ class PB_Button_Widget extends PB_Widget
 			'category'      => 'layout',
 		));
 	}
+
+	public function render( $args, $instance )
+	{
+		// Instance
+
+		$instance = wp_parse_args( $instance, $this->get_defaults() );
+
+		// Attributes
+
+		$atts = array
+		(
+			'class' => 'btn',
+			'role'  => 'button',
+		);
+
+		if ( $instance['link'] ) 
+		{
+			$atts['href'] = esc_url( $instance['link'] );
+
+			if ( $instance['link_tab'] ) 
+			{
+				$atts['target'] = '_blank';
+			}
+		}
+
+		if ( $instance['type'] ) 
+		{
+			if ( $instance['outline'] ) 
+			{
+				$atts['class'] .= " btn-outline-{$instance['type']}";
+			}
+
+			else
+			{
+				$atts['class'] .= " btn-{$instance['type']}";
+			}
+		}
+
+		if ( $instance['size'] ) 
+		{
+			$atts['class'] .= " btn-{$instance['size']}";
+		}
+
+		if ( $instance['toggle'] ) 
+		{
+			$atts['data-toggle'] = $instance['toggle'];
+		}
+
+		// Output
+
+		echo $args['before'];
+
+		printf( '<a%s>%s</a>', pb_esc_attr( $atts ), esc_html( $instance['text'] ) );
+
+		echo $args['after'];
+	}
 }
 
 pb()->widgets->register_widget( 'PB_Button_Widget' );

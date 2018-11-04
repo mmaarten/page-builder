@@ -41,6 +41,16 @@ class PB_BG_Color_Feature extends PB_Feature
 
 	public function widget_html_attributes( $atts, $widget, $instance )
 	{
+		if ( $widget->supports( $this->id ) ) 
+		{
+			$value = isset( $instance['bg_color'] ) ? sanitize_html_class( $instance['bg_color'] ) : null;
+
+			if ( $value ) 
+			{
+				$atts['class'] .= " bg-{$instance['bg_color']}";
+			}
+		}
+
 		return $atts;
 	}
 }

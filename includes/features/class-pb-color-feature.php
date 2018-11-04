@@ -42,6 +42,16 @@ class PB_Color_Feature extends PB_Feature
 
 	public function widget_html_attributes( $atts, $widget, $instance )
 	{
+		if ( $widget->supports( $this->id ) ) 
+		{
+			$value = isset( $instance['color'] ) ? sanitize_html_class( $instance['color'] ) : null;
+
+			if ( $value ) 
+			{
+				$atts['class'] .= " text-{$instance['color']}";
+			}
+		}
+
 		return $atts;
 	}
 }

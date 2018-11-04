@@ -13,7 +13,8 @@ module.exports = function( grunt )
 				
 				files:
 				{
-					'assets/css/editor.css': 'src/editor/scss/main.scss',
+					'assets/css/front.css': 'src/front/scss/main.scss',
+					'assets/css/editor.css': 'src/editor/scss/main.scss'
 				},
 			},
 		},

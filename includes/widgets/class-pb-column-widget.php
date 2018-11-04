@@ -146,6 +146,60 @@ class PB_Column_Widget extends PB_Widget
 
 		return false;
 	}
+
+	public function widget_html_attributes( $atts, $widget, $instance )
+	{
+		// Instance
+		$instance = wp_parse_args( $instance, $this->get_defaults() );
+
+		// Add grid related css classes
+
+		$data = wp_parse_args( array
+		(
+			'cols_sm' => $instance['cols'],
+		), $instance['responsiveness'] );
+
+		foreach ( pb_get_grid_breakpoints() as $breakpoint => $format ) 
+		{
+			if ( $value = $data["offset_{$breakpoint}"] ) 
+			{
+				$atts['class'] .= ' ' . sprintf( $format, 'offset', $value );
+			}
+
+			if ( $value = $data["cols_{$breakpoint}"] ) 
+			{
+				$atts['class'] .= ' ' . sprintf( $format, 'col', $value );
+			}
+
+			if ( $value = $data["order_{$breakpoint}"] ) 
+			{
+				$atts['class'] .= ' ' . sprintf( $format, 'order', $value );
+			}
+
+			if ( $value = $data["hidden_{$breakpoint}"] ) 
+			{
+				$atts['class'] .=  " hidden-{$breakpoint}";
+			}
+		}
+
+		// Return
+		return $atts;
+	}
+
+	public function render( $args, $instance )
+	{
+		// Instance
+
+		$instance = wp_parse_args( $instance, $this->get_defaults() );
+
+		// Output
+
+		echo $args['before'];
+
+		pb()->widgets->the_child_widgets();
+
+		echo $args['after'];
+	}
 }
 
 pb()->widgets->register_widget( 'PB_Column_Widget' );

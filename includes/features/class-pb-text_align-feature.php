@@ -34,6 +34,16 @@ class PB_Text_Align_Feature extends PB_Feature
 
 	public function widget_html_attributes( $atts, $widget, $instance )
 	{
+		if ( $widget->supports( $this->id ) ) 
+		{
+			$value = isset( $instance['text_align'] ) ? sanitize_html_class( $instance['text_align'] ) : null;
+
+			if ( $value ) 
+			{
+				$atts['class'] .= " text-{$instance['text_align']}";
+			}
+		}
+
 		return $atts;
 	}
 }

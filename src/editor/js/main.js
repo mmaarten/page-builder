@@ -109,6 +109,9 @@
 
 				// Add copy to DOM
 				pb.addWidget( $duplicate, $widget, 'insertAfter' );
+
+				// Load preview
+				pb.loadWidgetPreview( $duplicate );
 			});
 
 			// Widget delete button click
@@ -124,8 +127,10 @@
 			// Widget toggle button click
 			this.$elem.on( 'click', '.pb-widget-toggle-control, .pb-widget-title', function( event )
 			{
+				// Get widget
 				var $widget = $( this ).closest( '.pb-widget' );
 
+				// Open or close
 				$widget.toggleClass( 'closed' );
 			});
 
@@ -214,17 +219,17 @@
 				$.each( response.models, function( i, model )
 				{
 					var $widget = pb.createWidget( model );
-					var $parent = pb.$elem.find( '.pb-widgets' );
+					var $parentWidget = undefined;
 
 					if ( model.parent ) 
 					{
-						$parent = pb.$elem.find( '.pb-widgets .pb-widget' ).filter( function()
+						$parentWidget = pb.$elem.find( '.pb-widgets .pb-widget' ).filter( function()
 						{
 							return $( this ).data( 'model' ) == model.parent;
-						}).find( '> .pb-widget-inside > .pb-widget-container' );
+						});
 					};
 
-					$parent.append( $widget );
+					pb.addWidget( $widget, $parentWidget );
 				});
 
 				pb.loadWidgetPreview();
@@ -425,8 +430,9 @@
 		getWidgetModel : function( widget )
 		{
 			var modelId = $( widget ).data( 'model' );
+			var model = this.models[ modelId ];
 
-			return $.extend( {}, this.models[ modelId ] );
+			return $.extend( {}, model );
 		},
 
 		createWidget : function( args )
@@ -522,25 +528,32 @@
 
 		removeWidget : function( widget )
 		{
-			// Remove models
-			$( widget ).find( '.pb-widget' ).addBack().each( function()
+			var $widgets = $( widget ).find( '.pb-widget' ).addBack();
+
+			// Loop widget and child widgets
+			$widgets.each( function()
 			{
+				// Remove model
 				var model = pb.getWidgetModel( this );
 
 				delete pb.models[ model.id ];
 
+				// Remove model reference 
 				$.removeData( this, 'model' );
 			});
 
-			// Remove
+			// Remove widget
 			$( widget ).remove();
 
 			// Notify
-			pb.doAction( 'widgetRemoved'                                   , $( widget ) );
-			pb.doAction( 'widgetRemoved/type=' + $( widget ).data( 'type' ), $( widget ) );
+			$widgets.each( function()
+			{
+				pb.doAction( 'widgetRemoved'                                 , $( this ) );
+				pb.doAction( 'widgetRemoved/type=' + $( this ).data( 'type' ), $( this ) );
+			});
 
 			// Return
-			return $widget;
+			return $( widget );
 		},
 
 		updateWidget : function( widget, k, v )
@@ -712,7 +725,7 @@
 				// Get model
 				var model = pb.getWidgetModel( this );
 
-				models[ model.id ] = $.extend( {}, model );
+				models[ model.id ] = model;
 			});
 
 			/**
@@ -811,7 +824,7 @@
 			{
 				var model = pb.getWidgetModel( this );
 
-				models[ model.id ] = $.extend( {}, model, 
+				models[ model.id ] = $.extend( model, 
 				{
 					index  : $( this ).index(),
 					parent : $( this ).parent().closest( '.pb-widget' ).data( 'model' ) || '',

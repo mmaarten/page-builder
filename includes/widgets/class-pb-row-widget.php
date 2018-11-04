@@ -69,26 +69,6 @@ class PB_Row_Widget extends PB_Widget
 			'default_value' => '',
 		));
 
-		// Justify Content
-		$this->add_field( array
-		(
-			'key'           => "{$this->id}_justify_content",
-			'name'          => 'justify_content',
-			'label'         => __( 'Justify Content' ),
-			'description'   => '',
-			'type'          => 'select',
-			'choices'       => array
-			(
-				''        => PB_CHOICE_DONT_SET,
-				'start'   => __( 'Start' ),
-				'end'     => __( 'End' ),
-				'center'  => __( 'Center' ),
-				'between' => __( 'Between' ),
-				'around'  => __( 'Around' ),
-			),
-			'default_value' => '',
-		));
-
 		// No Gutters
 		$this->add_field( array
 		(
@@ -138,6 +118,46 @@ class PB_Row_Widget extends PB_Widget
 		<p class="description"><?php esc_html_e( 'e.g. 1/2+1/3 creates 2 columns with 1/2 and 1/3 width.' ); ?></p>
 
 		<?php
+	}
+
+	public function render( $args, $instance )
+	{
+		// Instance
+
+		$instance = wp_parse_args( $instance, $this->get_defaults() );
+
+		// Attributes
+
+		$atts = array
+		(
+			'class' => 'row',
+		);
+
+		if ( $instance['align_items'] ) 
+		{
+			$atts['class'] .= "align-items-{$instance['align_items']}";
+		}
+
+		if ( ! $instance['gutters'] ) 
+		{
+			$atts['class'] .= ' no-gutters';
+		}
+
+		// Output
+
+		echo $args['before'];
+
+		?>
+
+		<div class="container<?php echo $instance['container'] == 'fluid' ? '-fluid' : ''; ?>">
+			<div<?php echo pb_esc_attr( $atts ); ?>>
+				<?php pb()->widgets->the_child_widgets(); ?>
+			</div>
+		</div>
+
+		<?php
+
+		echo $args['after'];
 	}
 }
 

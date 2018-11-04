@@ -71,6 +71,52 @@ class PB_Heading_Widget extends PB_Widget
 			'category'      => 'layout'
 		));
 	}
+
+	public function render( $args, $instance )
+	{
+		// Instance
+
+		$defaults = $this->get_defaults();
+		$instance = wp_parse_args( $instance, $defaults );
+
+		// Tag
+
+		if ( preg_match( '/^h{1,6}$/', $instance['type'] ) ) 
+		{
+			$tag = $instance['type'];
+		}
+
+		else
+		{
+			$tag = $defaults['type'];
+		}
+
+		// Attributes
+
+		$atts = array();
+
+		if ( $instance['display'] ) 
+		{
+			$atts['class'] = "display-{$instance['display']}";
+		}
+
+		// Output
+
+		echo $args['before'];
+
+		printf( '<%s%s>', $tag, pb_esc_attr( $atts ) );
+
+		echo esc_html( $instance['text'] );
+
+		if ( $instance['text_2'] ) 
+		{
+			printf( ' <small>%s</small>', esc_html( $instance['text_2'] ) );
+		}
+
+		printf( '</%s>', $tag );
+
+		echo $args['after'];
+	}
 }
 
 pb()->widgets->register_widget( 'PB_Heading_Widget' );

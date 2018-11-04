@@ -33,6 +33,16 @@ class PB_Font_Weight_Feature extends PB_Feature
 
 	public function widget_html_attributes( $atts, $widget, $instance )
 	{
+		if ( $widget->supports( $this->id ) ) 
+		{
+			$value = isset( $instance['font_weight'] ) ? sanitize_html_class( $instance['font_weight'] ) : null;
+
+			if ( $value ) 
+			{
+				$atts['class'] .= " font-weight-{$instance['font_weight']}";
+			}
+		}
+
 		return $atts;
 	}
 }

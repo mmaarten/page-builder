@@ -65,3 +65,13 @@ function pb_get_grid_breakpoints()
 		'xl' => '%s-xl-%d', 
 	));
 }
+
+/**
+ * @link https://codex.wordpress.org/Plugin_API/Action_Reference/admin_notices
+ */
+function pb_admin_notice( $message, $type = 'info' ) 
+{
+	$class = "pb-notice notice notice-$type";
+
+	printf( '<div class="%1$s"><p>%2$s</p></div>', esc_attr( $class ), $message ); 
+}

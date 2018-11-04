@@ -24,7 +24,7 @@ class PB_Fields
 			'name'                  => '',
 			'label'                 => '',
 			'description'           => '',
-			'description_placement' => 'field',
+			'description_placement' => 'field', // field|label
 			'type'                  => '',
 			'default_value'         => '',
 			'wrapper'               => array
@@ -62,7 +62,7 @@ class PB_Fields
 		// Value
 		if ( ! isset( $field['value'] ) ) 
 		{
-			$field['value'] = apply_filters( "pb/input_value", $field['default_value'], $field );
+			$field['value'] = apply_filters( 'pb/input_value', $field['default_value'], $field );
 		}
 
 		// Name
@@ -144,10 +144,10 @@ class PB_Fields
 		<?php
 	}
 
-	public function render_field_description( $field, $context )
+	public function render_field_description( $field, $context = null )
 	{
 		// Check description and context
-		if ( ! $field['description'] || $context != $field['description_placement'] ) 
+		if ( ! $field['description'] || ( $context && $context != $field['description_placement'] ) ) 
 		{
 			return;
 		}
