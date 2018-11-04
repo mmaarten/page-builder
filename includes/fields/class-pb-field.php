@@ -13,6 +13,7 @@ class PB_Field
 		add_filter( "pb/render_field/type={$this->id}"   , array( $this, 'render' ) );
 		add_filter( "pb/sanitize_field/type={$this->id}" , array( $this, 'sanitize' ), 10, 2 );
 		add_filter( "pb/translate_field/type={$this->id}", array( $this, 'translate' ), 10, 2 );
+		add_action( 'pb/editor_enqueue_scripts'          , array( $this, 'enqueue_scripts' ) );
 	}
 
 	public function field( $field )
@@ -39,4 +40,9 @@ class PB_Field
 	{
 		return esc_html( $value );
 	}
+
+	public function enqueue_scripts()
+    {
+        
+    }
 }

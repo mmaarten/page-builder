@@ -81,27 +81,19 @@
 				});
 
 				var $prevColumn = $row.find( '> .pb-widget-inside > .pb-widget-container > .pb-column-widget' ).eq( i - 1 );
-				$column.insertAfter( $prevColumn );
 
-				pb.doAction( 'widgetAdded', $column );
-				pb.doAction( 'widgetAdded/type=' + $column.data( 'type' ), $column );
+				// Add column
+				pb.addWidget( $column, $prevColumn, 'insertAfter' );
 			}
 
 			// Update
 
 			else
 			{
-				var model = pb.getWidgetModel( $column );
-
-				if ( model.data.cols != cols ) 
+				pb.updateWidget( $column,
 				{
-					model.data.cols = cols;
-
-					pb.models[ model.id ] = model;
-
-					pb.doAction( 'widgetUpdated', $column );
-					pb.doAction( 'widgetUpdated/type=' + $column.data( 'type' ), $column );
-				};
+					cols : cols,
+				});
 			}
 		});
 

@@ -53,10 +53,17 @@ require_once plugin_dir_path( PB_FILE ) . 'includes/fields/class-pb-url-field.ph
 // Features
 require_once plugin_dir_path( PB_FILE ) . 'includes/features.php';
 require_once plugin_dir_path( PB_FILE ) . 'includes/features/class-pb-feature.php';
+require_once plugin_dir_path( PB_FILE ) . 'includes/features/class-pb-bg_color-feature.php';
+require_once plugin_dir_path( PB_FILE ) . 'includes/features/class-pb-bg_image-feature.php';
+require_once plugin_dir_path( PB_FILE ) . 'includes/features/class-pb-bg_overlay-feature.php';
+require_once plugin_dir_path( PB_FILE ) . 'includes/features/class-pb-block_align-feature.php';
 require_once plugin_dir_path( PB_FILE ) . 'includes/features/class-pb-class-feature.php';
+require_once plugin_dir_path( PB_FILE ) . 'includes/features/class-pb-color-feature.php';
+require_once plugin_dir_path( PB_FILE ) . 'includes/features/class-pb-font_weight-feature.php';
 require_once plugin_dir_path( PB_FILE ) . 'includes/features/class-pb-id-feature.php';
 require_once plugin_dir_path( PB_FILE ) . 'includes/features/class-pb-margin-feature.php';
 require_once plugin_dir_path( PB_FILE ) . 'includes/features/class-pb-padding-feature.php';
+require_once plugin_dir_path( PB_FILE ) . 'includes/features/class-pb-text_align-feature.php';
 
 // Widgets
 require_once plugin_dir_path( PB_FILE ) . 'includes/widgets.php';

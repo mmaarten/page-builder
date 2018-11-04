@@ -58,7 +58,12 @@ module.exports = function( grunt )
 			{
 				src:
 				[
-					'src/editor/js/**/*.js',
+					'src/editor/js/event-manager.js',
+					'src/editor/js/main.js',
+					'src/editor/js/fields.js',
+					'src/editor/js/fields/**/*.js',
+					'src/editor/js/widgets.js',
+					'src/editor/js/widgets/**/*.js',
 				],
 				
 				dest: 'assets/js/editor.js',

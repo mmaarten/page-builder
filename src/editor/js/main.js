@@ -14,6 +14,7 @@
 			nonce : null,
 			widgetDefaults : {},
 			ajaxurl : window.ajaxurl || null,
+			chunkLength : 10,
 		},
 
 		init : function( elem, options )
@@ -23,21 +24,71 @@
 
 			console.log( 'init', this.options );
 
+			// Widget add button click
 			this.$elem.on( 'click', '.pb-widget-add-control', function( event )
 			{
 				var $widget = $( this ).closest( '.pb-widget' );
 
 				// Open widget picker
-				pb.widgetPicker( $widget, function( $choosen )
+				pb.widgetPicker( function( $choosen )
 				{
-					// Add choosen widget
-					$widget.find( '> .pb-widget-inside > .pb-widget-container' ).append( $choosen );
+					// Parent row
+					if ( $widget.data( 'type' ) == 'row' ) 
+					{
+						// Other than column
+						if ( $choosen.data( 'type' ) != 'column' ) 
+						{
+							alert( 'Only columns allowed.' );
 
-					pb.doAction( 'widgetAdded' + $choosen.data( 'type' ), $choosen );
-					pb.doAction( 'widgetAdded/type=' + $choosen.data( 'type' ), $choosen );
-				});
+							return;
+						}
+
+						// Column
+						pb.addWidget( $choosen, $widget );
+						pb.loadWidgetPreview( $choosen );
+
+						return;
+					}
+
+					// Parent column
+					if ( $widget.data( 'type' ) == 'column' )
+					{
+						// Column
+						if ( $choosen.data( 'type' ) == 'column' ) 
+						{
+							alert( 'No columns allowed.' );
+
+							return;
+						}
+
+						// Row
+						if ( $choosen.data( 'type' ) == 'row' ) 
+						{
+							// Add column
+							var $column = pb.createWidget( 'column' );
+
+							pb.addWidget( $choosen, $widget );
+							pb.addWidget( $column, $choosen );
+
+							pb.loadWidgetPreview( $choosen );
+
+							return;
+						}
+
+						// Other than row or column
+
+						pb.addWidget( $choosen, $widget );
+						pb.loadWidgetPreview( $choosen );
+
+						return;
+					}
+
+					alert( 'Not allowed.' );
+					
+				}, $widget );
 			});
 
+			// Widget edit button click
 			this.$elem.on( 'click', '.pb-widget-edit-control', function( event )
 			{
 				// Get widget
@@ -47,6 +98,7 @@
 				pb.widgetSettings( $widget );
 			});
 
+			// Widget copy button click
 			this.$elem.on( 'click', '.pb-widget-copy-control', function( event )
 			{
 				// Get widget
@@ -56,9 +108,10 @@
 				var $duplicate = pb.duplicateWidget( $widget );
 
 				// Add copy to DOM
-				$duplicate.insertAfter( $widget );
+				pb.addWidget( $duplicate, $widget, 'insertAfter' );
 			});
 
+			// Widget delete button click
 			this.$elem.on( 'click', '.pb-widget-delete-control', function( event )
 			{
 				// Get widget
@@ -68,6 +121,7 @@
 				pb.removeWidget( $widget );
 			});
 
+			// Widget toggle button click
 			this.$elem.on( 'click', '.pb-widget-toggle-control, .pb-widget-title', function( event )
 			{
 				var $widget = $( this ).closest( '.pb-widget' );
@@ -75,22 +129,84 @@
 				$widget.toggleClass( 'closed' );
 			});
 
+			// Add Widget button click
 			this.$elem.on( 'click', '.pb-add-widget-control', function( event )
 			{
 				// Open widget picker
-				pb.widgetPicker( null, function( $choosen )
+				pb.widgetPicker( function( $choosen )
 				{
-					// Add choosen widget
-					pb.$elem.find( '.pb-widgets' ).append( $choosen );
+					// Row
+					if ( $choosen.data( 'type' ) == 'row' ) 
+					{
+						// Add column
+						var $column = pb.createWidget( 'column' );
 
-					pb.doAction( 'widgetAdded' + $choosen.data( 'type' ), $choosen );
-					pb.doAction( 'widgetAdded/type=' + $choosen.data( 'type' ), $choosen );
+						pb.addWidget( $choosen );
+						pb.addWidget( $column, $choosen );
+
+						pb.loadWidgetPreview( $choosen );
+					}
+
+					// Column
+					else if ( $choosen.data( 'type' ) == 'column' ) 
+					{
+						// Add inside row
+						var $row = pb.createWidget( 'row' );
+
+						pb.addWidget( $row );
+						pb.addWidget( $choosen, $row );
+
+						pb.loadWidgetPreview( $row );
+					}
+
+					// No row or column
+					else
+					{
+						// Put inside row->column
+						var $row    = pb.createWidget( 'row' );
+						var $column = pb.createWidget( 'column' );
+
+						pb.addWidget( $row );
+						pb.addWidget( $column, $row );
+						pb.addWidget( $choosen, $column );
+
+						pb.loadWidgetPreview( $row );
+					}
 				});
 			});
 
+			// Sort start
+			this.$elem.on( 'sortstart', '.ui-sortable', function( event, ui )
+			{
+				if ( ui.item.is( '.pb-widget' ) ) 
+				{
+					pb.doAction( 'widgetSortStart'                               , ui.item );
+					pb.doAction( 'widgetSortStart/type=' + ui.item.data( 'type' ), ui.item );
+				}
+			});
+
+			// Sort stop
+			this.$elem.on( 'sortstop', '.ui-sortable' , function( event, ui )
+			{
+				if ( ui.item.is( '.pb-widget' ) ) 
+				{
+					pb.doAction( 'widgetSortStop'                               , ui.item );
+					pb.doAction( 'widgetSortStop/type=' + ui.item.data( 'type' ), ui.item );
+				}
+			});
+
+			// post edit form submit
+			
+			var submit = false;
+
 			this.$elem.closest( 'form' ).on( 'submit', function( event )
 			{
-				pb.save();
+				if ( ! submit ) 
+				{
+					pb.save();
+
+					submit = true;
+				}
 			});
 
 			this.addAction( 'load', function( response )
@@ -112,6 +228,32 @@
 				});
 
 				pb.loadWidgetPreview();
+			});
+
+			this.addAction( 'widgetSortStart', function( $widget )
+			{
+				if ( $widget.hasClass( 'closed' ) ) 
+				{
+					$widget.addClass( 'no-close' );
+				}
+
+				else
+				{
+					$widget.addClass( 'closed' );
+				}
+			});
+
+			this.addAction( 'widgetSortStop', function( $widget )
+			{
+				if ( ! $widget.hasClass( 'no-close' ) ) 
+				{
+					$widget.removeClass( 'closed' );
+				}
+
+				else
+				{
+					$widget.removeClass( 'no-close' );
+				}
 			});
 
 			this.addAction( 'widgetUpdated', function( $widget )
@@ -161,6 +303,32 @@
 			return data;
 		},
 
+		chunk : function( object, amount )
+		{
+			var values = Object.values(object);
+			var final = [];
+			var counter = 0;
+			var portion = {};
+
+			for ( var key in object ) 
+			{
+				if ( counter !== 0 && counter % amount === 0 ) 
+				{
+					final.push(portion);
+
+					portion = {};
+				}
+
+				portion[ key ] = values[ counter ];
+
+				counter++
+			}
+
+			final.push( portion );
+
+			return final;
+		},
+
 		modal : function( content, options )
 		{
 			var defaults = 
@@ -183,7 +351,7 @@
 			wp.hooks.addAction.apply( this, arguments );
 		},
 
-		removeAction : function( model )
+		removeAction : function()
 		{
 			// Prefix tag
 			arguments[0] = 'pb/' + arguments[0];
@@ -191,7 +359,7 @@
 			wp.hooks.removeAction.apply( this, arguments );
 		},
 
-		doAction : function( model )
+		doAction : function()
 		{
 			// Prefix tag
 			arguments[0] = 'pb/' + arguments[0];
@@ -207,7 +375,7 @@
 			wp.hooks.addFilter.apply( this, arguments );
 		},
 
-		removeFilter : function( model )
+		removeFilter : function()
 		{
 			// Prefix tag
 			arguments[0] = 'pb/' + arguments[0];
@@ -215,7 +383,7 @@
 			wp.hooks.removeFilter.apply( this, arguments );
 		},
 
-		applyFilters : function( model )
+		applyFilters : function()
 		{
 			// Prefix tag
 			arguments[0] = 'pb/' + arguments[0];
@@ -225,12 +393,20 @@
 
 		createModel : function( args )
 		{
+			// Args is model type
+			if ( typeof args !== 'object' ) 
+			{
+				args = { type : args };
+			};
+
+			// Defaults
+
 			var defaultData = {};
 
 			if ( args.type !== undefined && this.options.widgetDefaults[ args.type ] !== undefined )
 			{
 				defaultData = $.extend( {}, this.options.widgetDefaults[ args.type ] );
-			}
+			};
 
 			var defaults = 
 			{
@@ -239,22 +415,24 @@
 				data : defaultData,
 			};
 
+			// Create model
 			var model = $.extend( true, {}, defaults, args );
 
+			// Return
 			return model;
 		},
 
 		getWidgetModel : function( widget )
 		{
-			var id = $( widget ).data( 'model' );
+			var modelId = $( widget ).data( 'model' );
 
-			return this.models[ id ];
+			return $.extend( {}, this.models[ modelId ] );
 		},
 
-		createWidget : function( model )
+		createWidget : function( args )
 		{
-			// Make sure model is setup correctly
-			model = this.createModel( model );
+			// Create model
+			var model = this.createModel( args );
 
 			// Register model
 			this.models[ model.id ] = model;
@@ -268,7 +446,7 @@
 			// Set model reference
 			$widget.data( 'model', model.id );
 
-			// Extend
+			// Notify
 			this.doAction( 'widget', $widget );
 			this.doAction( 'widget/type=' + $widget.data( 'type' ), $widget );
 
@@ -276,54 +454,126 @@
 			return $widget;
 		},
 
+		addWidget : function( widgetToAdd, widget, context )
+		{
+			var $widgetToAdd = $( widgetToAdd );
+
+			// Get parent
+
+			var $parent = this.$elem.find( '.pb-widgets' );
+
+			if ( widget !== undefined ) 
+			{
+				$parent = $( widget ).find( '> .pb-widget-inside > .pb-widget-container' );
+			};
+
+			// Add widget
+
+			switch( context )
+			{
+				case 'prepend' :
+					$parent.prepend( $widgetToAdd );
+					break;
+
+				case 'insertBefore' :
+					$widgetToAdd.insertBefore( widget );
+					break;
+
+				case 'insertAfter' :
+					$widgetToAdd.insertAfter( widget );
+					break;
+
+				default :
+					$parent.append( $widgetToAdd );
+			}
+
+			// Loop widget and child widgets
+			$( widgetToAdd ).find( '.pb-widget' ).addBack().each( function()
+			{
+				var $widget = $( this );
+
+				// Notify
+				pb.doAction( 'widgetAdded' + $widget.data( 'type' )      , $widget );
+				pb.doAction( 'widgetAdded/type=' + $widget.data( 'type' ), $widget );
+			});
+		},
+
 		duplicateWidget : function( widget )
 		{
-			var $duplicate = $( widget ).clone( true );
+			// Copy model
+			var modelCopy = this.getWidgetModel( widget );
 
-			// Copy models
-			$duplicate.find( '.pb-widget' ).addBack().each( function()
+			delete modelCopy.id;
+
+			// Copy Widget
+			var $widgetCopy = this.createWidget( modelCopy );
+
+			// Copy Children
+			$( widget ).find( '> .pb-widget-inside > .pb-widget-container > .pb-widget' ).each( function()
 			{
-				var modelId = $( this ).data( 'model' );
+				var $child = pb.duplicateWidget( this );
 
-				var copy = $.extend( {}, pb.models[ modelId ] );
-
-				// Generate id
-				delete copy.id;
-				copy = pb.createModel( copy );
-
-				// Register
-				pb.models[ copy.id ] = copy;
-
-				// Set reference
-				$( this ).data( 'model', copy.id );
+				$widgetCopy.find( '> .pb-widget-inside > .pb-widget-container' ).append( $child );
 			});
 
-			return $duplicate;
+			// Return
+			return $widgetCopy;
 		},
 
 		removeWidget : function( widget )
 		{
-			var $widget = $( widget );
-
 			// Remove models
-			$widget.find( '.pb-widget' ).addBack().each( function()
+			$( widget ).find( '.pb-widget' ).addBack().each( function()
 			{
-				var modelId = $( this ).data( 'model' );
+				var model = pb.getWidgetModel( this );
 
-				delete pb.models[ modelId ];
+				delete pb.models[ model.id ];
 
 				$.removeData( this, 'model' );
 			});
 
-			$widget.remove();
+			// Remove
+			$( widget ).remove();
 
-			pb.doAction( 'widgetRemoved', $widget );
-			pb.doAction( 'widgetRemoved/type=' + $widget.data( 'type' ), $widget );
+			// Notify
+			pb.doAction( 'widgetRemoved'                                   , $( widget ) );
+			pb.doAction( 'widgetRemoved/type=' + $( widget ).data( 'type' ), $( widget ) );
 
+			// Return
 			return $widget;
 		},
 
-		widgetPicker : function( parentWidget, callback )
+		updateWidget : function( widget, k, v )
+		{
+			// Get new data
+
+			var data;
+
+			if ( typeof k === 'object' ) 
+			{
+				data = k;
+			}
+
+			else
+			{
+				data = { k : v };
+			}
+
+			// Update model
+
+			var model = this.getWidgetModel( widget );
+
+			$.extend( true, model.data, data );
+
+			this.models[ model.id ] = model;
+
+			// Notify
+
+			pb.doAction( 'widgetUpdated'                                   , $( widget ) );
+			pb.doAction( 'widgetUpdated/type=' + $( widget ).data( 'type' ), $( widget ) );
+		},
+
+		widgetPicker : function( callback, parentWidget )
 		{
 			// Load content
 			$.ajax(
@@ -332,7 +582,7 @@
 				data : this.prepareAjax(
 				{
 					action : 'pb_widget_picker',
-					parent : $( parentWidget ).data( 'type' ) || '',
+					parent : $( parentWidget ).data( 'type' ),
 				}),
 				method : 'post',
 				success : function( content )
@@ -371,8 +621,7 @@
 
 		widgetSettings : function( widget )
 		{
-			var $widget = $( widget );
-			var model = this.models[ $widget.data( 'model' ) ];
+			var model = this.getWidgetModel( widget );
 
 			// Load content
 			$.ajax(
@@ -402,6 +651,8 @@
 							{
 								event.preventDefault();
 
+								console.log( 'Sanitize user input' );
+
 								// Sanitize user input
 								$.ajax(
 								{
@@ -410,16 +661,8 @@
 									method : 'post',
 									success : function( options )
 									{
-										// Update model
-
-										var updated = $.extend( {}, model );
-
-										updated.data = options;
-
-										pb.models[ model.id ] = updated;
-
-										pb.doAction( 'widgetUpdated', $widget );
-										pb.doAction( 'widgetUpdated/type=' + $widget.data( 'type' ), $widget );
+										// Update widget
+										pb.updateWidget( widget, options );
 
 										// Close modal
 										modal.close();
@@ -427,8 +670,8 @@
 								});
 							});
 
-							pb.doAction( 'widgetSettings', this.$content, $widget );
-							pb.doAction( 'widgetSettings/type=' + $widget.data( 'type' ), this.$content, $widget );
+							pb.doAction( 'widgetSettings', this.$content, $( widget ) );
+							pb.doAction( 'widgetSettings/type=' + $( widget ).data( 'type' ), this.$content, $( widget ) );
 						},
 					});
 				},
@@ -437,60 +680,90 @@
 
 		loadWidgetPreview : function( widget )
 		{
-			// Get widgets
+			/**
+			 * Get widgets
+			 * -------------------------------------------------------
+			 */
 
-			var $widgets = this.$elem.find( '.pb-widgets .pb-widget' );
+			var $widgets;
 
+			// Supplied widget and children
 			if ( widget !== undefined ) 
 			{
 				$widgets = $( widget ).find( '.pb-widget' ).addBack();
 			}
 
-			// Get models
+			// All widgets
+			else
+			{
+				$widgets = this.$elem.find( '.pb-widgets .pb-widget' );
+			}
+
+			/**
+			 * Get models
+			 * -------------------------------------------------------
+			 */
 
 			var models = {};
 
+			// Loop widgets
 			$widgets.each( function()
 			{
-				var model = pb.models[ $( this ).data( 'model' ) ];
+				// Get model
+				var model = pb.getWidgetModel( this );
 
 				models[ model.id ] = $.extend( {}, model );
 			});
 
-			// Check if models
+			/**
+			 * Check if loading is needed
+			 * -------------------------------------------------------
+			 */
 
 			if ( ! Object.keys( models ).length ) 
 			{
 				return;
 			};
 
-			// Load
+			/**
+			 * Load
+			 * -------------------------------------------------------
+			 */
 
-			$.ajax(
+			// Split models into chunks
+			var chunks = this.chunk( models, this.options.chunkLength );
+
+			// Loop chunks
+			chunks.forEach( function( models, index )
 			{
-				url : this.options.ajaxurl,
-				data : this.prepareAjax(
+				// Load
+				$.ajax(
 				{
-					action : 'pb_widget_preview',
-					models : models,
-				}),
-				method : 'post',
-				success : function( preview )
-				{
-					console.log( 'preview response', preview );
-
-					// Add preview content
-					$.each( preview, function( modelId, content )
+					url : ajaxurl,
+					method : 'POST',
+					async : false,
+					data : pb.prepareAjax(
 					{
-						var $widget = $widgets.filter( function()
+						action : 'pb_widget_preview',
+						models : models,
+					}),
+					success : function( preview )
+					{
+						// Set widget preview content
+						$.each( preview, function( modelId, content )
 						{
-							return $( this ).data( 'model' ) == modelId;
-						});
+							// Get widget
+							var $widget = $widgets.filter( function()
+							{
+								return $( this ).data( 'model' ) == modelId;
+							});
 
-						$widget.find( '> .pb-widget-inside > .pb-widget-preview' )
-							.html( content );
-					});
-				}
+							// Set content
+							$widget.find( '> .pb-widget-inside > .pb-widget-preview' )
+								.html( content );
+						});
+					}
+				});
 			});
 		},
 
@@ -527,18 +800,20 @@
 		{
 			console.log( 'save' );
 
-			// Get models from widgets
+			/**
+			 * Get models from widgets
+			 * -------------------------------------------------------
+			 */
 
 			var models = {};
 
 			this.$elem.find( '.pb-widgets .pb-widget' ).each( function()
 			{
-				var modelId = $( this ).data( 'model' );
-				var model = pb.models[ modelId ];
+				var model = pb.getWidgetModel( this );
 
 				models[ model.id ] = $.extend( {}, model, 
 				{
-					index : $( this ).index(),
+					index  : $( this ).index(),
 					parent : $( this ).parent().closest( '.pb-widget' ).data( 'model' ) || '',
 				});
 			});
@@ -547,94 +822,36 @@
 
 			this.models = models;
 
-			// Save
+			/**
+			 * Save models
+			 * -------------------------------------------------------
+			 */
 
-			$.ajax(
+			// Split models into chunks
+
+			var chunks = this.chunk( this.models, this.options.chunkLength );
+
+			chunks.forEach( function( models, index )
 			{
-				url : this.options.ajaxurl,
-				data : this.prepareAjax(
+				var first = index == 0;
+
+				$.ajax(
 				{
-					action : 'pb_save',
-					post : this.options.post,
-					models : this.models,
-				}),
-				method : 'post',
-				success : function( response )
-				{
-					console.log( 'save response', response );
-				}
+					url : ajaxurl,
+					method : 'POST',
+					async : false,
+					data : pb.prepareAjax(
+					{
+						action : 'pb_save',
+						post   : pb.options.post,
+						models : models,
+						append : first ? 0 : 1,
+					}),
+				});
 			});
 		},
 	};
 
 	window.pb = pb;
-
-})( jQuery, window, undefined );
-
-
-(function( $ )
-{
-	pb.addAction( 'widgetSettings', function( $content, $widget )
-	{
-		$content.find( '.pb-fields, .pb-sub-fields' ).each( function()
-		{
-			var $wrap = $( this );
-
-			var $fields = $wrap.find( '> .pb-field' );
-
-			var $tabFields = $fields.filter( '[data-type="tab"]');
-
-			if ( ! $tabFields.length ) 
-			{
-				return true;
-			};
-
-			$fields.hide();
-
-			var setActiveTab = function( index )
-			{
-				var $active = $nav.find( '.active' );
-
-				if ( $active.length ) 
-				{
-					$active.removeClass( 'active' )
-						.data( 'field' ).nextUntil( '[data-type="tab"]' )
-							.hide();
-				};
-
-				var $tab = $nav.find( '.pb-nav-item' ).eq( index );
-
-				$tab.addClass( 'active' )
-					.data( 'field' ).nextUntil( '[data-type="tab"]' )
-						.show();
-			};
-
-			var $nav = $( '<nav class="pb-nav"></nav>' );
-
-			$tabFields.each( function()
-			{
-				var $field = $( this );
-				var $tab   = $( '<a href="#" class="pb-nav-item pb-nav-link"></a>' );
-
-				$tab
-					.text( $field.find( '> .pb-label' ).text() )
-					.data( 'field', $field )
-					.on( 'click', function( event )
-					{
-						event.preventDefault();
-
-						setActiveTab( $( this ).index() );
-					});
-
-				$nav.append( $tab );
-			});
-
-			var $field = $( '<div class="pb-field" data-type="tabnav"></div>' );
-			$field.append( $nav );
-			$field.insertBefore( $tabFields.first() );
-
-			setActiveTab( 0 );
-		});
-	});
 
 })( jQuery, window, undefined );

@@ -58,6 +58,8 @@ class PB_Editor
 
 		<div id="pb-editor" class="pb-editor">
 
+			<?php wp_nonce_field( 'editor_render', PB_NONCE_NAME ); ?>
+
 			<div class="pb-available-widgets">
 				<?php foreach ( $widgets as $widget ) : ?>
 				<?php $this->render_widget( $widget ); ?>
@@ -74,7 +76,10 @@ class PB_Editor
 
 		<script type="text/javascript">
 			
-			pb.init( '#pb-editor', <?php echo json_encode( $options ); ?> );
+			jQuery( window ).on( 'load', function()
+			{
+				pb.init( '#pb-editor', <?php echo json_encode( $options ); ?> );
+			});
 
 		</script>
 
@@ -246,6 +251,7 @@ class PB_Editor
 			// Get instance
 
 			$instance = isset( $model['data'] ) ? $model['data'] : array();
+			$instance = pb_stripslashes( $instance );
 
 			// Get preview content
 
@@ -276,7 +282,7 @@ class PB_Editor
 
 		$post_id = $_POST['post'];
 
-		// Gets models
+		// Models
 
 		$models = array();
 
@@ -285,12 +291,19 @@ class PB_Editor
 			$models = get_post_meta( $post_id, 'pb_models', true );
 		}
 
+		// Fields
+
+		$fields = pb()->fields->get_fields();
+
 		// Response
 
-		wp_send_json( array
+		$response = apply_filters( 'pb/editor_load_response', array
 		(
 			'models' => $models,
-		));
+			'fields' => $fields,
+		), $post_id );
+
+		wp_send_json( $response );
 	}
 
 	public function save()
@@ -307,9 +320,23 @@ class PB_Editor
 		// Post data
 
 		$post_id = $_POST['post'];
-		$models  = isset( $_POST['models'] ) ? $_POST['models'] : array();
+		$models  = isset( $_POST['models'] ) ? pb_stripslashes( $_POST['models'] ) : array();
+		$append  = $_POST['append'] ? true : false;
+
+		error_log( var_export( $append, true ) );
+		error_log( var_export( array_keys( $models ), true ) );
 
 		// Save models
+
+		if ( $append ) 
+		{
+			$post_models = get_post_meta( $post_id, 'pb_models', true );
+
+			if ( is_array( $post_models ) )
+			{
+				$models = array_merge( $post_models, $models );
+			}
+		}
 
 		update_post_meta( $post_id, 'pb_models', $models );
 
@@ -331,6 +358,8 @@ class PB_Editor
 		wp_enqueue_style( 'dashicons' );
 		wp_enqueue_script( 'jquery-ui-sortable' );
 		wp_enqueue_script( 'featherlight', plugins_url( "assets/js/featherlight$min.js", PB_FILE ), array( 'jquery' ), '1.7.13' );
+
+		do_action( 'pb/editor_enqueue_scripts' );
 
 		// Core
 		wp_enqueue_style( 'pb-editor', plugins_url( "assets/css/editor.min.css", PB_FILE ) );

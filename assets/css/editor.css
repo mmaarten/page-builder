@@ -5,6 +5,17 @@
 /**
  * Variables
  */
+.pb-show-if-value {
+  display: none;
+}
+
+.pb-has-value .pb-hide-if-value {
+  display: none;
+}
+.pb-has-value .pb-show-if-value {
+  display: block;
+}
+
 .pb-container {
   width: 100%;
   padding-right: 15px;
@@ -1285,7 +1296,7 @@ html.with-featherlight {
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: 2147483647;
+  z-index: 100000;
   /* z-index needs to be >= elements on the site. */
   /* position: centering content */
   text-align: center;
@@ -1497,12 +1508,17 @@ style.pb-modal-inner {
   margin: 0;
   padding: 15px 12px;
 }
-.pb-field .pb-label {
+.pb-field .pb-label, .pb-field .pb-sub-label {
   display: block;
   margin: 0 0 10px;
   padding: 0;
   vertical-align: top;
   font-weight: bold;
+}
+.pb-field .pb-label.pb-sub-label, .pb-sub-fields .pb-field .pb-label,
+.pb-field .pb-sub-label.pb-sub-label,
+.pb-sub-fields .pb-field .pb-sub-label {
+  font-weight: 600;
 }
 .pb-field input[type="text"],
 .pb-field input[type="password"],
@@ -1557,6 +1573,7 @@ style.pb-modal-inner {
 .pb-fields .pb-sub-fields {
   margin-left: -12px;
   margin-right: -12px;
+  margin-bottom: -7.5px;
 }
 .pb-fields .pb-sub-fields .pb-field {
   padding-top: 7.5px;
@@ -1574,6 +1591,12 @@ style.pb-modal-inner {
 .pb-fields > .pb-field[data-type="tabnav"] {
   padding: 0;
   border-bottom: 0;
+}
+
+.pb-field[data-type="editor"] .mce-tinymce {
+  border: 1px solid #E5E5E5;
+  -webkit-box-shadow: none;
+          box-shadow: none;
 }
 
 /**
@@ -1688,6 +1711,11 @@ style.pb-modal-inner {
 }
 .pb-widget-meta > li:not(:last-child):after {
   content: ', ';
+}
+
+.pb-preview-content {
+  margin: 15px 0 0;
+  padding: 0;
 }
 
 .pb-widget-description {
