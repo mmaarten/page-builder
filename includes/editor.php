@@ -114,8 +114,6 @@ class PB_Editor
 
 		<div id="pb-editor" class="pb-editor">
 
-			<?php wp_nonce_field( 'editor_render', PB_NONCE_NAME ); ?>
-
 			<div class="pb-available-widgets">
 				<?php foreach ( $widgets as $widget ) : ?>
 				<?php $this->render_widget( $widget ); ?>
