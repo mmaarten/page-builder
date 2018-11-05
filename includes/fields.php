@@ -221,7 +221,7 @@ class PB_Fields
 
 			if ( isset( $base[ $field['key'] ] ) ) 
 			{
-				$option_value = $base[ $field['key'] ];
+				$option_value = pb_stripslashes( $base[ $field['key'] ] );
 			}
 
 			$options[ $option_name ] = apply_filters( "pb/sanitize_field/type={$field['type']}", $option_value, $field );

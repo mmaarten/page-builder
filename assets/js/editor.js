@@ -264,6 +264,7 @@
 			widgetDefaults : {},
 			ajaxurl : window.ajaxurl || null,
 			chunkLength : 10,
+			confirmDelete : 'Are you sure you want to delete?',
 		},
 
 		init : function( elem, options )
@@ -366,6 +367,11 @@
 			// Widget delete button click
 			this.$elem.on( 'click', '.pb-widget-delete-control', function( event )
 			{
+				if ( ! window.confirm( pb.options.confirmDelete ) ) 
+				{
+					return;
+				}
+
 				// Get widget
 				var $widget = $( this ).closest( '.pb-widget' );
 
@@ -748,7 +754,7 @@
 				var $widget = $( this );
 
 				// Notify
-				pb.doAction( 'widgetAdded' + $widget.data( 'type' )      , $widget );
+				pb.doAction( 'widgetAdded'                               , $widget );
 				pb.doAction( 'widgetAdded/type=' + $widget.data( 'type' ), $widget );
 			});
 		},
@@ -1031,14 +1037,14 @@
 
 		load : function()
 		{
-			console.log( 'load' );
-
 			// Reset
 
 			this.models = {};
 			this.$elem.find( '.pb-widgets' ).empty();
 
 			// Load
+
+			this.$elem.addClass( 'loading' );
 
 			$.ajax(
 			{
@@ -1051,17 +1057,17 @@
 				method : 'post',
 				success : function( response )
 				{
-					console.log( 'load response', response );
-
 					pb.doAction( 'load', response );
+				},
+				complete : function()
+				{
+					pb.$elem.removeClass( 'loading' );
 				}
 			});
 		},
 
 		save : function()
 		{
-			console.log( 'save' );
-
 			/**
 			 * Get models from widgets
 			 * -------------------------------------------------------

@@ -42,16 +42,6 @@ class PB_Widgets
 		return null;
 	}
 
-	public function get_models( $post_id )
-	{
-		if ( metadata_exists( 'post', $post_id, 'pb_models' ) ) 
-		{
-			return get_post_meta( $post_id, 'pb_models', true );
-		}
-
-		return null;
-	}
-
 	public function has_widgets( $post_id = 0 )
 	{
 		$post = get_post( $post_id );
@@ -66,7 +56,7 @@ class PB_Widgets
 			return false;
 		}
 
-		$models = $this->get_models( $post->ID );
+		$models = pb()->models->get_models( $post->ID );
 
 		if ( ! $models ) 
 		{
@@ -80,24 +70,33 @@ class PB_Widgets
 	{
 		$this->post = get_post();
 
+		// Check if post
 		if ( ! $this->post ) 
 		{
 			return;
 		}
 
+		// Check if widgets
 		if ( ! $this->has_widgets( $this->post ) ) 
 		{
 			return;
 		}
 
-		$models = $this->get_models( $this->post->ID );
+		// Get models
 
 		if ( ! $_search ) 
 		{
 			$_search = array( 'parent' => '' );
 		}
 
-		$models = wp_filter_object_list( $models, $_search );
+		$models = pb()->models->get_models( $this->post->ID, $_search );
+
+		if ( ! $models ) 
+		{
+			return;
+		}
+
+		// Output
 
 		foreach ( $models as $model ) 
 		{

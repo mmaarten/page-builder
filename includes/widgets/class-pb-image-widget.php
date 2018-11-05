@@ -69,6 +69,22 @@ class PB_Image_Widget extends PB_Widget
 		));
 	}
 
+	public function preview( $instance )
+	{
+		parent::preview( $instance );
+
+		if ( $instance['image'] ) 
+		{
+			list( $image_url ) = wp_get_attachment_image_src( $instance['image'], 'thumbnail' );
+
+			echo '<div class="pb-preview-content">';
+
+			pb_image_preview( $image_url );
+
+			echo '</div>';
+		}
+	}
+
 	public function render( $args, $instance )
 	{
 		// Instance

@@ -12,6 +12,25 @@ function pb()
 	return $instance;
 }
 
+function pb_image_preview( $image_url )
+{
+	?>
+
+	<div class="wp-core-ui">
+		<div class="attachment" style="float:none; padding: 0; max-width: 100px;">
+			<div class="attachment-preview">
+				<div class="thumbnail">
+					<div class="centered">
+						<img class="pb-media-picker-image" src="<?php echo esc_url( $image_url ); ?>">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<?php
+}
+
 function pb_esc_attr( $atts )
 {
 	$str = '';

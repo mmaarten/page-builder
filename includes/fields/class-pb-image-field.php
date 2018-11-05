@@ -32,7 +32,7 @@ class PB_Image_Field extends PB_Field
 
 		$input = '<input' . pb_esc_attr( $atts ) . '>';
 
-		list( $image_url ) = wp_get_attachment_image_src( $field['value'] );
+		list( $image_url ) = wp_get_attachment_image_src( $field['value'], 'thumbnail' );
 
 		?>
 
@@ -40,17 +40,7 @@ class PB_Image_Field extends PB_Field
 
 			<?php echo $input; ?>
 
-			<div class="wp-core-ui">
-				<div class="attachment" style="float:none; padding: 0;">
-					<div class="attachment-preview">
-						<div class="thumbnail">
-							<div class="centered">
-								<img class="pb-media-picker-image" src="<?php echo esc_url( $image_url ); ?>">
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
+			<?php pb_image_preview( $image_url ); ?>
 
 			<p class="pb-hide-if-value">
 				<button type="button" class="button pb-media-picker-add"><?php esc_html_e( 'Select Image' ); ?></button>

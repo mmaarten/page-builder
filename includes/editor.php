@@ -14,12 +14,11 @@ class PB_Editor
 
 		add_filter( 'pb/input_value', function( $value, $field )
 		{
-			$model = $_POST['model'];
+			$model = pb_stripslashes( $_POST['model'] );
 
 			if ( isset( $model['data'][ $field['name'] ] ) ) 
 			{
 				$value = $model['data'][ $field['name'] ];
-				$value = pb_stripslashes( $value );
 			}
 
 			return $value;
@@ -27,6 +26,17 @@ class PB_Editor
 		}, 10, 2 );
 	}
 
+	/**
+	 * Get Available Widgets
+	 *
+	 * Return widgets depending on the given parent widget.
+	 *
+	 * e.g. a row only accepts columns.
+	 *
+	 * @param $parent mixed PB_Widget instance or widget id. 
+	 *
+	 * @return array List of filtered widgets
+	 */
 	public function get_available_widgets( $parent = null )
 	{
 		if ( $parent instanceof PB_Widget ) 
@@ -103,6 +113,7 @@ class PB_Editor
 			'nonceName'      => PB_NONCE_NAME,
 			'nonce'          => wp_create_nonce( 'editor' ),
 			'widgetDefaults' => array(),
+			'confirmDelete'  => __( 'Are you sure you want to delete?' ),
 		);
 
 		foreach ( $widgets as $widget ) 
@@ -231,6 +242,9 @@ class PB_Editor
 
 		// Get available widgets
 		$available = $this->get_available_widgets( $parent );
+
+		// Sorting
+		uasort( $available, array( $this, 'sort_widgets' ) );
 
 		// Output
 
@@ -391,25 +405,12 @@ class PB_Editor
 
 		$post_id = $_POST['post'];
 
-		// Models
-
-		$models = array();
-
-		if ( metadata_exists( 'post', $post_id, 'pb_models' ) ) 
-		{
-			$models = get_post_meta( $post_id, 'pb_models', true );
-		}
-
-		// Fields
-
-		$fields = pb()->fields->get_fields();
-
 		// Response
 
 		$response = apply_filters( 'pb/editor_load_response', array
 		(
-			'models' => $models,
-			'fields' => $fields,
+			'models' => pb()->models->get_models( $post_id ),
+			'fields' => pb()->fields->get_fields(),
 		), $post_id );
 
 		wp_send_json( $response );
@@ -436,17 +437,17 @@ class PB_Editor
 
 		if ( $append ) 
 		{
-			$post_models = get_post_meta( $post_id, 'pb_models', true );
+			$post_models = pb()->models->get_models( $post_id );
 
-			if ( is_array( $post_models ) )
+			if ( $post_models )
 			{
 				$models = array_merge( $post_models, $models );
 			}
 		}
 
-		update_post_meta( $post_id, 'pb_models', $models );
+		pb()->models->save_models( $models, $post_id );
 
-		// Response
+		// TODO : Response
 
 		wp_send_json( array() );
 	}
@@ -495,6 +496,11 @@ class PB_Editor
 		global $typenow;
 
 		return post_type_supports( $typenow, PB_POST_TYPE_FEATURE );
+	}
+
+	public function sort_widgets( $a, $b )
+	{
+		return strcmp( $a->title, $b->title );
 	}
 }
 

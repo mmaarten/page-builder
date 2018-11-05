@@ -32,8 +32,11 @@ html.with-featherlight
 	&:last-of-type 
 	{
 		/* support for nested pb-modals. Does not work in IE8 (use JS to fix) */
-		background: rgba( $modal-backdrop-color, $modal-backdrop-opacity );
+		// Not working when wp editor
+		// background: rgba( $modal-backdrop-color, $modal-backdrop-opacity );
 	}
+
+	background: rgba( $modal-backdrop-color, $modal-backdrop-opacity );
 
 	&:before 
 	{

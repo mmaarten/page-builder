@@ -1307,10 +1307,10 @@ html.with-featherlight {
   background: #333;
   /* IE8 "hack" for nested pb-modals */
   background: rgba(0, 0, 0, 0);
+  background: rgba(0, 0, 0, 0.7);
 }
 .pb-modal:last-of-type {
   /* support for nested pb-modals. Does not work in IE8 (use JS to fix) */
-  background: rgba(0, 0, 0, 0.7);
 }
 .pb-modal:before {
   /* position: trick to center content vertically */

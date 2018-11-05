@@ -10,47 +10,14 @@ Text Domain: page-builder
 Domain Path: /languages
 */
 
-define( 'PB_FILE'      , __FILE__ );
-define( 'PB_NONCE_NAME', 'pbnonce' );
+define( 'PB_FILE'             , __FILE__ );
+define( 'PB_NONCE_NAME'       , 'pbnonce' );
 define( 'PB_POST_TYPE_FEATURE', 'page-builder' );
-define( 'PB_CHOICE_DONT_SET', __( "Don't set" ) );
-define( 'PB_CHOICE_INHERIT' , __( 'Inherit from smaller' ) );
-
-class PB 
-{
-	public function __construct()
-	{
-		add_action( 'init'              , array( $this, 'init' ) );
-		add_action( 'wp_enqueue_scripts', array( $this, 'auto_enqueue_scripts' ) );
-	}
-
-	public function init()
-	{
-		// Enable page builder for pages.
-		add_post_type_support( 'page', PB_POST_TYPE_FEATURE );
-	}
-
-	public function auto_enqueue_scripts()
-	{
-		if ( ! pb()->widgets->has_widgets() ) 
-		{
-			return;
-		}
-
-		$this->enqueue_scripts();
-	}
-
-	public function enqueue_scripts()
-	{
-		// Enqueue widget scripts
-		pb()->widgets->enqueue_widgets_scripts();
-
-		// Enqueue core scripts
-		wp_enqueue_style( 'pb-editor', plugins_url( "assets/css/front.min.css", PB_FILE ) );
-	}
-}
+define( 'PB_CHOICE_DONT_SET'  , __( "Don't set" ) );
+define( 'PB_CHOICE_INHERIT'   , __( 'Inherit from smaller' ) );
 
 require_once plugin_dir_path( PB_FILE ) . 'includes/common.php';
+require_once plugin_dir_path( PB_FILE ) . 'includes/models.php';
 require_once plugin_dir_path( PB_FILE ) . 'includes/fields.php';
 require_once plugin_dir_path( PB_FILE ) . 'includes/editor.php';
 
@@ -95,3 +62,37 @@ require_once plugin_dir_path( PB_FILE ) . 'includes/widgets/class-pb-html-widget
 require_once plugin_dir_path( PB_FILE ) . 'includes/widgets/class-pb-image-widget.php';
 require_once plugin_dir_path( PB_FILE ) . 'includes/widgets/class-pb-row-widget.php';
 require_once plugin_dir_path( PB_FILE ) . 'includes/widgets/class-pb-text-widget.php';
+
+class PB 
+{
+	public function __construct()
+	{
+		add_action( 'init'              , array( $this, 'init' ) );
+		add_action( 'wp_enqueue_scripts', array( $this, 'auto_enqueue_scripts' ) );
+	}
+
+	public function init()
+	{
+		// Enable page builder for pages.
+		add_post_type_support( 'page', PB_POST_TYPE_FEATURE );
+	}
+
+	public function auto_enqueue_scripts()
+	{
+		if ( ! pb()->widgets->has_widgets() ) 
+		{
+			return;
+		}
+
+		$this->enqueue_scripts();
+	}
+
+	public function enqueue_scripts()
+	{
+		// Enqueue widget scripts
+		pb()->widgets->enqueue_widgets_scripts();
+
+		// Enqueue core scripts
+		wp_enqueue_style( 'pb-editor', plugins_url( "assets/css/front.min.css", PB_FILE ) );
+	}
+}
