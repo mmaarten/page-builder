@@ -123,7 +123,7 @@ body:not(.pb-debug) .pb-show-if-debug {
 }
 
 /*!
- * Font Awesome Free 5.1.0 by @fontawesome - https://fontawesome.com
+ * Font Awesome Free 5.1.1 by @fontawesome - https://fontawesome.com
  * License - https://fontawesome.com/license (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
  */
 .pb-icon,
@@ -3534,6 +3534,10 @@ readers do not read off random characters that represent icons */
 
 .pb-icon-retweet:before {
   content: "\f079";
+}
+
+.pb-icon-rev:before {
+  content: "\f5b2";
 }
 
 .pb-icon-ribbon:before {
