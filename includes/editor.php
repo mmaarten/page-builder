@@ -11,19 +11,7 @@ class PB_Editor
 		add_action( 'wp_ajax_pb_widget_picker'  , array( $this, 'widget_picker' ) );
 		add_action( 'wp_ajax_pb_widget_settings', array( $this, 'widget_settings' ) );
 		add_action( 'wp_ajax_pb_widget_preview' , array( $this, 'widget_preview' ) );
-
-		add_filter( 'pb/input_value', function( $value, $field )
-		{
-			$model = pb_stripslashes( $_POST['model'] );
-
-			if ( isset( $model['data'][ $field['name'] ] ) ) 
-			{
-				$value = $model['data'][ $field['name'] ];
-			}
-
-			return $value;
-
-		}, 10, 2 );
+		add_filter( 'pb/input_value'            , array( $this, 'input_value' ), 10, 2 );
 	}
 
 	/**
@@ -341,6 +329,32 @@ class PB_Editor
 		wp_die();
 	}
 
+	public function input_value( $value, $field )
+	{
+		// Check ajax and referer
+
+		if ( ! wp_doing_ajax() ) 
+		{
+			return $value;
+		}
+
+		if ( ! check_admin_referer( 'editor', PB_NONCE_NAME, false ) )
+		{
+			return $value;
+		}
+
+		//
+
+		$model = pb_stripslashes( $_POST['model'] );
+
+		if ( isset( $model['data'][ $field['name'] ] ) ) 
+		{
+			$value = $model['data'][ $field['name'] ];
+		}
+
+		return $value;
+	}
+
 	public function widget_preview()
 	{
 		// Check ajax and referer
@@ -354,7 +368,7 @@ class PB_Editor
 
 		// Post data
 
-		$models = isset( $_POST['models'] ) ? $_POST['models'] : array();
+		$models = isset( $_POST['models'] ) ? pb_stripslashes( $_POST['models'] ) : array();
 
 		//
 
@@ -374,7 +388,6 @@ class PB_Editor
 			// Get instance
 
 			$instance = isset( $model['data'] ) ? $model['data'] : array();
-			$instance = pb_stripslashes( $instance );
 
 			// Get preview content
 
