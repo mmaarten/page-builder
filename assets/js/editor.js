@@ -440,8 +440,8 @@
 			{
 				if ( ui.item.is( '.pb-widget' ) ) 
 				{
-					pb.doAction( 'widgetSortStart'                               , ui.item );
-					pb.doAction( 'widgetSortStart/type=' + ui.item.data( 'type' ), ui.item );
+					pb.doAction( 'widgetSortStart'                               , ui.item, ui );
+					pb.doAction( 'widgetSortStart/type=' + ui.item.data( 'type' ), ui.item, ui );
 				}
 			});
 
@@ -450,8 +450,8 @@
 			{
 				if ( ui.item.is( '.pb-widget' ) ) 
 				{
-					pb.doAction( 'widgetSortStop'                               , ui.item );
-					pb.doAction( 'widgetSortStop/type=' + ui.item.data( 'type' ), ui.item );
+					pb.doAction( 'widgetSortStop'                               , ui.item, ui );
+					pb.doAction( 'widgetSortStop/type=' + ui.item.data( 'type' ), ui.item, ui );
 				}
 			});
 
@@ -1442,11 +1442,13 @@
 		{
 			$.extend( this, options );
 
-			pb.addAction( 'widget/type=' + this.id        , this.widget );
-			pb.addAction( 'widgetAdded/type=' + this.id   , this.widgetAdded );
-			pb.addAction( 'widgetUpdated/type=' + this.id , this.widgetUpdated );
-			pb.addAction( 'widgetRemoved/type=' + this.id , this.widgetRemoved );
-			pb.addAction( 'widgetSettings/type=' + this.id, this.widgetSettings );
+			pb.addAction( 'widget/type=' + this.id         , this.widget );
+			pb.addAction( 'widgetAdded/type=' + this.id    , this.widgetAdded );
+			pb.addAction( 'widgetUpdated/type=' + this.id  , this.widgetUpdated );
+			pb.addAction( 'widgetRemoved/type=' + this.id  , this.widgetRemoved );
+			pb.addAction( 'widgetSettings/type=' + this.id , this.widgetSettings );
+			pb.addAction( 'widgetSortStart/type=' + this.id, this.widgetSortStart );
+			pb.addAction( 'widgetSortStop/type=' + this.id , this.widgetSortStop );
 		},
 
 		widget : function( $widget )
@@ -1473,6 +1475,16 @@
 		{
 
 		},
+
+		widgetSortStart : function( $widget, ui )
+		{
+			
+		},
+
+		widgetSortStop : function( $widget, ui )
+		{
+
+		},
 	};
 
 })( jQuery, window, undefined );
@@ -1485,9 +1497,11 @@
 	"use strict";
 
 	var pb = window.pb || {};
-	
-	function updateCSSClass( $widget )
+
+	function getGridCSSClasses( $widget )
 	{
+		var className = $widget.attr( 'class' ) || '';
+
 		/**
 		 * Remove all grid related classes
 		 */
@@ -1504,11 +1518,20 @@
 
 		var regExp = new RegExp( pattern, 'g' );
 		
+		var matches = className.match( regExp );
+
+		return matches ? matches.join( ' ' ) : '';
+	}
+	
+	function updateCSSClass( $widget )
+	{
+		/**
+		 * Remove all grid related classes
+		 */
+		
 		$widget.removeClass( function( index, className )
 		{
-			var matches = className.match( regExp );
-
-			return matches ? matches.join( ' ' ) : '';
+			return getGridCSSClasses( $widget );
 		});
 
 		/**
@@ -1571,6 +1594,22 @@
 		widgetUpdated : function( $widget )
 		{
 			updateCSSClass( $widget );
+		},
+
+		widgetSortStart : function( $widget, ui )
+		{
+			// Adds grid related classes to placeholder
+			var className = getGridCSSClasses( $widget );
+
+			ui.placeholder.addClass( className );
+		},
+
+		widgetSortStop : function( $widget, ui )
+		{
+			// Removes grid related classes to placeholder
+			var className = getGridCSSClasses( $widget );
+
+			ui.placeholder.removeClass( className );
 		},
 	});
 

@@ -191,8 +191,8 @@
 			{
 				if ( ui.item.is( '.pb-widget' ) ) 
 				{
-					pb.doAction( 'widgetSortStart'                               , ui.item );
-					pb.doAction( 'widgetSortStart/type=' + ui.item.data( 'type' ), ui.item );
+					pb.doAction( 'widgetSortStart'                               , ui.item, ui );
+					pb.doAction( 'widgetSortStart/type=' + ui.item.data( 'type' ), ui.item, ui );
 				}
 			});
 
@@ -201,8 +201,8 @@
 			{
 				if ( ui.item.is( '.pb-widget' ) ) 
 				{
-					pb.doAction( 'widgetSortStop'                               , ui.item );
-					pb.doAction( 'widgetSortStop/type=' + ui.item.data( 'type' ), ui.item );
+					pb.doAction( 'widgetSortStop'                               , ui.item, ui );
+					pb.doAction( 'widgetSortStop/type=' + ui.item.data( 'type' ), ui.item, ui );
 				}
 			});
 

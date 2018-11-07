@@ -6,9 +6,11 @@
 	"use strict";
 
 	var pb = window.pb || {};
-	
-	function updateCSSClass( $widget )
+
+	function getGridCSSClasses( $widget )
 	{
+		var className = $widget.attr( 'class' ) || '';
+
 		/**
 		 * Remove all grid related classes
 		 */
@@ -25,11 +27,20 @@
 
 		var regExp = new RegExp( pattern, 'g' );
 		
+		var matches = className.match( regExp );
+
+		return matches ? matches.join( ' ' ) : '';
+	}
+	
+	function updateCSSClass( $widget )
+	{
+		/**
+		 * Remove all grid related classes
+		 */
+		
 		$widget.removeClass( function( index, className )
 		{
-			var matches = className.match( regExp );
-
-			return matches ? matches.join( ' ' ) : '';
+			return getGridCSSClasses( $widget );
 		});
 
 		/**
@@ -92,6 +103,22 @@
 		widgetUpdated : function( $widget )
 		{
 			updateCSSClass( $widget );
+		},
+
+		widgetSortStart : function( $widget, ui )
+		{
+			// Adds grid related classes to placeholder
+			var className = getGridCSSClasses( $widget );
+
+			ui.placeholder.addClass( className );
+		},
+
+		widgetSortStop : function( $widget, ui )
+		{
+			// Removes grid related classes to placeholder
+			var className = getGridCSSClasses( $widget );
+
+			ui.placeholder.removeClass( className );
 		},
 	});
 
