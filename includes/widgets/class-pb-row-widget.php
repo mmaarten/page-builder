@@ -135,7 +135,7 @@ class PB_Row_Widget extends PB_Widget
 
 		if ( $instance['align_items'] ) 
 		{
-			$atts['class'] .= "align-items-{$instance['align_items']}";
+			$atts['class'] .= " align-items-{$instance['align_items']}";
 		}
 
 		if ( ! $instance['gutters'] ) 
