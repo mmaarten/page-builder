@@ -7,36 +7,48 @@ class PB_Color_Feature extends PB_Feature
 		parent::__construct( 'color' );
 	}
 
-	public function widget_init( $widget )
+	public function widget( $widget )
 	{
 		if ( $widget->supports( $this->id ) ) 
 		{
 			$widget->add_field( array
 			(
-				'key'           => 'color',
+				'key'           => "{$widget->id}_color",
 				'name'          => 'color',
-				'title'         => __( 'Text Color' ),
+				'label'         => __( 'Color' ),
 				'description'   => '',
 				'type'          => 'select',
-				'choices'       => array_merge( array
+				'choices'       => array
 				(
-					'' => PB_THEME_DEFAULTS,
-				), pb()->options->get( 'theme_colors' ) ),
+					''          => PB_CHOICE_DONT_SET,
+					'primary'   => __( 'Primary' ),
+					'secondary' => __( 'Secondary' ),
+					'success'   => __( 'Success' ),
+					'danger'    => __( 'Danger' ),
+					'warning'   => __( 'Warning' ),
+					'info'      => __( 'Info' ),
+					'light'     => __( 'Light' ),
+					'dark'      => __( 'Dark' ),
+					'body'      => __( 'Body' ),
+					'muted'     => __( 'Muted' ),
+					'white'     => __( 'White' ),
+				),
 				'default_value' => '',
-				'order'         => PB_ORDER_TAB_LAYOUT + 10
+				'category'      => 'layout',
+				'order'         => 10,
 			));
 		}
 	}
 
-	public function widget_html_attributes( $atts, $instance, $widget )
+	public function widget_html_attributes( $atts, $widget, $instance )
 	{
-		if ( $widget->supports( $this->id ) )
+		if ( $widget->supports( $this->id ) ) 
 		{
-			$value = isset( $instance['color'] ) ? sanitize_html_class( $instance['color'] ) : '';
+			$value = isset( $instance['color'] ) ? sanitize_html_class( $instance['color'] ) : null;
 
 			if ( $value ) 
 			{
-				$atts['class'] .= " text-$value";
+				$atts['class'] .= " text-{$instance['color']}";
 			}
 		}
 
@@ -44,4 +56,4 @@ class PB_Color_Feature extends PB_Feature
 	}
 }
 
-pb()->features->register( 'PB_Color_Feature' );
+pb()->features->register_feature( 'PB_Color_Feature' );

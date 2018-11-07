@@ -9,51 +9,52 @@ class PB_Group_Field extends PB_Field
 
 	public function field( $field )
 	{
-		$field['description_placement'] = 'label';
-		
-		$sub_fields = pb()->fields->get_sub_fields( $field );
+		// Make sure sub fields are setup correctly.
 
-		// Sets default value
+		$sub_fields = array();
 
-		$field['default_value'] = array();
-
-		foreach ( $sub_fields as $sub_field ) 
+		if ( isset( $field['sub_fields'] ) && is_array( $field['sub_fields'] ) ) 
 		{
-			$field['default_value'][ $sub_field['name'] ] = $sub_field['default_value'];
+			foreach ( $field['sub_fields'] as $sub_field ) 
+			{
+				$sub_field = pb()->fields->create_field( $sub_field );
+
+				$sub_field['key'] = '';
+
+				$sub_fields[] = $sub_field;
+			}
 		}
 
-		//
+		$field['sub_fields'] = $sub_fields;
+
+		// Set defaults
+
+		$defaults = array();
+
+		foreach ( $field['sub_fields'] as $sub_field ) 
+		{
+			$defaults[ $sub_field['name'] ] = $sub_field['default_value'];
+		}
+
+		$field['default_value'] = $defaults;
+
+  		// Description placement
+  		
+  		$field['description_placement'] = 'label';
+
+		// Return
 
 		return $field;
 	}
 
 	public function render( $field )
 	{
-		$this->render_block_layout( $field );
-	}
-
-	public function render_block_layout( $field )
-	{
-		$sub_fields = pb()->fields->get_sub_fields( $field );
-
-		if ( ! count( $sub_fields ) ) 
-		{
-			return;
-		}
-
-		usort( $sub_fields, 'pb_sort_order' );
-
 		?>
-		
-		<div class="pb-sub-fields">
-			<?php foreach ( $sub_fields as $sub_field ) :
-				
-				// Makes field name hierarchical
-				$sub_field['prefix'] = $field['name'];
-				
-				// Sets field value
-				$sub_field['value'] = isset( $field['value'][ $sub_field['name'] ] ) ? $field['value'][ $sub_field['name'] ] : $sub_field['default_value'];
 
+		<div class="pb-sub-fields">
+			<?php foreach ( $field['sub_fields'] as $sub_field ) : 
+				$sub_field['prefix'] = $field['name'];
+				$sub_field['value']  = $field['value'][ $sub_field['name'] ];
 			?>
 			<?php pb()->fields->render_field( $sub_field ); ?>
 			<?php endforeach; ?>
@@ -64,24 +65,27 @@ class PB_Group_Field extends PB_Field
 
 	public function sanitize( $value, $field )
 	{
-		$sub_fields = pb()->fields->get_sub_fields( $field );
+		$values = array();
 
-		if ( ! is_array( $value ) ) 
+		foreach ( $field['sub_fields'] as $sub_field ) 
 		{
-			$value = array();
+			$_value = $sub_field['default_value'];
+
+			if ( isset( $value[ $sub_field['name'] ] ) ) 
+			{
+				$_value = $value[ $sub_field['name'] ];
+			}
+
+			$values[ $sub_field['name'] ] = apply_filters( "pb/sanitize_field/type={$sub_field['type']}", $_value, $sub_field );
 		}
 
-		$sanitized = array();
+		return $values;
+	}
 
-		foreach ( $sub_fields as $sub_field ) 
-		{
-			$_value = isset( $value[ $sub_field['name'] ] ) ? $value[ $sub_field['name'] ] : $sub_field['default_value'];
-
-			$sanitized[ $sub_field['name'] ] = pb()->fields->sanitize_field( $sub_field, $_value );
-		}
-
-		return $sanitized;
+	public function translate( $value, $field )
+	{
+		return '';
 	}
 }
 
-pb()->field_types->register( 'PB_Group_Field' );
+pb()->field_types->register_field( 'PB_Group_Field' );

@@ -7,244 +7,199 @@ class PB_Column_Widget extends PB_Widget
 		parent::__construct( 'column', __( 'Column' ), array
 		(
 			'description' => __( 'Displays a column.' ),
-			'controls'    => array( 'add', 'edit', 'delete', 'toggle' ),
-			'features'    => array
-			( 
-				'id', 
-				'class',
-				'margin_top', 
-				'margin_bottom', 
-				'padding_top', 
-				'padding_bottom',
-				'bg_image',
-				'bg_image_size',
-				'bg_position',
-				'bg_type',
-				'bg_color',
-				'parallax',
-				'bg_overlay'
-			)
+			'features'    => array( 'id', 'class', 'mt', 'mr', 'mb', 'ml' ),
 		));
 
-		$choices = pb()->options->get( 'columns' );
-
-		$offset_choices = array
-		(
-			'' => __( "Don't set" ),
-			0  => __( 'No offset' )
-		) + $choices;
-
-		$order_choices = array
-		(
-			'' => __( "Don't set" ),
-			1  => 1,
-			2  => 2,
-			3  => 3,
-			4  => 4,
-			5  => 5,
-			6  => 6,
-			7  => 7,
-			8  => 8,
-			9  => 9,
-			10  => 10,
-			11  => 11,
-			12  => 12
-		) + $choices;
-
-		/**
-		 * General
-		 * -----------------------------------------------------------
-		 */
-		
 		$this->add_field( array
 		(
-			'key'           => 'width',
-			'name'          => 'width',
-			'title'         => __( 'Width' ),
-			'description'   => '',
+			'key'           => "{$this->id}_cols",
+			'name'          => 'cols',
+			'label'         => __( 'Width' ),
 			'type'          => 'select',
-			'choices'       => $choices,
+			'choices'       => $this->get_choices( 'cols' ),
 			'default_value' => 12,
-			'order'         => PB_ORDER_TAB_GENERAL + 10 
 		));
 
-		// Responsiveness
+		$sub_fields = array();
 
-		$this->add_field( array
-		(
-			'key'           => 'responsiveness',
-			'name'          => 'responsiveness',
-			'title'         => __( 'Responsiveness' ),
-			'description'   => '',
-			'type'          => 'group',
-			'default_value' => '',
-			'layout'        => 'block',
-			'order'         => PB_ORDER_TAB_GENERAL + 20
-		));
-
-		$breakpoints = pb()->options->get( 'grid_breakpoint_formats' );
-
-		$order = 0;
-
-		foreach ( $breakpoints as $breakpoint => $format ) 
+		foreach ( pb_get_grid_breakpoints() as $breakpoint => $format ) 
 		{
-			$_offset_choices = $offset_choices;
-			$_width_choices  = $choices;
-			$_order_choices  = $order_choices;
+			$choices = $this->get_choices( 'cols' );
 
-			if ( $breakpoint != 'xs' ) 
+			if ( $breakpoint == 'xs' ) 
 			{
-				$_offset_choices = array
-				(
-					'' => PB_INHERIT_FROM_SMALLER,
-				) + $_offset_choices;
-
-				$_width_choices = array
-				(
-					'' => PB_INHERIT_FROM_SMALLER,
-				) + $_width_choices;
-
-				$_order_choices = array
-				(
-					'' => PB_INHERIT_FROM_SMALLER,
-				) + $_order_choices;
+				$choices = $this->get_choices( 'dont_set' );
 			}
 
-			else
-			{
-				$_width_choices = array
-				(
-					'' => __( "Don't set" ),
-				) + $_width_choices;
-			}
+			$wrapper = array( 'width' => 25 );
 
-			$this->add_field( array
+			$sub_fields[] = array
 			(
-				'key'           => "tab_{$breakpoint}",
-				'name'          => 'tab',
-				'title'         => strtoupper( $breakpoint ),
+				'name'          => "tab_{$breakpoint}",
+				'label'         => $breakpoint,
 				'description'   => '',
 				'type'          => 'tab',
 				'default_value' => '',
-				'parent'        => 'responsiveness',
-				'order'         => $order
-			));
+			);
 
-			$this->add_field( array
+			$sub_fields[] = array
 			(
-				'key'           => "offset_{$breakpoint}",
 				'name'          => "offset_{$breakpoint}",
-				'title'         => __( 'Offset' ),
+				'label'         => __( 'Offset' ),
 				'description'   => '',
 				'type'          => 'select',
-				'choices'       => $_offset_choices,
+				'choices'       => $this->get_choices( 'dont_set' ),
 				'default_value' => '',
-				'parent'        => 'responsiveness',
-				'order'         => $order + 10
-			));
+				'wrapper'       => $wrapper,
+			);
 
-			if ( $breakpoint == 'md' ) 
+			if ( $breakpoint == 'sm' )
 			{
-				$this->add_field( array
+				$sub_fields[] = array
 				(
-					'key'           => "width_{$breakpoint}_message",
-					'name'          => "width_{$breakpoint}_message",
-					'title'         => __( 'Width' ),
-					'description'   => '',
+					'name'          => "cols_{$breakpoint}",
+					'label'         => __( 'Width' ),
 					'type'          => 'message',
-					'message'       => __( 'Value from width attribute.' ),
-					'default_value' => '',
-					'parent'        => 'responsiveness',
-					'order'         => $order + 20
-				));
+					'message'       => __( "Value from 'width' attribute." ),
+					'wrapper'       => $wrapper,
+				);
 			}
 
 			else
 			{
-				$this->add_field( array
+				$sub_fields[] = array
 				(
-					'key'           => "width_{$breakpoint}",
-					'name'          => "width_{$breakpoint}",
-					'title'         => __( 'Width' ),
+					'name'          => "cols_{$breakpoint}",
+					'label'         => __( 'Width' ),
 					'description'   => '',
 					'type'          => 'select',
-					'choices'       => $_width_choices,
+					'choices'       => $choices,
 					'default_value' => '',
-					'parent'        => 'responsiveness',
-					'order'         => $order + 20
-				));
+					'wrapper'       => $wrapper,
+				);
 			}
 
-			$this->add_field( array
+			$sub_fields[] = array
 			(
-				'key'           => "order_{$breakpoint}",
 				'name'          => "order_{$breakpoint}",
-				'title'         => __( 'Order' ),
+				'label'         => __( 'Order' ),
 				'description'   => '',
-				'type'          => 'select',
-				'choices'       => $_order_choices,
+				'type'          => 'number',
 				'default_value' => '',
-				'parent'        => 'responsiveness',
-				'order'         => $order + 30
-			));
+				'wrapper'       => $wrapper,
+			);
 
-			$order += 40;
+			$sub_fields[] = array
+			(
+				'name'          => "hidden_{$breakpoint}",
+				'label'         => __( 'Hidden' ),
+				'description'   => '',
+				'type'          => 'true_false',
+				'default_value' => 0,
+				'wrapper'       => $wrapper,
+			);
 		}
+
+		$this->add_field( array
+		(
+			'key'           => "{$this->id}_responsiveness",
+			'name'          => 'responsiveness',
+			'label'         => __( 'Responsiveness' ),
+			'description'   => __( 'Set options per screen size.' ),
+			'type'          => 'group',
+			'sub_fields'    => $sub_fields,
+		));
 	}
 
-	public function widget_html_attributes( $atts, $instance )
+	public function get_choices( $context )
 	{
+		$choices['cols'] = array
+		(
+			'1'  => __( '1 column - 1/12' ),
+			'2'  => __( '2 columns - 1/6' ),
+			'3'  => __( '3 columns - 1/4' ),
+			'4'  => __( '4 columns - 3/4' ),
+			'5'  => __( '5 columns - 5/12' ),
+			'6'  => __( '6 columns - 1/2' ),
+			'7'  => __( '7 columns - 7/12' ),
+			'8'  => __( '8 columns - 2/3' ),
+			'9'  => __( '9 columns - 3/4' ),
+			'10' => __( '10 columns - 5/6' ),
+			'11' => __( '11 columns - 11/12' ),
+			'12' => __( '12 columns - 1/1' ),
+		);
+
+		$choices['inherit'] = array
+		(
+			'' => __( 'Inherit from smaller.' ),
+		) + $choices['cols'];
+
+		$choices['dont_set'] = array
+		(
+			'' => __( "Don't set" ),
+		) + $choices['cols'];
+
+		if ( isset( $choices[ $context ] ) ) 
+		{
+			return $choices[ $context ];
+		}
+
+		return false;
+	}
+
+	public function widget_html_attributes( $atts, $widget, $instance )
+	{
+		// Instance
 		$instance = wp_parse_args( $instance, $this->get_defaults() );
 
-		// Merges offset and width settings into one array
+		// Add grid related css classes
 
-		$data = array_merge( (array) $instance['responsiveness'], array
+		$data = wp_parse_args( array
 		(
-			'width_md' => $instance['width']
-		));
+			'cols_sm' => $instance['cols'],
+		), $instance['responsiveness'] );
 
-		// Sets column classes
-
-		$breakpoints = pb()->options->get( 'grid_breakpoint_formats' );
-
-		foreach ( $breakpoints as $breakpoint => $format ) 
+		foreach ( pb_get_grid_breakpoints() as $breakpoint => $format ) 
 		{
-			if ( isset( $data["offset_{$breakpoint}"] ) && $value = $data["offset_{$breakpoint}"] ) 
+			if ( $value = $data["offset_{$breakpoint}"] ) 
 			{
 				$atts['class'] .= ' ' . sprintf( $format, 'offset', $value );
 			}
 
-			if ( isset( $data["width_{$breakpoint}"] ) && $value = $data["width_{$breakpoint}"] ) 
+			if ( $value = $data["cols_{$breakpoint}"] ) 
 			{
 				$atts['class'] .= ' ' . sprintf( $format, 'col', $value );
 			}
 
-			if ( isset( $data["order_{$breakpoint}"] ) && $value = $data["order_{$breakpoint}"] ) 
+			if ( $value = $data["order_{$breakpoint}"] ) 
 			{
 				$atts['class'] .= ' ' . sprintf( $format, 'order', $value );
 			}
+
+			if ( $value = $data["hidden_{$breakpoint}"] ) 
+			{
+				$atts['class'] .=  " hidden-{$breakpoint}";
+			}
 		}
 
-		//
-
+		// Return
 		return $atts;
 	}
 
-	public function widget( $args, $instance )
+	public function render( $args, $instance )
 	{
-		$instance = wp_parse_args( $instance, $this->get_defaults() );
-		
-		/**
-		 * Output
-		 * -----------------------------------------------------------
-		 */
+		// Instance
 
-		echo $args['before_widget'];
+		$instance = wp_parse_args( $instance, $this->get_defaults() );
+
+		// Output
+
+		echo $args['before'];
 
 		pb()->widgets->the_child_widgets();
 
-		echo $args['after_widget'];
+		echo $args['after'];
 	}
 }
 
-pb()->widgets->register( 'PB_Column_Widget' );
+pb()->widgets->register_widget( 'PB_Column_Widget' );

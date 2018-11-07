@@ -4,88 +4,69 @@ class PB_Models
 {
 	public function __construct()
 	{
-
+		
 	}
 
 	public function create_model( $args )
 	{
+		// Defaults
 		$defaults = array
 		(
 			'id'     => '',
 			'type'   => '',
 			'data'   => array(),
 			'index'  => 0,
-			'parent' => ''
+			'parent' => '',
 		);
 
-		$model = wp_parse_args( $args, $defaults );
-		
+		// Create
+		$model         = wp_parse_args( $args, $defaults );
 		$model['data'] = wp_parse_args( $model['data'], $defaults['data'] );
 
+		// Filter
+		$model = apply_filters( 'pb/model'                      , $model );
+		$model = apply_filters( "pb/model/type={$model['type']}", $model );
+
+		// Return
 		return $model;
 	}
 
-	public function get_post_models( $post_id = 0 )
+	public function get_models( $post_id, $search = array() )
 	{
-		$post = $this->get_post( $post_id );
-
-		if ( ! $post ) 
+		// Check if models
+		if ( ! metadata_exists( 'post', $post_id, 'pb_models' ) ) 
 		{
 			return null;
 		}
 
-		$models = get_post_meta( $post->ID, '_pb_models', true );
+		// Get models
+		$models = get_post_meta( $post_id, 'pb_models', true );
 
-		if ( ! is_array( $models ) ) 
-		{
-			$models = array();
-		}
+		// Search
+		$models = wp_filter_object_list( $models, $search );
 
+		// Return
 		return $models;
 	}
 
-	public function save_post_models( $models, $post_id = 0 )
+	public function save_models( $models, $post_id )
 	{
-		$post = $this->get_post( $post_id );
-
-		if ( ! $post ) 
-		{
-			return false;
-		}
+		// Sanitize
 
 		$sanitized = array();
 
-		foreach ( $models as $key => $model ) 
+		foreach ( $models as $model ) 
 		{
 			$model = $this->create_model( $model );
-		
-			$sanitized[ $key ] = $model;
+
+			$sanitized[ $model['id'] ] = $model;
 		}
 
-		update_post_meta( $post->ID, '_pb_models', $sanitized );
+		$models = $sanitized;
 
-		return true;
-	}
+		// Save
 
-	protected function get_post( $post_id = 0 )
-	{
-		// Checks if post exists
-
-		$post = get_post( $post_id );
-
-		if ( ! $post ) 
-		{
-			return null;
-		}
-
-		// Checks of post type supports page builder
-
-		if ( ! post_type_supports( $post->post_type, PB_POST_TYPE_FEATURE ) ) 
-		{
-			return null;
-		}
-
-		return $post;
+		return update_post_meta( $post_id, 'pb_models', $models ) !== false;
 	}
 }
 

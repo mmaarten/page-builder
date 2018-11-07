@@ -7,28 +7,28 @@ class PB_ID_Feature extends PB_Feature
 		parent::__construct( 'id' );
 	}
 
-	public function widget_init( $widget )
+	public function widget( $widget )
 	{
-		if ( $widget->supports( $this->id ) )
+		if ( $widget->supports( $this->id ) ) 
 		{
 			$widget->add_field( array
 			(
-				'key'           => 'id',
+				'key'           => "{$widget->id}_id",
 				'name'          => 'id',
-				'title'         => __( 'ID' ),
-				'description'   => __( '' ),
+				'label'         => __( 'ID' ),
+				'description'   => '',
 				'type'          => 'text',
 				'default_value' => '',
-				'order'         => PB_ORDER_TAB_ATTRIBUTES + 10
+				'category'      => 'attributes',
 			));
 		}
 	}
 
-	public function widget_html_attributes( $atts, $instance, $widget )
+	public function widget_html_attributes( $atts, $widget, $instance )
 	{
-		if ( $widget->supports( $this->id ) )
+		if ( $widget->supports( $this->id ) ) 
 		{
-			$value = isset( $instance['id'] ) ? sanitize_title( $instance['id'] ) : '';
+			$value = isset( $instance['id'] ) ? sanitize_title( $instance['id'] ) : null;
 
 			if ( $value ) 
 			{
@@ -40,4 +40,4 @@ class PB_ID_Feature extends PB_Feature
 	}
 }
 
-pb()->features->register( 'PB_ID_Feature' );
+pb()->features->register_feature( 'PB_ID_Feature' );

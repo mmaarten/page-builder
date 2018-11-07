@@ -2,19 +2,19 @@
 
 class PB_Widgets
 {
-	public $post  = null;
-	public $model = null;
+	protected $widgets = array();
 
- 	protected $widgets = array();
+	protected $post  = null;
+	protected $model = null;
 
-	function __construct()
+	public function __construct()
 	{
-			
+		add_filter( 'the_content', array( $this, 'auto_render_post_widgets' ) );
 	}
 
-	function register( $widget )
+	public function register_widget( $widget )
 	{
-		if ( ! $widget instanceof PB_Widget ) 
+		if ( ! $widget instanceof PB_Field ) 
 		{
 			$widget = new $widget();
 		}
@@ -22,19 +22,19 @@ class PB_Widgets
 		$this->widgets[ $widget->id ] = $widget;
 	}
 
-	function unregister( $id )
+	public function unregister_widget( $id )
 	{
 		unset( $this->widgets[ $id ] );
 	}
 
-	function get_widgets()
+	public function get_widgets()
 	{
 		return $this->widgets;
 	}
 
-	function get_widget( $id )
+	public function get_widget( $id )
 	{
-		if ( isset( $this->widgets[ $id ] ) )
+		if ( isset( $this->widgets[ $id ] ) ) 
 		{
 			return $this->widgets[ $id ];
 		}
@@ -42,98 +42,67 @@ class PB_Widgets
 		return null;
 	}
 
-	public function add_widget_support( $widget_id, $feature )
+	public function has_widgets( $post_id = 0 )
 	{
-		$widget = $this->get_widget( $widget_id );
-
-		if ( ! $widget ) 
-		{
-			return;
-		}
-
-		$widget->add_support( $feature );
-	}
-
-	public function render_widget( $model )
-	{
-		// Makes sure all properties are set
-
-		$model = pb()->models->create_model( $model );
-
-		// Gets widget
-
-		$widget = $this->get_widget( $model['type'] );
-
-		// Stops when widget could not be found
-
-		if ( ! $widget )
-		{
-			return;
-		}
-
-		// Wrapper
-
-		$wrapper = array
-		(
-			'id'    => '',
-			'class' => "pb-widget pb-{$widget->id}-widget"
-		);
-
-		if ( $model['id'] ) 
-		{
-			$wrapper['id'] = "pb-widget-{$model['id']}";
-		}
-
-		$wrapper = apply_filters( "pb/widget_html_attributes/type={$widget->id}", $wrapper, $model['data'], $widget );
-		$wrapper = apply_filters( "pb/widget_html_attributes", $wrapper, $model['data'], $widget );
-		$wrapper = array_filter( $wrapper );
-
-		$args = array
-		(
-			'before_widget' => sprintf( '<div%s>', pb_render_attributes( $wrapper ) ),
-			'after_widget'  => '</div>'
-		);
-
-		$args = apply_filters( 'pb_widget_args', $args, $model['data'], $widget );
-
-		// Renders widget
-
-		$widget->widget( $args, $model['data'] );
-	}
-
-	public function render_post_widgets( $post = 0, $search = null )
-	{
-		$this->post  = null;
-		$this->model = null;
-
-		$post = get_post( $post );
+		$post = get_post( $post_id );
 
 		if ( ! $post ) 
 		{
+			return false;
+		}
+
+		if ( ! post_type_supports( $post->post_type, PB_POST_TYPE_FEATURE ) ) 
+		{
+			return false;
+		}
+
+		$models = pb()->models->get_models( $post->ID );
+
+		if ( ! $models ) 
+		{
+			return false;
+		}
+
+		return true;
+	}
+
+	public function the_widgets( $_search = null )
+	{
+		$this->post = get_post();
+
+		// Check if post
+		if ( ! $this->post ) 
+		{
 			return;
 		}
 
-		$models = pb()->models->get_post_models( $post->ID );
+		// Check if widgets
+		if ( ! $this->has_widgets( $this->post ) ) 
+		{
+			return;
+		}
+
+		// Get models
+
+		if ( ! $_search ) 
+		{
+			$_search = array( 'parent' => '' );
+		}
+
+		$models = pb()->models->get_models( $this->post->ID, $_search );
 
 		if ( ! $models ) 
 		{
 			return;
 		}
 
-		$this->post = $post;
-
-		if ( ! isset( $search ) ) 
-		{
-			$search = array( 'parent' => '' );
-		}
-
-		$models = wp_filter_object_list( $models, $search );
+		// Output
 
 		foreach ( $models as $model ) 
 		{
 			$this->model = $model;
 
-			$this->render_widget( $this->model );
+			$this->render_widget( $this->model['type'], $this->model['data'] );
 		}
 	}
 
@@ -144,105 +113,85 @@ class PB_Widgets
 			return;
 		}
 
-		$this->render_post_widgets( $this->post, array( 'parent' => $this->model['id'] ) );
+		$this->the_widgets( array( 'parent' => $this->model['id'] ) );
 	}
 
-	public function post_has_widget( $post_id, $widget_id )
+	public function auto_render_post_widgets( $content )
 	{
-		$models = pb()->models->get_post_models( $post_id );
+		remove_filter( current_filter(), array( $this, __FUNCTION__ ) );
 
-		if ( $models )
+		if ( $this->has_widgets() ) 
 		{
-			foreach ( $models as $model ) 
-			{
-				if ( $model['type'] == $widget_id ) 
-				{
-					return true;
-				}
-			}
+			ob_start();
+
+			pb()->widgets->the_widgets();
+
+			$content .= ob_get_clean();
 		}
 
-		return false;
+		add_filter( current_filter(), array( $this, __FUNCTION__ ) );
+
+		return $content;
 	}
 
-	public function post_has_widgets( $post_id = 0 )
+	public function enqueue_widgets_scripts()
 	{
-		$models = pb()->models->get_post_models( $post_id );
+		$widgets = $this->get_widgets();
 
-		return $models && count( $models ) ? true : false;
+		foreach ( $widgets as $widget ) 
+		{
+			$this->enqueue_widget_scripts( $widget->id );
+		}
 	}
 
-	public function enqueue_widget_scripts( $widget_id )
+	public function enqueue_widget_scripts( $id )
 	{
-		$widget = $this->get_widget( $widget_id );
+		static $enqueued = array();
+		
+		$widget = $this->get_widget( $id );
+
+		if ( ! $widget || isset( $enqueued[ $widget->id ] ) ) 
+		{
+			return;
+		}
+
+		$widget->enqueue_scripts();
+
+		$enqueued[ $widget->id ] = true;
+	}
+
+	public function render_widget( $id, $instance )
+	{
+		$widget = $this->get_widget( $id );
 
 		if ( ! $widget ) 
 		{
 			return;
 		}
 
-		$widget->enqueue_scripts();
-	}
+		// Wrapper
 
-	public function list_editor_widgets( $args = array() )
-	{
-		$defaults = array
+		$wrapper = array
 		(
-			'before'        => '',
-			'before_widget' => '',
-			'after_widget'  => '',
-			'after'         => '',
-			'include'       => null
+			'class' => "pb-widget pb-{$widget->id}-widget",
 		);
 
-		$args = wp_parse_args( $args, $defaults );
+		$wrapper = apply_filters( 'pb/widget_html_attributes'                   , $wrapper, $widget, $instance );
+		$wrapper = apply_filters( "pb/widget_html_attributes/type={$widget->id}", $wrapper, $widget, $instance );
+		$wrapper = array_filter( $wrapper );
 
-		// Filter
+		// Args
+		
+		$args = array
+		(
+			'before' => '<div' . pb_esc_attr( $wrapper ) . '>',
+			'after'  => '</div>',
+		);
 
-		$widgets = $this->widgets;
+		// Output
 
-		if ( $args['include'] )
-		{
-			$widgets = array_intersect_key( $widgets, array_flip( (array) $args['include'] ) );
-		}
-
-		//
-
-		if ( ! count( $widgets ) ) 
-		{
-			return;
-		}
-
-		echo $args['before'];
-
-		foreach ( $widgets as $widget ) 
-		{
-			echo $args['before_widget'];
-
-			$widget->editor_widget();
-
-			echo $args['after_widget'];
-		}
-
-		echo $args['after'];
+		$widget->render( $args, $instance );
 	}
 }
 
 pb()->widgets = new PB_Widgets();
-
-function pb_auto_render_post_widgets( $content )
-{
-	remove_filter( current_filter(), __FUNCTION__ );
-
-	ob_start();
-
-	pb()->widgets->render_post_widgets();
-
-	$content .= ob_get_clean();
-
-	add_filter( current_filter(), __FUNCTION__ );
-
-	return $content;
-}
-
-add_filter( 'the_content', 'pb_auto_render_post_widgets' );

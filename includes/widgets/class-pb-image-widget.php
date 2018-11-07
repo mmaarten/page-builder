@@ -7,169 +7,129 @@ class PB_Image_Widget extends PB_Widget
 		parent::__construct( 'image', __( 'Image' ), array
 		(
 			'description' => __( 'Displays an image.' ),
-			'features'    => array( 'id', 'class', 'text_align', 'margin_top', 'margin_bottom' )
+			'features'    => array( 'id', 'class', 'block_align', 'mt', 'mr', 'mb', 'ml', 'pt', 'pr', 'pb', 'pl' ),
 		));
 
-		/**
-		 * General
-		 * -----------------------------------------------------------
-		 */
-		
 		$this->add_field( array
 		(
-			'key'           => 'image',
+			'key'           => "{$this->id}_image",
 			'name'          => 'image',
-			'title'         => __( 'Image' ),
+			'label'         => __( 'Image' ),
 			'description'   => '',
 			'type'          => 'image',
 			'default_value' => '',
-			'order'         => PB_ORDER_TAB_GENERAL + 10
 		));
 
 		$this->add_field( array
 		(
-			'key'           => 'size',
-			'name'          => 'size',
-			'title'         => __( 'Size' ),
-			'description'   => '',
-			'type'          => 'select',
-			'choices'       => pb_get_image_size_choices(),
+			'key'           => "{$this->id}_image_size",
+			'name'          => 'image_size',
+			'label'         => __( 'Image Size' ),
+			'description'   => __( "WordPress image size: 'thumbnail', 'large', 'medium', 'small' or custom." ),
+			'type'          => 'text',
 			'default_value' => 'large',
-			'order'         => PB_ORDER_TAB_GENERAL + 20
 		));
 
 		$this->add_field( array
 		(
-			'key'           => 'link',
+			'key'           => "{$this->id}_link",
 			'name'          => 'link',
-			'title'         => __( 'Link' ),
+			'label'         => __( 'Link' ),
 			'description'   => '',
 			'type'          => 'url',
 			'default_value' => '',
 			'preview'       => true,
-			'order'         => PB_ORDER_TAB_GENERAL + 30
 		));
 
 		$this->add_field( array
 		(
-			'key'           => 'link_tab',
+			'key'           => "{$this->id}_link_tab",
 			'name'          => 'link_tab',
-			'title'         => __( 'Open link in new window' ),
+			'label'         => __( 'Open link in new window.' ),
 			'description'   => '',
 			'type'          => 'true_false',
 			'default_value' => 0,
-			'order'         => PB_ORDER_TAB_GENERAL + 40
 		));
-
-		/**
-		 * Layout
-		 * -----------------------------------------------------------
-		 */
 
 		$this->add_field( array
 		(
-			'key'           => 'shape',
-			'name'          => 'shape',
-			'title'         => __( 'Shape' ),
+			'key'           => "{$this->id}_type",
+			'name'          => 'type',
+			'label'         => __( 'Type' ),
 			'description'   => '',
 			'type'          => 'select',
 			'choices'       => array
 			(
-				''          => PB_THEME_DEFAULTS,
-				'thumbnail' => __( 'Thumbnail' ),
-				'rounded'   => __( 'Rounded' ),
-				'circle'    => __( 'Circle' )
+				''              => PB_CHOICE_DONT_SET,
+				'img-thumbnail' => __( 'Thumbnail' ),
+				'rounded'       => __( 'Rounded' ),
 			),
 			'default_value' => '',
-			'order'         => PB_ORDER_TAB_LAYOUT + 10
+			'category'      => 'layout',
 		));
-	}
-
-	public function widget( $args, $instance )
-	{
-		$instance = wp_parse_args( $instance, $this->get_defaults() );
-
-		/**
-		 * Attributes
-		 * -----------------------------------------------------------
-		 */
-
-		// Image
-
-		$img = array
-		(
-			'class' => ''
-		);
-
-		if ( $instance['shape'] == 'thumbnail' ) 
-		{
-			$img['class'] .= ' img-thumbnail';
-		}
-
-		elseif ( $instance['shape'] == 'rounded' )
-		{
-			$img['class'] .= ' rounded';
-		}
-
-		elseif ( $instance['shape'] == 'circle' )
-		{
-			$img['class'] .= ' rounded-circle';
-		}
-
-		$img = array_filter( $img );
-
-		// Link
-
-		$link = array();
-
-		if ( $instance['link'] ) 
-		{
-			$link['href']   = esc_url( $instance['link'] );
-			$link['target'] = $instance['link_tab'] ? '_blank' : '_self';
-		}
-
-		$link = array_filter( $link );
-
-		/**
-		 * Output
-		 * -----------------------------------------------------------
-		 */
-
-		echo $args['before_widget'];
-		
-		if ( count( $link ) ) 
-		{
-			printf( '<a%s>', pb_render_attributes( $link ) );
-		}
-
-		echo wp_get_attachment_image( $instance['image'], $instance['size'], false, $img );
-
-		if ( count( $link ) ) 
-		{
-			echo '</a>';
-		}
-		
-		echo $args['after_widget'];
 	}
 
 	public function preview( $instance )
 	{
+		parent::preview( $instance );
+
+		if ( $instance['image'] ) 
+		{
+			list( $image_url ) = wp_get_attachment_image_src( $instance['image'], 'thumbnail' );
+
+			echo '<div class="pb-preview-content">';
+
+			pb_image_preview( $image_url );
+
+			echo '</div>';
+		}
+	}
+
+	public function render( $args, $instance )
+	{
+		// Instance
+
 		$instance = wp_parse_args( $instance, $this->get_defaults() );
 
-		$this->preview_meta( $instance );
+		// Attributes
 
-		?>
+		$atts = array();
 
-		<?php if ( $instance['image'] ) : ?>
-		<div class="pb-widget-preview-content">
-			<div class="pb-thumbnail">
-				<?php echo wp_get_attachment_image( $instance['image'], 'thumbnail' ); ?>
-			</div>
-		</div>
-		<?php endif; ?>
+		if ( $instance['type'] ) 
+		{
+			$atts['class'] = $instance['type'];
+		}
 
-		<?php
+		$link = array();
+
+		if ( $instance['link'] )
+		{
+			$link['href'] = esc_url( $instance['link'] );
+
+			if ( $instance['link_tab'] ) 
+			{
+				$link['target'] = '_blank';
+			}
+		}
+
+		// Output
+
+		echo $args['before'];
+
+		if ( $link ) 
+		{
+			echo '<a' . pb_esc_attr( $link ) . '>';
+		}
+
+		echo wp_get_attachment_image( $instance['image'], $instance['image_size'], false, $atts );
+
+		if ( $link ) 
+		{
+			echo '</a>';
+		}
+
+		echo $args['after'];
 	}
 }
 
-pb()->widgets->register( 'PB_Image_Widget' );
+pb()->widgets->register_widget( 'PB_Image_Widget' );

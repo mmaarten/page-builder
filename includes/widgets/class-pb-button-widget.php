@@ -7,92 +7,101 @@ class PB_Button_Widget extends PB_Widget
 		parent::__construct( 'button', __( 'Button' ), array
 		(
 			'description' => __( 'Displays a button.' ),
-			'features'    => array( 'id', 'class', 'text_align', 'margin_top', 'margin_bottom' )
+			'features'    => array( 'id', 'class', 'mt', 'mr', 'mb', 'ml' ),
 		));
 
-		/**
-		 * General
-		 * -----------------------------------------------------------
-		 */
+		// General
 
 		$this->add_field( array
 		(
-			'key'           => 'text',
+			'key'           => "{$this->id}_text",
 			'name'          => 'text',
-			'title'         => __( 'Text' ),
+			'label'         => __( 'Text' ),
 			'description'   => '',
 			'type'          => 'text',
 			'default_value' => __( 'Button' ),
-			'preview'       => 1,
-			'order'         => PB_ORDER_TAB_GENERAL + 10
+			'preview'       => true,
 		));
 
 		$this->add_field( array
 		(
-			'key'           => 'link',
+			'key'           => "{$this->id}_link",
 			'name'          => 'link',
-			'title'         => __( 'Link' ),
+			'label'         => __( 'Link' ),
 			'description'   => '',
 			'type'          => 'url',
 			'default_value' => '',
-			'preview'       => 1,
-			'order'         => PB_ORDER_TAB_GENERAL + 20
+			'preview'       => true,
 		));
 
 		$this->add_field( array
 		(
-			'key'           => 'link_tab',
+			'key'           => "{$this->id}_link_tab",
 			'name'          => 'link_tab',
-			'title'         => __( 'Open link in new window' ),
+			'label'         => __( 'Open link in new window.' ),
 			'description'   => '',
 			'type'          => 'true_false',
 			'default_value' => 0,
-			'order'         => PB_ORDER_TAB_GENERAL + 30
 		));
 
 		$this->add_field( array
 		(
-			'key'           => 'behavior',
-			'name'          => 'behavior',
-			'title'         => __( 'Behavior' ),
+			'key'           => "{$this->id}_toggle",
+			'name'          => 'toggle',
+			'label'         => __( 'Toggle' ),
 			'description'   => '',
 			'type'          => 'select',
 			'choices'       => array
 			(
-				''         => __( 'Link' ),
-				'modal'    => __( 'Toggle Modal' ),
-				'collapse' => __( 'Expand/collapse' )
+				''         => __( "- Don't toggle -" ),
+				'modal'    => __( 'Modal' ),
+				'collapse' => __( 'Collapse' ),
 			),
 			'default_value' => '',
-			'order'         => PB_ORDER_TAB_GENERAL + 40
 		));
 
-		/**
-		 * Layout
-		 * -----------------------------------------------------------
-		 */
-		
+		// Layout
+
 		$this->add_field( array
 		(
-			'key'           => 'type',
+			'key'           => "{$this->id}_type",
 			'name'          => 'type',
-			'title'         => __( 'Type' ),
+			'label'         => __( 'Type' ),
 			'description'   => '',
 			'type'          => 'select',
-			'choices'       => array_merge( array
+			'choices'       => array
 			(
-				'' => PB_THEME_DEFAULTS
-			), pb()->options->get( 'theme_colors' ) ),
+				'primary'   => __( 'Primary' ),
+				'secondary' => __( 'Secondary' ),
+				'success'   => __( 'Success' ),
+				'danger'    => __( 'Danger' ),
+				'warning'   => __( 'Warning' ),
+				'info'      => __( 'Info' ),
+				'light'     => __( 'Light' ),
+				'dark'      => __( 'Dark' ),
+				'link'      => __( 'Link' ),
+			),
 			'default_value' => 'primary',
+			'category'      => 'layout',
 			'preview'       => true,
-			'order'         => PB_ORDER_TAB_LAYOUT + 20
 		));
 
 		$this->add_field( array
 		(
-			'key'           => 'size',
+			'key'           => "{$this->id}_outline",
+			'name'          => 'outline',
+			'label'         => __( 'Outline' ),
+			'description'   => '',
+			'type'          => 'true_false',
+			'default_value' => 0,
+			'category'      => 'layout',
+		));
+
+		$this->add_field( array
+		(
+			'key'           => "{$this->id}_size",
 			'name'          => 'size',
-			'title'         => __( 'Size' ),
+			'label'         => __( 'Size' ),
 			'description'   => '',
 			'type'          => 'select',
 			'choices'       => array
@@ -102,91 +111,35 @@ class PB_Button_Widget extends PB_Widget
 				'lg' => __( 'Large' ),
 			),
 			'default_value' => 'md',
-			'order'         => PB_ORDER_TAB_LAYOUT + 30
-		));
-
-		$this->add_field( array
-		(
-			'key'           => 'outline',
-			'name'          => 'outline',
-			'title'         => __( 'Outline' ),
-			'description'   => '',
-			'type'          => 'true_false',
-			'default_value' => 0,
-			'order'         => PB_ORDER_TAB_LAYOUT + 40
-		));
-
-		$this->add_field( array
-		(
-			'key'           => 'block',
-			'name'          => 'block',
-			'title'         => __( 'Full Width' ),
-			'description'   => '',
-			'type'          => 'true_false',
-			'default_value' => 0,
-			'order'         => PB_ORDER_TAB_LAYOUT + 50
-		));
-
-		$this->add_field( array
-		(
-			'key'           => 'icon',
-			'name'          => 'icon',
-			'title'         => __( 'Icon' ),
-			'description'   => '',
-			'type'          => 'icon',
-			'default_value' => '',
-			'preview'       => true,
-			'order'         => PB_ORDER_TAB_LAYOUT + 60
-		));
-
-		$this->add_field( array
-		(
-			'key'           => 'icon_position',
-			'name'          => 'icon_position',
-			'title'         => __( 'Icon Position' ),
-			'description'   => '',
-			'type'          => 'select',
-			'choices'       => array
-			(
-				'left'  => __( 'Left' ),
-				'right' => __( 'Right' )
-			),
-			'default_value' => 'left',
-			'order'         => PB_ORDER_TAB_LAYOUT + 70
+			'category'      => 'layout',
 		));
 	}
 
-	public function widget( $args, $instance )
+	public function render( $args, $instance )
 	{
+		// Instance
+
 		$instance = wp_parse_args( $instance, $this->get_defaults() );
 
-		/**
-		 * Attributes
-		 * -----------------------------------------------------------
-		 */
+		// Attributes
 
 		$atts = array
-		( 
-			'class' => 'btn' 
+		(
+			'class' => 'btn',
+			'role'  => 'button',
 		);
 
-		// Link
-
-		if ( $instance['link'] )
+		if ( $instance['link'] ) 
 		{
-			 $atts['href'] = esc_url( $instance['link'] );
+			$atts['href'] = esc_url( $instance['link'] );
+
+			if ( $instance['link_tab'] ) 
+			{
+				$atts['target'] = '_blank';
+			}
 		}
 
-		// Link Tab
-
-		if ( $instance['link_tab'] ) 
-		{
-			$atts['target'] = '_blank';
-		}
-
-		// Type
-
-		if ( $instance['type'] )
+		if ( $instance['type'] ) 
 		{
 			if ( $instance['outline'] ) 
 			{
@@ -199,73 +152,24 @@ class PB_Button_Widget extends PB_Widget
 			}
 		}
 
-		// Size
-
-		if ( $instance['size'] )
+		if ( $instance['size'] ) 
 		{
 			$atts['class'] .= " btn-{$instance['size']}";
 		}
 
-		// Block
-
-		if ( $instance['block'] )
+		if ( $instance['toggle'] ) 
 		{
-			$atts['class'] .= ' btn-block';
+			$atts['data-toggle'] = $instance['toggle'];
 		}
 
-		// Behavior
+		// Output
 
-		if ( $instance['behavior'] == 'modal' )
-		{
-			$atts['data-toggle'] = 'modal';
-		}
+		echo $args['before'];
 
-		elseif ( $instance['behavior'] == 'collapse' )
-		{
-			$atts['data-toggle'] = 'collapse';
-		}
+		printf( '<a%s>%s</a>', pb_esc_attr( $atts ), esc_html( $instance['text'] ) );
 
-		// Icon
-
-		if ( $instance['icon'] && $instance['icon_position'] ) 
-		{
-			$atts['class'] .= " pb-button-icon-{$instance['icon_position']}";
-		}
-
-		$atts = array_filter( $atts );
-
-		/**
-		 * Output
-		 * -----------------------------------------------------------
-		 */
-
-		echo $args['before_widget'];
-
-		?>
-
-		<a<?php echo pb_render_attributes( $atts ); ?>>
-
-			<?php $this->render_icon( $instance, 'left' ); ?>
-
-			<?php echo esc_html( $instance['text'] ); ?>
-
-			<?php $this->render_icon( $instance, 'right' ); ?>
-		</a>
-		
-		<?php
-		
-		echo $args['after_widget'];
-	}
-
-	protected function render_icon( $instance, $position = 'left' )
-	{
-		if ( ! $instance['icon'] || $instance['icon_position'] != $position ) 
-		{
-			return;
-		}
-
-		echo pb()->icons->get_icon_html( $instance['icon'] );
+		echo $args['after'];
 	}
 }
 
-pb()->widgets->register( 'PB_Button_Widget' );
+pb()->widgets->register_widget( 'PB_Button_Widget' );

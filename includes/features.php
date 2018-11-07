@@ -6,12 +6,12 @@ class PB_Features
 
 	public function __construct()
 	{
-
+		
 	}
 
-	public function register( $feature )
+	public function register_feature( $feature )
 	{
-		if ( ! $feature instanceof PB_Field ) 
+		if ( ! $feature instanceof PB_Feature ) 
 		{
 			$feature = new $feature();
 		}
@@ -19,7 +19,7 @@ class PB_Features
 		$this->features[ $feature->id ] = $feature;
 	}
 
-	public function unregister( $id )
+	public function unregister_feature( $id )
 	{
 		unset( $this->features[ $id ] );
 	}

@@ -7,17 +7,22 @@ class PB_Message_Field extends PB_Field
 		parent::__construct( 'message' );
 	}
 
-	public function render( $field )
+	public function field( $field )
 	{
 		$defaults = array
 		(
-			'message' => ''
+			'message' => '',
 		);
 
 		$field = wp_parse_args( $field, $defaults );
 
+		return $field;
+	}
+
+	public function render( $field )
+	{
 		echo $field['message'];
 	}
 }
 
-pb()->field_types->register( 'PB_Message_Field' );
+pb()->field_types->register_field( 'PB_Message_Field' );

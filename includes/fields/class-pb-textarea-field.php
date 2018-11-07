@@ -11,29 +11,27 @@ class PB_Textarea_Field extends PB_Field
 	{
 		$defaults = array
 		(
-			'rows'  => 5,
-			'html'  => false
+			'rows' => 3,
+			'html' => false,
 		);
 
-		return wp_parse_args( $field, $defaults );
+		$field = wp_parse_args( $field, $defaults );
+
+		return $field;
 	}
 
 	public function render( $field )
 	{
-		// Attributes
-
 		$atts = array
 		(
-			'id'    => $field['id'],
-			'name'  => $field['name'],
-			'rows'  => $field['rows'],
+			'id'   => $field['id'],
+			'name' => $field['name'],
+			'rows' => $field['rows'],
 		);
 
 		$atts = array_filter( $atts );
 
-		// Output
-
-		printf( '<textarea%s>%s</textarea>', pb_render_attributes( $atts ), esc_textarea( $field['value'] ) );
+		echo '<textarea' . pb_esc_attr( $atts ) . '>' . esc_textarea( $field['value'] ) . '</textarea>';
 	}
 
 	public function sanitize( $value, $field )
@@ -45,16 +43,6 @@ class PB_Textarea_Field extends PB_Field
 
 		return $value;
 	}
-
-	public function translate( $value, $field )
-	{
-		if ( ! $field['html'] ) 
-		{
-			$value = esc_html( $value );
-		}
-
-		return $value;
-	}
 }
 
-pb()->field_types->register( 'PB_Textarea_Field' );
+pb()->field_types->register_field( 'PB_Textarea_Field' );

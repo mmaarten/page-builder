@@ -7,30 +7,50 @@ class PB_Class_Feature extends PB_Feature
 		parent::__construct( 'class' );
 	}
 
-	public function widget_init( $widget )
+	public function widget( $widget )
 	{
 		if ( $widget->supports( $this->id ) ) 
 		{
 			$widget->add_field( array
 			(
-				'key'           => 'class',
+				'key'           => "{$widget->id}_class",
 				'name'          => 'class',
-				'title'         => __( 'Class' ),
-				'description'   => __( 'Extra CSS classes.' ),
+				'label'         => __( 'Class' ),
+				'description'   => __( 'Additional CSS classes.' ),
 				'type'          => 'text',
 				'default_value' => '',
-				'order'         => PB_ORDER_TAB_ATTRIBUTES + 20 // Below ID field
+				'category'      => 'attributes',
+				'order'         => 10,
 			));
 		}
 	}
 
-	public function widget_html_attributes( $atts, $instance, $widget )
+	public function widget_html_attributes( $atts, $widget, $instance )
 	{
-		if ( $widget->supports( $this->id ) )
+		if ( $widget->supports( $this->id ) ) 
 		{
-			if ( isset( $instance['class'] ) && $value = pb_sanitize_html_class( $instance['class'] ) ) 
+			if ( isset( $instance['class'] ) ) 
 			{
-				$atts['class'] .= " $value";
+				// Sanitize class names
+
+				$classes = array();
+
+				foreach ( explode( ' ', $instance['class' ] ) as $class ) 
+				{
+					$class = sanitize_html_class( $class );
+
+					if ( $class ) 
+					{
+						$classes[ $class ] = $class;
+					}
+				}
+
+				// set class names
+
+				if ( $classes ) 
+				{
+					$atts['class'] .= ' ' . implode( ' ', $classes );
+				}
 			}
 		}
 
@@ -38,4 +58,4 @@ class PB_Class_Feature extends PB_Feature
 	}
 }
 
-pb()->features->register( 'PB_Class_Feature' );
+pb()->features->register_feature( 'PB_Class_Feature' );

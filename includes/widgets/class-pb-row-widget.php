@@ -7,311 +7,158 @@ class PB_Row_Widget extends PB_Widget
 		parent::__construct( 'row', __( 'Row' ), array
 		(
 			'description' => __( 'Displays a row.' ),
-			'controls'    => array( 'edit', 'copy', 'delete', 'toggle' ),
 			'features'    => array
 			( 
 				'id', 
-				'class',
-				'margin_top', 
-				'margin_bottom', 
-				'padding_top', 
-				'padding_bottom',
-				'bg_image',
-				'bg_image_size',
-				'bg_position',
-				'bg_type',
-				'bg_color',
-				'parallax',
-				'bg_overlay'
-			)
+				'class', 
+				'mt', 
+				'mb', 
+				'pt', 
+				'pb', 
+				'bg_color', 
+				'bg_image', 
+				'bg_overlay',
+			),
 		));
 
-		$vh_choices = array
-		(
-			'' => PB_THEME_DEFAULTS
-		);
-
-		for ( $i = 5; $i <= 100 ; $i += 5 ) 
-		{ 
-			$vh_choices[ $i ] = "$i%";
-		}
-
-		/**
-		 * General
-		 * -----------------------------------------------------------
-		 */
-
+		// Layout
 		$this->add_field( array
 		(
-			'key'           => 'layout',
+			'key'           => "{$this->id}_layout",
 			'name'          => 'layout',
-			'title'         => __( 'Layout' ),
-			'description'   => __( 'e.g. 1/3+2/3 creates 2 columns with 1/2 and 2/3 width.' ),
-			'type'          => 'text',
-			'order'         => PB_ORDER_TAB_GENERAL + 10
+			'label'         => __( 'Layout' ),
+			'type'          => 'row_layout_picker',
+			'default_value' => '',
 		));
 
+		add_action( 'pb/render_field/type=row_layout_picker', array( $this, 'layout_picker' ) );
+
+		// Container
 		$this->add_field( array
 		(
-			'key'           => 'container',
+			'key'           => "{$this->id}_container",
 			'name'          => 'container',
-			'title'         => __( 'Container' ),
+			'label'         => __( 'Container' ),
 			'description'   => '',
 			'type'          => 'select',
 			'choices'       => array
 			(
-				'fixed' => __( 'Fixed Width' ),
-				'fluid' => __( 'Full Width' )
+				'fixed' => __( 'Fixed width' ),
+				'fluid' => __( 'Full width' ),
 			),
 			'default_value' => 'fixed',
-			'order'         => PB_ORDER_TAB_GENERAL + 20
 		));
 
+		// Align Items
 		$this->add_field( array
 		(
-			'key'           => 'align_items',
+			'key'           => "{$this->id}_align_items",
 			'name'          => 'align_items',
-			'title'         => __( 'Aligns items' ),
-			'description'   => __( 'Sets the vertical position of items inside this row.' ),
+			'label'         => __( 'Align Items' ),
+			'description'   => '',
 			'type'          => 'select',
 			'choices'       => array
 			(
-				''       => PB_THEME_DEFAULTS,
-				'start'  => __( 'Top' ),
-				'center' => __( 'Center' ),
-				'end'    => __( 'Bottom' )
+				''         => PB_CHOICE_DONT_SET,
+				'start'    => __( 'Start' ),
+				'end'      => __( 'End' ),
+				'center'   => __( 'Center' ),
+				'baseline' => __( 'Baseline' ),
+				'stretch'  => __( 'Stretch' ),
 			),
 			'default_value' => '',
-			'order'         => PB_ORDER_TAB_GENERAL + 30
 		));
 
+		// No Gutters
 		$this->add_field( array
 		(
-			'key'           => 'gutters',
+			'key'           => "{$this->id}_gutters",
 			'name'          => 'gutters',
-			'title'         => __( 'Gutters' ),
-			'description'   => __( 'Adds horizontal spacing between columns.' ),
+			'label'         => __( 'Gutters' ),
+			'description'   => '',
 			'type'          => 'true_false',
 			'default_value' => 1,
-			'order'         => PB_ORDER_TAB_GENERAL + 40
 		));
-
-		$this->add_field( array
-		(
-			'key'           => 'vh',
-			'name'          => 'vh',
-			'title'         => __( 'Height' ),
-			'description'   => __( 'Height related to the viewport.' ),
-			'type'          => 'select',
-			'choices'       => $vh_choices,
-			'default_value' => '',
-			'order'         => PB_ORDER_TAB_GENERAL + 50
-		));
-
-		// Video
-
-		$this->add_field( array
-		(
-			'key'           => 'video_source',
-			'name'          => 'video_source',
-			'title'         => __( 'Video Source' ),
-			'description'   => __( 'Only mp4 format supported.' ),
-			'type'          => 'url',
-			'search'        => null,
-			'default_value' => '',
-			'order'         => PB_ORDER_TAB_BACKGROUND + 100
-		));
-
-		$this->add_field( array
-		(
-			'key'           => 'video_poster',
-			'name'          => 'video_poster',
-			'title'         => __( 'Video Poster' ),
-			'description'   => __( 'Image to show while video is loading.' ),
-			'type'          => 'image',
-			'default_value' => '',
-			'order'         => PB_ORDER_TAB_BACKGROUND + 110
-		));
-
-		add_action( 'admin_print_scripts', array( $this, 'render_admin_scripts' ) );
 	}
 
-	public function widget_html_attributes( $atts, $instance )
+	public function layout_picker( $field )
 	{
+		$field_type = pb()->field_types->get_field( 'text' );
+
+		// Presets
+
+		$presets = apply_filters( 'pb/row_layout_presets', array
+		( 
+			'12', '6+6', '4+8', '8+4', '3+9', '9+3', '4+4+4', '3+6+3', '3+3+3+3' 
+		));
+
+		// Output
+
+		?>
+
+		<?php if ( $presets ) : ?>
+		<p class="pb-layout-controls">
+			<?php foreach ( $presets as $layout ): 
+				$cols = explode( '+', $layout );
+			?>
+			<button type="button" class="button pb-layout-control" data-layout="<?php echo esc_attr( $layout ); ?>">
+				<span class="pb-row">
+					<?php foreach ( $cols as $col ) : ?>
+					<span class="pb-col-<?php echo intval( $col ); ?>"></span>
+					<?php endforeach; ?>
+				</span>
+			</button>
+			<?php endforeach; ?>
+		</p>
+
+		<label class="pb-sub-label"><?php esc_html_e( 'Custom' ) ?></label>
+		<?php endif; ?>
+
+		<?php $field_type->render( $field ); ?>
+		<p class="description"><?php esc_html_e( 'e.g. 1/2+1/3 creates 2 columns with 1/2 and 1/3 width.' ); ?></p>
+
+		<?php
+	}
+
+	public function render( $args, $instance )
+	{
+		// Instance
+
 		$instance = wp_parse_args( $instance, $this->get_defaults() );
+
+		// Attributes
+
+		$atts = array
+		(
+			'class' => 'row',
+		);
 
 		if ( $instance['align_items'] ) 
 		{
-			$atts['class'] .= " d-flex align-items-{$instance['align_items']}";
+			$atts['class'] .= " align-items-{$instance['align_items']}";
 		}
-
-		if ( $instance['vh'] ) 
-		{
-			$atts['class'] .= " pb-vh-{$instance['vh']}";
-		}
-
-		if ( $instance['video_source'] )
-		{
-			$atts['class'] .= ' pb-video-bg';
-		}
-
-		return $atts;
-	}
-
-	public function widget( $args, $instance )
-	{
-		$instance = wp_parse_args( $instance, $this->get_defaults() );
-
-		/**
-		 * Attributes
-		 * -----------------------------------------------------------
-		 */
-
-		// Container
-
-		$container = array
-		(
-			'class' => ''
-		);
-
-		if ( $instance['container'] == 'fluid' ) 
-		{
-			$container['class'] = 'container-fluid';
-		}
-
-		elseif ( $instance['container'] == 'fixed' ) 
-		{
-			$container['class'] = 'container';
-		}
-
-		$container = array_filter( $container );
-
-		// Row
-
-		$row = array
-		(
-			'class' => 'row'
-		);
 
 		if ( ! $instance['gutters'] ) 
 		{
-			$row['class'] .= ' no-gutters';
+			$atts['class'] .= ' no-gutters';
 		}
 
-		// Video
+		// Output
 
-		$video = array
-		(
-			'playsinline' => 'playsinline',
-			'autoplay'    => 'autoplay',
-			'muted'       => 'muted',
-			'loop'        => 'loop'
-		);
-
-		if ( $instance['video_poster'] ) 
-		{
-			list( $poster_url ) = wp_get_attachment_image_src( $instance['video_poster'], 'large' );
-
-			if ( $poster_url ) 
-			{
-				$video['poster'] = esc_url( $poster_url );
-			}
-		}
-
-		/**
-		 * Output
-		 * -----------------------------------------------------------
-		 */
-
-		echo $args['before_widget'];
+		echo $args['before'];
 
 		?>
-		
-		<?php if ( count( $container ) ) : ?>
-		<div<?php echo pb_render_attributes( $container ); ?>>
-		<?php endif; ?>
-			<div<?php echo pb_render_attributes( $row ); ?>>
+
+		<div class="container<?php echo $instance['container'] == 'fluid' ? '-fluid' : ''; ?>">
+			<div<?php echo pb_esc_attr( $atts ); ?>>
 				<?php pb()->widgets->the_child_widgets(); ?>
 			</div>
-		<?php if ( count( $container ) ) : ?>
 		</div>
-		<?php endif; ?>
-
-		<?php if ( $instance['video_source'] ) : ?>
-
-		<video<?php echo pb_render_attributes( $video ) ?>>
-			<!--  
-				Video needs to be muted, since Chrome 66+ will not autoplay video with sound.
-				WCAG general accessibility recommendation is that media such as background video play 
-				through only once. Loop turned on for the purposes of illustration; if removed, 
-				the end of the video will fade in the same way created by pressing the "Pause" button  
-			-->
-			<source src="<?php echo esc_url( $instance['video_source'] ); ?>" type="video/mp4">
-		</video>
-
-		<?php endif;
-
-		echo $args['after_widget'];
-	}
-
-	public function render_admin_scripts( $field )
-	{
-		// Checks if editor screen.
-		
-		if ( ! pb()->editor->is_screen() ) 
-		{
-			return;
-		}
-
-		$layouts = (array) apply_filters( 'pb_row_layouts', array
-		(
-			'12'      => '1/1',
-			'6+6'     => '1/2+1/2',
-			'4+8'     => '1/3+2/3',
-			'8+4'     => '2/3+1/3',
-			'3+9'     => '1/4+3/4',
-			'9+3'     => '3/4+1/4',
-			'4+4+4'   => '1/3+1/3+1/3',
-			'3+6+3'   => '1/4+1/2+1/4',
-			'3+3+3+3' => '1/4+1/4+1/4+1/4'
-		));
-
-		?>
-
-		<script id="tmpl-pb-row-layout-picker" type="text/html">
-			
-			<div class="pb-layout-picker" data-target="#pb-input-layout">
-
-				<?php
-
-				foreach ( $layouts as $layout => $display )
-				{
-					$cols = explode( '+', $layout );
-
-					printf( '<button type="button" class="pb-row" title="%s" data-layout="%s">', 
-						esc_attr( $display ), esc_attr( $display ) );
-
-					foreach ( $cols as $col ) 
-					{
-						printf( '<span class="pb-col-%d">', trim( $col ) );
-
-						echo '<span class="inner"></span>';
-
-						echo '</span>';
-					}
-
-					echo '</button>'; // .pb-row
-				}
-
-				?>
-
-			</div>
-
-		</script>
 
 		<?php
 
+		echo $args['after'];
 	}
 }
 
-pb()->widgets->register( 'PB_Row_Widget' );
+pb()->widgets->register_widget( 'PB_Row_Widget' );

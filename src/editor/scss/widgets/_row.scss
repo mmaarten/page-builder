@@ -1,0 +1,68 @@
+
+/**
+ * Layout picker
+ */
+
+$layout-control-spacing: 2px;
+
+.pb-layout-controls
+{
+	display: flex;
+	flex-wrap: wrap;
+
+	.pb-layout-control
+	{
+		margin-right: 1em;
+	}
+}
+
+.pb-layout-control
+{
+	&.button
+	{
+		padding: 0;
+	    height: auto;
+	    border-radius: 0;
+	    box-shadow: unset;
+	    background: #fff;
+
+	    &:hover,
+	    &:active,
+	    &:focus
+	    {
+	    	background: #fff;
+	    }
+	}
+
+	.pb-row
+	{
+		margin: 0;
+		padding: $layout-control-spacing;
+
+		width: 60px;
+    	height: 45px;
+	}
+
+	.pb-col,
+	[class*="pb-col-"]
+	{
+		position: relative;
+		z-index: 100;
+
+		padding: 0 $layout-control-spacing;
+
+		&:before
+		{
+			content: "";
+			position: absolute;
+			top: $layout-control-spacing;
+			right: $layout-control-spacing;
+			bottom: $layout-control-spacing;
+			left: $layout-control-spacing;
+
+			background: #ccc;
+
+			z-index: 200;
+		}
+	}
+}

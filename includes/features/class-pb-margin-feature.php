@@ -2,153 +2,127 @@
 
 class PB_Margin_Feature extends PB_Feature
 {
-	protected $choices     = array();
-	protected $breakpoints = array();
-
 	public function __construct()
 	{
 		parent::__construct( 'margin' );
-
-		$this->choices = array_merge( array
-		(
-			''  => PB_THEME_DEFAULTS,
-		), pb()->options->get( 'spacers' ));
 	}
 
-	public function widget_init( $widget )
+	public function get_features( $widget = null )
 	{
-		$all_directions = array
-		(
-			'margin_top'    => array( 'slug' => 'mt', 'title' => __( 'Top' ) ),
-			'margin_right'  => array( 'slug' => 'mr', 'title' => __( 'Right' ) ),
-			'margin_bottom' => array( 'slug' => 'mb', 'title' => __( 'Bottom' ) ),
-			'margin_left'   => array( 'slug' => 'ml', 'title' => __( 'Left' ) )
+		$features = array
+		( 
+			'mt' => __( 'Top' ),
+			'mr' => __( 'Right' ),
+			'mb' => __( 'Bottom' ),
+			'ml' => __( 'Left' ),
 		);
 
-		$directions = array();
-
-		foreach ( $all_directions as $feature => $direction ) 
+		if ( $widget ) 
 		{
-			if ( $widget->supports( $feature ) ) 
-			{
-				$directions[ $feature ] = $direction;
-			}
+			return array_intersect_key( $features, $widget->get_features() );
 		}
 
-		if ( ! count( $directions ) ) 
+		return $features;
+	}
+
+	public function get_choices( $breakpoint = null )
+	{
+		$choices = apply_filters( 'pb/choices', array
+		(
+			'0'    => __( 'None' ),
+			'1'    => __( 'Extra small' ),
+			'2'    => __( 'Small' ),
+			'3'    => __( 'Medium' ),
+			'4'    => __( 'Large' ),
+			'5'    => __( 'Extra large' ),
+			'auto' => __( 'Auto' ),
+		), 'margin' );
+
+		if ( ! $breakpoint ) 
+		{
+			return $choices;
+		}
+
+		if ( $breakpoint == 'xs' ) 
+		{
+			return array( '' => PB_CHOICE_DONT_SET ) + $choices;
+		}
+
+		return array( '' => PB_CHOICE_INHERIT ) + $choices;
+	}
+
+	public function widget( $widget )
+	{
+		// Check support
+
+		$features = $this->get_features( $widget );
+
+		if ( ! $features ) 
 		{
 			return;
 		}
 
-		$widget->add_field( array
-		(
-			'key'                   => 'margin',
-			'name'                  => 'margin',
-			'title'                 => __( 'Margin' ),
-			'description'           => __( 'Set margin per screen size.' ),
-			'description_placement' => 'label',
-			'type'                  => 'group',
-			'layout'                => 'row',
-			'order'                 => PB_ORDER_TAB_SPACING + 10
-		));
+		// Add fields
 
-		$order = 0;
+		$sub_fields = array();
 
-		$breakpoints = pb()->options->get( 'grid_breakpoint_formats' );
-
-		foreach ( $breakpoints as $breakpoint => $format ) 
+		foreach ( pb_get_grid_breakpoints() as $breakpoint => $format ) 
 		{
-			$choices = $this->choices;
+			$choices = $this->get_choices( $breakpoint );
 
-			if ( $breakpoint != 'xs' ) 
-			{
-				$choices = array
-				(
-					'' => PB_INHERIT_FROM_SMALLER,
-				) + $choices;
-			}
-
-			$widget->add_field( array
+			// Tab
+			$sub_fields[] = array
 			(
-				'key'           => "margin_tab_{$breakpoint}",
-				'name'          => 'tab',
-				'title'         => strtoupper( $breakpoint ),
-				'description'   => '',
-				'type'          => 'tab',
-				'default_value' => '',
-				'order'         => $order,
-				'parent'        => 'margin'
-			));
+				'name'  => "tab_{$breakpoint}",
+				'label' => strtoupper( $breakpoint ),
+				'type'  => 'tab',
+			);
 
-			foreach ( $directions as $direction ) 
+			// Directions
+			foreach ( $features as $feature => $label ) 
 			{
-				$widget->add_field( array
+				$sub_fields[] = array
 				(
-					'key'           => "{$direction['slug']}_{$breakpoint}",
-					'name'          => "{$direction['slug']}_{$breakpoint}",
-					'title'         => $direction['title'],
+					'name'          => "{$feature}_{$breakpoint}",
+					'label'         => $label,
 					'type'          => 'select',
 					'choices'       => $choices,
 					'default_value' => '',
-					'order'         => $order += 10,
-					'parent'        => 'margin',
-					'wrapper'       => array( 'width' => 100 / count( $directions ) )
-				));
+					'wrapper'       => array( 'width' => 100 / count( $features ) ),
+				);
 			}
 		}
+		
+		$widget->add_field( array
+		(
+			'key'           => "{$widget->id}_margin",
+			'name'          => 'margin',
+			'label'         => __( 'Margin' ),
+			'description'   => __( 'Set margin per screen size.' ),
+			'type'          => 'group',
+			'sub_fields'    => $sub_fields,
+			'category'      => 'spacing',
+			'order'         => 10,
+		));
 	}
 
-	public function widget_html_attributes( $atts, $instance, $widget )
+	public function widget_html_attributes( $atts, $widget, $instance )
 	{
-		if ( ! $widget->supports( 'margin_top' )
-			&& ! $widget->supports( 'margin_right' )
-			&& ! $widget->supports( 'margin_bottom' )
-			&& ! $widget->supports( 'margin_left' ) )
+		$features = $this->get_features( $widget );
+
+		if ( $features ) 
 		{
-			return $atts;
-		}
-
-		$data = isset( $instance['margin'] ) ? (array) $instance['margin'] : array();
-
-		foreach ( pb()->options->get( 'grid_breakpoint_formats' ) as $breakpoint => $format ) 
-		{
-			if ( $widget->supports( 'margin_top' ) )
+			foreach ( pb_get_grid_breakpoints() as $breakpoint => $format ) 
 			{
-				$value = isset( $data["mt_$breakpoint"] ) ? sanitize_html_class( $data["mt_$breakpoint"] ) : '';
-
-				if ( $value !== '' ) 
+				foreach ( $features as $feature => $label ) 
 				{
-					$atts['class'] .= ' ' . sprintf( $format, 'mt', $value );
-				}
-			}
+					$name  = "{$feature}_{$breakpoint}";
+					$value = isset( $instance['margin'][ $name ] ) ? $instance['margin'][ $name ] : null;
 
-			if ( $widget->supports( 'margin_right' ) )
-			{
-				$value = isset( $data["mr_$breakpoint"] ) ? sanitize_html_class( $data["mr_$breakpoint"] ) : '';
-
-				if ( $value !== '' ) 
-				{
-					$atts['class'] .= ' ' . sprintf( $format, 'mr', $value );
-				}
-			}
-
-			if ( $widget->supports( 'margin_bottom' ) )
-			{
-				$value = isset( $data["mb_$breakpoint"] ) ? sanitize_html_class( $data["mb_$breakpoint"] ) : '';
-
-				if ( $value !== '' ) 
-				{
-					$atts['class'] .= ' ' . sprintf( $format, 'mb', $value );
-				}
-			}
-
-			if ( $widget->supports( 'margin_left' ) )
-			{
-				$value = isset( $data["ml_$breakpoint"] ) ? sanitize_html_class( $data["ml_$breakpoint"] ) : '';
-
-				if ( $value !== '' ) 
-				{
-					$atts['class'] .= ' ' . sprintf( $format, 'ml', $value );
+					if ( $value ) 
+					{
+						$atts['class'] .= ' ' . sprintf( $format, $feature, $value );
+					}
 				}
 			}
 		}
@@ -157,5 +131,4 @@ class PB_Margin_Feature extends PB_Feature
 	}
 }
 
-pb()->features->register( 'PB_Margin_Feature' );
-
+pb()->features->register_feature( 'PB_Margin_Feature' );

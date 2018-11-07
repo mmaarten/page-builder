@@ -1,0 +1,128 @@
+/**
+ * Fields
+ */
+
+$field-padding-x : 12px !default;
+$field-padding-y : 15px !default;
+
+// Field
+.pb-field
+{
+	position: relative;
+    margin: 0;
+    padding: $field-padding-y $field-padding-x;
+
+    // Label
+	.pb-label,
+	.pb-sub-label
+	{
+		display: block;
+		margin: 0 0 10px;
+		padding: 0;
+		vertical-align: top;
+		font-weight: bold;
+
+		&.pb-sub-label,
+		.pb-sub-fields &
+		{
+			font-weight: 600;
+		}
+	}
+
+    // Input
+    input[type="text"], 
+	input[type="password"], 
+	input[type="number"], 
+	input[type="search"], 
+	input[type="email"], 
+	input[type="url"], 
+	textarea, 
+	select 
+	{
+	    width: 100%;
+	    padding: 3px 5px;
+	    resize: none;
+	    margin: 0;
+	    box-sizing: border-box;
+	    font-size: 14px;
+	    line-height: 1.4;
+	}
+
+	input[type="text"], 
+	input[type="password"], 
+	input[type="number"], 
+	input[type="search"], 
+	input[type="email"], 
+	input[type="url"]
+	{
+		height: 28px;
+    	margin: 0;
+	}
+
+    // Description
+    p.description
+	{
+		margin: 5px 0 0;
+		padding: 0;
+	}
+}
+
+// containers
+.pb-fields,
+.pb-sub-fields
+{
+	display: flex;
+    flex-wrap: wrap;
+
+    .pb-field
+    {
+    	flex: 0 0 100%;
+    	max-width: 100%;
+    }
+}
+
+.pb-fields
+{
+	// Main fields
+	> .pb-field
+	{
+		border-bottom: #eee solid 1px;
+	}
+
+	// Sub fields
+	.pb-sub-fields
+	{
+		margin-left: -$field-padding-x;
+	    margin-right: -$field-padding-x;
+	    margin-bottom : -( $field-padding-y / 2 );
+
+	    .pb-field
+	    {
+	    	padding-top: $field-padding-y / 2;
+	    	padding-bottom: $field-padding-y / 2;
+	    }
+	}
+
+	// Modal
+	.pb-modal &
+	{
+		margin-left: -$modal-padding-x;
+		margin-right: -$modal-padding-x;
+
+		> .pb-field
+		{
+			padding-left: $modal-padding-x;
+			padding-right: $modal-padding-x;
+		}
+	}
+}
+
+// Nav tabs
+.pb-fields
+{
+	> .pb-field[data-type="tabnav"]
+	{
+		padding: 0;
+		border-bottom: 0;
+	}
+}

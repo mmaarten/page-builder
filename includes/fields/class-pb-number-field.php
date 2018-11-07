@@ -7,42 +7,57 @@ class PB_Number_Field extends PB_Field
 		parent::__construct( 'number' );
 	}
 
-	public function render( $field )
+	public function field( $field )
 	{
 		$defaults = array
 		(
-			'id'    => '',
-			'class' => '',
-			'name'  => '',
-			'value' => '',
-			'extra' => ''
+			'min'   => '',
+			'max'   => '',
+			'step'  => '',
 		);
 
 		$field = wp_parse_args( $field, $defaults );
 
+		return $field;
+	}
+
+	public function render( $field )
+	{
 		$atts = array
 		(
-			'type'  => 'text',
+			'type'  => 'number',
 			'id'    => $field['id'],
-			'class' => $field['class'],
 			'name'  => $field['name'],
-			'value' => $field['value']
+			'value' => $field['value'],
+			'min'   => $field['min'],
+			'max'   => $field['max'],
+			'step'  => $field['step'],
 		);
 
 		$atts = array_filter( $atts );
 
-		printf( '<input%s>', pb_render_attributes( $atts, $field['extra'] ) );
+		echo '<input' . pb_esc_attr( $atts ) . '>';
 	}
 
 	public function sanitize( $value, $field )
 	{
-		return intval( $value );
+		if ( $value !== '' ) 
+		{
+			return intval( $value );
+		}
+
+		return $value;
 	}
 
 	public function translate( $value, $field )
 	{
-		return (string) intval( $value );
+		if ( $value !== '' ) 
+		{
+			return intval( $value );
+		}
+
+		return $value;
 	}
 }
 
-pb()->field_types->register( 'PB_Number_Field' );
+pb()->field_types->register_field( 'PB_Number_Field' );

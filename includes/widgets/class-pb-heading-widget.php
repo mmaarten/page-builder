@@ -7,169 +7,116 @@ class PB_Heading_Widget extends PB_Widget
 		parent::__construct( 'heading', __( 'Heading' ), array
 		(
 			'description' => __( 'Displays a heading.' ),
-			'features'    => array( 'id', 'class', 'color', 'text_align', 'margin_top', 'margin_bottom' )
+			'features'    => array( 'id', 'class', 'color', 'text_align', 'font_weight', 'mt', 'mr', 'mb', 'ml', 'pt', 'pr', 'pb', 'pl' ),
 		));
-
-		/**
-		 * General
-		 * -----------------------------------------------------------
-		 */
 
 		$this->add_field( array
 		(
-			'key'           => 'text',
+			'key'           => "{$this->id}_text",
 			'name'          => 'text',
-			'title'         => __( 'Text' ),
+			'label'         => __( 'Text' ),
 			'description'   => '',
 			'type'          => 'text',
 			'default_value' => __( 'Heading' ),
 			'preview'       => true,
-			'order'         => PB_ORDER_TAB_GENERAL + 10
 		));
 
 		$this->add_field( array
 		(
-			'key'           => 'text_2',
+			'key'           => "{$this->id}_text_2",
 			'name'          => 'text_2',
-			'title'         => __( 'Secondary Text' ),
+			'label'         => __( 'Secondary Text' ),
 			'description'   => '',
 			'type'          => 'text',
 			'default_value' => '',
 			'preview'       => true,
-			'order'         => PB_ORDER_TAB_GENERAL + 20
 		));
 
 		$this->add_field( array
 		(
-			'key'         => 'type',
-			'name'        => 'type',
-			'title'       => __( 'Type' ),
-			'description' => '',
-			'type'        => 'select',
-			'choices'     => array
+			'key'           => "{$this->id}_type",
+			'name'          => 'type',
+			'label'         => __( 'Type' ),
+			'description'   => '',
+			'type'          => 'select',
+			'choices'       => array
 			(
-				'h1' => __( 'Heading 1' ),
-				'h2' => __( 'Heading 2' ),
-				'h3' => __( 'Heading 3' ),
-				'h4' => __( 'Heading 4' ),
-				'h5' => __( 'Heading 5' ),
-				'h6' => __( 'Heading 6' )
+				'h1'    => __( 'Heading 1' ),
+				'h2'    => __( 'Heading 2' ),
+				'h3'    => __( 'Heading 3' ),
+				'h4'    => __( 'Heading 4' ),
+				'h5'    => __( 'Heading 5' ),
+				'h6'    => __( 'Heading 6' ),
 			),
 			'default_value' => 'h2',
 			'preview'       => true,
-			'order'         => PB_ORDER_TAB_GENERAL + 30
 		));
 
-		/**
-		 * Layout
-		 * -----------------------------------------------------------
-		 */
-		
 		$this->add_field( array
 		(
-			'key'         => 'display',
-			'name'        => 'display',
-			'title'       => __( 'Display' ),
-			'description' => __( 'Use a larger, slightly more opinionated heading style.' ),
-			'type'        => 'select',
-			'choices'     => array
+			'key'           => "{$this->id}_display",
+			'name'          => 'display',
+			'label'         => __( 'Display' ),
+			'description'   => '',
+			'type'          => 'select',
+			'choices'       => array
 			(
-				''  => PB_THEME_DEFAULTS,
-				'1' => __( 'Display 1' ),
-				'2' => __( 'Display 2' ),
-				'3' => __( 'Display 3' ),
-				'4' => __( 'Display 4' )
+				'' => PB_CHOICE_DONT_SET,
+				'1'    => 1,
+				'2'    => 2,
+				'3'    => 3,
+				'4'    => 4,
 			),
 			'default_value' => 'h2',
-			'order'         => PB_ORDER_TAB_LAYOUT + 10
-		));
-
-		$this->add_field( array
-		(
-			'key'         => 'style',
-			'name'        => 'style',
-			'title'       => __( 'Style' ),
-			'description' => '',
-			'type'        => 'select',
-			'choices'     => array
-			(
-				''   => PB_THEME_DEFAULTS,
-				'1' => __( 'Heading 1' ),
-				'2' => __( 'Heading 2' ),
-				'3' => __( 'Heading 3' ),
-				'4' => __( 'Heading 4' ),
-				'5' => __( 'Heading 5' ),
-				'6' => __( 'Heading 6' )
-			),
-			'default_value' => '',
-			'preview'       => false,
-			'order'         => PB_ORDER_TAB_LAYOUT + 20
+			'category'      => 'layout'
 		));
 	}
 
-	public function widget( $args, $instance )
+	public function render( $args, $instance )
 	{
-		$instance = wp_parse_args( $instance, $this->get_defaults() );
+		// Instance
 
-		/**
-		 * Tag
-		 * -----------------------------------------------------------
-		 */
+		$defaults = $this->get_defaults();
+		$instance = wp_parse_args( $instance, $defaults );
 
-		if ( preg_match( '/^h\d{1,6}$/', $instance['type'] ) ) 
+		// Tag
+
+		if ( preg_match( '/^h{1,6}$/', $instance['type'] ) ) 
 		{
 			$tag = $instance['type'];
 		}
 
 		else
 		{
-			$tag = 'h2';
+			$tag = $defaults['type'];
 		}
 
-		/**
-		 * Attributes
-		 * -----------------------------------------------------------
-		 */
+		// Attributes
 
-		$atts = array
-		(
-			'class' => ''
-		);
-
-		// Display
+		$atts = array();
 
 		if ( $instance['display'] ) 
 		{
-			$atts['class'] .= " display-{$instance['display']}";
+			$atts['class'] = "display-{$instance['display']}";
 		}
 
-		// Style
+		// Output
 
-		if ( $instance['style'] ) 
+		echo $args['before'];
+
+		printf( '<%s%s>', $tag, pb_esc_attr( $atts ) );
+
+		echo esc_html( $instance['text'] );
+
+		if ( $instance['text_2'] ) 
 		{
-			$atts['class'] .= " h{$instance['style']}";
+			printf( ' <small>%s</small>', esc_html( $instance['text_2'] ) );
 		}
 
-		/**
-		 * Output
-		 * -----------------------------------------------------------
-		 */
+		printf( '</%s>', $tag );
 
-		echo $args['before_widget'];
-
-		?>
-
-		<<?php echo $tag . pb_render_attributes( $atts ); ?>>
-			<?php echo esc_html( $instance['text'] ); ?>
-			<?php if ( $instance['text_2'] ) : ?>
-			<?php printf( ' <small>%s</small>', esc_html( $instance['text_2'] ) ); ?>
-			<?php endif; ?>
-		</<?php echo $tag; ?>>
-
-		<?php
-		
-		echo $args['after_widget'];
+		echo $args['after'];
 	}
 }
 
-pb()->widgets->register( 'PB_Heading_Widget' );
+pb()->widgets->register_widget( 'PB_Heading_Widget' );
