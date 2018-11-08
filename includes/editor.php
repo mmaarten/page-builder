@@ -34,40 +34,14 @@ class PB_Editor
 
 		$widgets = pb()->widgets->get_widgets();
 
-		// Row
-		if ( $parent == 'row' ) 
-		{
-			// Only columns
-			$available = array( 'column' );
-		}
+		$keys      = array_keys( $widgets );
+		$values    = array_fill( 0, count( $keys ), true );
+		$available = array_combine( $keys, $values );
 
-		// Column
-		elseif ( $parent == 'column' )
+		if ( ! $parent ) 
 		{
 			// All but columns
-			$available = $widgets;
-
 			unset( $available['column'] );
-
-			$available = array_keys( $available );
-		}
-
-		// Other than row or column
-		elseif ( $parent )
-		{
-			// None
-			$available = array();
-		}
-
-		// No parent
-		else
-		{
-			// All but columns
-			$available = $widgets;
-
-			unset( $available['column'] );
-
-			$available = array_keys( $available );
 		}
 
 		// Filter
@@ -75,7 +49,7 @@ class PB_Editor
 		$available = apply_filters( "pb/available_widgets/parent={$parent}", $available, $parent );
 
 		// Get objects
-		$available = array_intersect_key( $widgets, array_flip( $available ) );
+		$available = array_intersect_key( $widgets, $available );
 
 		// Return
 		return $available;

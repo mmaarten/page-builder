@@ -55,7 +55,7 @@ class PB_Row_Widget extends PB_Widget
 			'key'           => "{$this->id}_align_items",
 			'name'          => 'align_items',
 			'label'         => __( 'Align Items' ),
-			'description'   => '',
+			'description'   => __( 'Set the vertical alignment for all columns inside this row.' ),
 			'type'          => 'select',
 			'choices'       => array
 			(
@@ -75,7 +75,7 @@ class PB_Row_Widget extends PB_Widget
 			'key'           => "{$this->id}_gutters",
 			'name'          => 'gutters',
 			'label'         => __( 'Gutters' ),
-			'description'   => '',
+			'description'   => __( 'Add horizontal spacing between columns.' ),
 			'type'          => 'true_false',
 			'default_value' => 1,
 		));
@@ -158,6 +158,12 @@ class PB_Row_Widget extends PB_Widget
 		<?php
 
 		echo $args['after'];
+	}
+
+	public function available_widgets( $widgets )
+	{
+		// Only columns
+		return array( 'column' => true );
 	}
 }
 

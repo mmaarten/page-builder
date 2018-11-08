@@ -31,6 +31,11 @@ class PB_Column_Widget extends PB_Widget
 				$choices = $this->get_choices( 'dont_set' );
 			}
 
+			elseif ( $breakpoint != 'sm' )
+			{
+				$choices = $this->get_choices( 'inherit' );
+			}
+
 			$wrapper = array( 'width' => 25 );
 
 			$sub_fields[] = array
@@ -199,6 +204,14 @@ class PB_Column_Widget extends PB_Widget
 		pb()->widgets->the_child_widgets();
 
 		echo $args['after'];
+	}
+
+	public function available_widgets( $widgets )
+	{
+		// All widgets except columns
+		unset( $widgets[ $this->id ] );
+
+		return $widgets;
 	}
 }
 
