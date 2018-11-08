@@ -27,6 +27,7 @@ class PB_Widget extends PB_Supportable
 		$this->add_support( $args['features'] );
 
 		add_filter( "pb/widget_html_attributes/type={$this->id}", array( $this, 'widget_html_attributes' ), 10, 3 );
+		add_filter( "pb/available_widgets/parent={$this->id}"   , array( $this, 'available_widgets' ) );
 
 		do_action( 'pb/widget', $this );
 	}
@@ -166,6 +167,11 @@ class PB_Widget extends PB_Supportable
 	public function widget_html_attributes( $atts, $widget, $instance )
 	{
 		return $atts;
+	}
+
+	public function available_widgets( $widgets )
+	{
+		return array();
 	}
 
 	public function enqueue_scripts()
