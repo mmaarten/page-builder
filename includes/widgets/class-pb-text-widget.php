@@ -27,9 +27,32 @@ class PB_Text_Widget extends PB_Widget
 
 		$this->preview_meta( $instance );
 
-		$content         = trim( $instance['content'] );
-		$content         = wpautop( $content );
-		$preview_content = strip_tags( $content, '<p><a><br><b><i><strong><em><h1><h2><h3><h4><h5><h6>' );
+		$content = trim( $instance['content'] );
+		$content = wpautop( $content );
+
+		// Strip tags
+
+		$allowable_tags = array
+		( 
+			'<p>'      => true,
+			'<br>'     => true,
+			'<a>'      => true,
+			'<em>'     => true,
+			'<strong>' => true,
+			'<h1>'     => true,
+			'<h2>'     => true,
+			'<h3>'     => true,
+			'<h4>'     => true,
+			'<h5>'     => true,
+			'<h6>'     => true,
+		);
+
+		$allowable_tags = apply_filters( 'pb/widget_text_widget_preview_content_allowable_tags', $allowable_tags );
+		$allowable_tags = implode( '', array_keys( $allowable_tags ) );
+
+		$preview_content = strip_tags( $content, $allowable_tags );
+
+		// Output
 
 		?>
 
