@@ -50,7 +50,7 @@ html.with-featherlight
 	h1
 	{
 		margin: (-$modal-padding-y) (-$modal-padding-x) $modal-padding-y;
-    	padding: 0 ( $modal-padding-x + $pb-modal-close-size ) 0 $modal-padding-x;
+    	padding: 0 ( $modal-padding-x + $modal-close-size ) 0 $modal-padding-x;
 
     	font-size: $modal-title-font-size;
     	line-height: $modal-title-line-height;
@@ -123,8 +123,8 @@ style.pb-modal-inner
 	right: 0;
 
 	/* dimensions */
-	line-height: $pb-modal-close-size;
-	width: $pb-modal-close-size;
+	line-height: $modal-close-size;
+	width: $modal-close-size;
 
 	/* styling */
 	cursor: pointer;
