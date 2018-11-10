@@ -60,6 +60,7 @@ require_once plugin_dir_path( PB_FILE ) . 'includes/widgets/class-pb-column-widg
 require_once plugin_dir_path( PB_FILE ) . 'includes/widgets/class-pb-heading-widget.php';
 require_once plugin_dir_path( PB_FILE ) . 'includes/widgets/class-pb-html-widget.php';
 require_once plugin_dir_path( PB_FILE ) . 'includes/widgets/class-pb-image-widget.php';
+require_once plugin_dir_path( PB_FILE ) . 'includes/widgets/class-pb-modal-widget.php';
 require_once plugin_dir_path( PB_FILE ) . 'includes/widgets/class-pb-row-widget.php';
 require_once plugin_dir_path( PB_FILE ) . 'includes/widgets/class-pb-text-widget.php';
 
@@ -68,7 +69,7 @@ class PB
 	public function __construct()
 	{
 		add_action( 'init'              , array( $this, 'init' ) );
-		add_action( 'wp_enqueue_scripts', array( $this, 'auto_enqueue_scripts' ) );
+		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_scripts' ) );
 	}
 
 	public function init()
@@ -77,13 +78,15 @@ class PB
 		add_post_type_support( 'page', PB_POST_TYPE_FEATURE );
 	}
 
-	public function auto_enqueue_scripts()
+	public function maybe_enqueue_scripts()
 	{
+		// Check if post has widgets
 		if ( ! pb()->widgets->has_widgets() ) 
 		{
 			return;
 		}
 
+		// Enqueue scripts
 		$this->enqueue_scripts();
 	}
 
