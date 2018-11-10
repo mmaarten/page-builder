@@ -1349,6 +1349,7 @@ html.with-featherlight {
   margin-left: 5%;
   margin-right: 5%;
   max-height: 95%;
+  max-width: 500px;
   /* styling */
   background: #fff;
   cursor: auto;
@@ -1641,7 +1642,7 @@ style.pb-modal-inner {
 .pb-widget-title {
   width: 100%;
   margin: 0;
-  padding: 15px;
+  padding: 15px 15px;
   font-size: 1em;
   line-height: 1;
   overflow: hidden;
@@ -1667,7 +1668,7 @@ style.pb-modal-inner {
 
 .pb-widget-control {
   color: #72777c;
-  padding: 5px;
+  padding: 5px 5px;
   border: none;
   background: none;
   outline: none;
@@ -1678,7 +1679,7 @@ style.pb-modal-inner {
 }
 
 .pb-widget-inside {
-  padding: 1px 15px 15px 15px;
+  padding: 1px 15px 15px;
   line-height: 16px;
   border: 1px solid #e5e5e5;
   border-top: none;
@@ -1722,23 +1723,16 @@ style.pb-modal-inner {
   display: none;
 }
 
-.pb-widget-placeholder {
+.pb-widget-placeholder,
+.pb-add-widget-control {
   border: 1px dashed #b4b9be;
   margin: 15px auto 0;
-  height: 45px;
+  height: 43px;
   width: 100%;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
 
-.pb-add-widget-control {
-  border: 1px dashed #b4b9be;
-  margin: 15px auto 0;
-  height: 45px;
-  width: 100%;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-}
 .pb-add-widget-control:hover {
   border-color: #999;
 }

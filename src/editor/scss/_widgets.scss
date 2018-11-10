@@ -2,10 +2,49 @@
  * Widgets
  */
 
+$widget-margin-y : 15px;
+
+// Top
+$widget-top-color:              #23282d;
+$widget-top-font-size:          13px;
+$widget-top-line-height:        1.4em;
+$widget-top-font-weight:        600;
+$widget-top-border-width:       1px;
+$widget-top-border-color:       #e5e5e5;
+$widget-top-border-color-hover: #999;
+$widget-top-background:         #fafafa;
+$widget-top-padding-x:          15px;
+$widget-top-padding-y:          15px;
+$widget-top-height:             $widget-top-padding-y * 2 + $widget-top-font-size;
+
+// Title
+$widget-title-font-size:        1em;
+
+// Control
+$widget-control-color:          #72777c;
+$widget-control-hover-color:    inherit;
+$widget-control-padding-x:      5px;
+$widget-control-padding-y:      5px;
+
+// Inside
+$widget-inside-padding-x:       15px;
+$widget-inside-padding-y:       15px;
+$widget-inside-line-height:     16px;
+$widget-inside-border-width:    1px;
+$widget-inside-border-color:    #e5e5e5;
+$widget-inside-background:      #fff;
+
+// Placeholder
+$widget-placeholder-border-width:   1px;
+$widget-placeholder-border-color:   #b4b9be;
+$widget-placeholder-height:         $widget-top-height;
+
+
+
 .pb-widget
 {
     // Don't set left and right margins for column widget
-	margin-top: 15px; 
+	margin-top: $widget-margin-y; 
     
     position: relative;
     box-sizing: border-box;
@@ -30,18 +69,16 @@
 	flex-wrap: nowrap;
 	align-items: center;
 
-    color: #23282d;
-    font-size: 13px;
-    line-height: 1.4em;
-    font-weight: 600;
-    border: 1px solid #e5e5e5;
-    background: #fafafa;
-    //box-shadow: 0 1px 1px rgba(0,0,0,0.04);
+    color: $widget-top-color;
+    font-size: $widget-top-font-size;
+    line-height: $widget-top-line-height;
+    font-weight: $widget-top-font-weight;
+    border: $widget-top-border-width solid $widget-top-border-color;
+    background: $widget-top-background;
 
     &:hover
     {
-    	border-color: #999;
-    	//box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+    	border-color: $widget-top-border-color-hover;
     }
 
 	.js &
@@ -54,8 +91,8 @@
 {
 	width: 100%;
 	margin: 0;
-    padding: 15px;
-    font-size: 1em;
+    padding: $widget-top-padding-y $widget-top-padding-x;
+    font-size: $widget-title-font-size;
     line-height: 1;
     overflow: hidden;
     white-space: nowrap;
@@ -74,8 +111,8 @@
 
 .pb-widget-control
 {
-	color: #72777c;
-	padding: 5px;
+	color: $widget-control-color;
+	padding: $widget-control-padding-y $widget-control-padding-x;
 	border: none;
     background: none;
     outline: none;
@@ -83,18 +120,17 @@
 
     &:hover
     {
-    	color: inherit;
+    	color: $widget-control-hover-color;
     }
 }
 
 .pb-widget-inside
 {
-    padding: 1px 15px 15px 15px;
-    line-height: 16px;
-    border: 1px solid #e5e5e5;
+    padding: 1px $widget-inside-padding-x $widget-inside-padding-y;
+    line-height: $widget-inside-line-height;
+    border: $widget-inside-border-width solid $widget-inside-border-color;
     border-top: none;
-    background: #fff;
-    //box-shadow: 0 1px 1px rgba(0,0,0,0.04);
+    background: $widget-inside-background;
 }
 
 .pb-widget-preview
@@ -104,7 +140,7 @@
 
 .pb-widget-meta
 {
-    margin: 15px 0 0;
+    margin: $widget-inside-padding-y 0 0;
     padding: 0;
     list-style: none;
     display: block;
@@ -127,7 +163,7 @@
 
 .pb-preview-content
 {
-    margin: 15px 0 0;
+    margin: $widget-inside-padding-y 0 0;
     padding: 0;
 
     p
@@ -141,33 +177,23 @@
     }
 }
 
-.pb-widget-container
-{
-	
-}
-
 .pb-widget-description
 {
 	display: none;
 }
 
-.pb-widget-placeholder 
+.pb-widget-placeholder,
+.pb-add-widget-control
 {
-    border: 1px dashed #b4b9be;
-    margin: 15px auto 0;
-    height: 45px;
+    border: $widget-placeholder-border-width dashed $widget-placeholder-border-color;
+    margin: $widget-margin-y auto 0;
+    height: $widget-placeholder-height;
     width: 100%;
     box-sizing: border-box;
 }
 
 .pb-add-widget-control
 {
-    border: 1px dashed #b4b9be;
-    margin: 15px auto 0;
-    height: 45px;
-    width: 100%;
-    box-sizing: border-box;
-
     &:hover
     {
         border-color: #999;
@@ -274,8 +300,8 @@
     {
         > .pb-widget-container
         {
-            margin: -1px -15px -15px;
-            padding: 0 15px 15px;
+            margin: -1px (-$widget-inside-padding-x) (-$widget-inside-padding-y);
+            padding: 0 $widget-inside-padding-x $widget-inside-padding-y;
 
             min-height: 15px;
         }

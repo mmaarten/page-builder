@@ -2,14 +2,16 @@
  * Variables
  */
 
-$modal-padding-x: 			20px !default;
-$modal-padding-y: 			20px !default;
-$modal-z-index: 			  100000 !default;
-$modal-title-font-size: 	22px !default;
-$modal-title-line-height: 	50px !default;
-$modal-close-size: 		50px !default;
-$modal-backdrop-color: 		#000 !default;
-$modal-backdrop-opacity: 	0.7 !default;
+$modal-padding-x:             20px !default;
+$modal-padding-y:             20px !default;
+$modal-max-width:             500px;
+$modal-z-index:               100000 !default;
+$modal-title-font-size:       22px !default;
+$modal-title-line-height:     50px !default;
+$modal-close-size:            50px !default;
+$modal-backdrop-color:        #000 !default;
+$modal-backdrop-opacity: 	    0.7 !default;
+$modal-box-shadow:            0 5px 15px rgba( #000, 0.7 ) !default;
 
 $theme-colors: (
   primary   : #0073aa,

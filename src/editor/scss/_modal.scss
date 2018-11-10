@@ -89,6 +89,8 @@ html.with-featherlight
 	margin-right: 5%;
 	max-height: 95%;
 
+	max-width: $modal-max-width;
+
 	/* styling */
 	background: #fff;
 	cursor: auto;
@@ -96,7 +98,7 @@ html.with-featherlight
 	/* reset white-space wrapping */
 	white-space: normal;
 
-	box-shadow: 0 5px 15px rgba(0,0,0,0.7);
+	box-shadow: $modal-box-shadow;
 }
 
 /* contains the content */
