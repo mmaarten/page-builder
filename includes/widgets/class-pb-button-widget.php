@@ -31,6 +31,7 @@ class PB_Button_Widget extends PB_Widget
 			'description'   => '',
 			'type'          => 'url',
 			'default_value' => '',
+			'wrapper'       => array( 'width' => 50 ),
 			'preview'       => true,
 		));
 
@@ -42,6 +43,7 @@ class PB_Button_Widget extends PB_Widget
 			'description'   => '',
 			'type'          => 'true_false',
 			'default_value' => 0,
+			'wrapper'       => array( 'width' => 50 ),
 		));
 
 		$this->add_field( array
@@ -83,6 +85,7 @@ class PB_Button_Widget extends PB_Widget
 			),
 			'default_value' => 'primary',
 			'category'      => 'layout',
+			'wrapper'       => array( 'width' => 50 ),
 			'preview'       => true,
 		));
 
@@ -95,6 +98,7 @@ class PB_Button_Widget extends PB_Widget
 			'type'          => 'true_false',
 			'default_value' => 0,
 			'category'      => 'layout',
+			'wrapper'       => array( 'width' => 50 ),
 		));
 
 		$this->add_field( array

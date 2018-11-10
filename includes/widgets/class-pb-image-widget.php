@@ -24,7 +24,7 @@ class PB_Image_Widget extends PB_Widget
 		(
 			'key'           => "{$this->id}_image_size",
 			'name'          => 'image_size',
-			'label'         => __( 'Image Size' ),
+			'label'         => __( 'Size' ),
 			'description'   => __( "WordPress image size: 'thumbnail', 'large', 'medium', 'small' or custom." ),
 			'type'          => 'text',
 			'default_value' => 'large',
@@ -38,6 +38,7 @@ class PB_Image_Widget extends PB_Widget
 			'description'   => '',
 			'type'          => 'url',
 			'default_value' => '',
+			'wrapper'       => array( 'width' => 50 ),
 			'preview'       => true,
 		));
 
@@ -49,6 +50,7 @@ class PB_Image_Widget extends PB_Widget
 			'description'   => '',
 			'type'          => 'true_false',
 			'default_value' => 0,
+			'wrapper'       => array( 'width' => 50 ),
 		));
 
 		$this->add_field( array
